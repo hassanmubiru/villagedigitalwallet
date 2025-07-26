@@ -384,7 +384,7 @@ export default function Loans() {
           >
             <option value="">Select a lender</option>
             <option value="1">Village Farmers Group</option>
-            <option value="2">Women's Savings Circle</option>
+            <option value="2">Women&apos;s Savings Circle</option>
             <option value="microfinance">Micro-finance Partner</option>
           </select>
         </div>

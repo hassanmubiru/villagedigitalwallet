@@ -163,7 +163,7 @@ export default function CashInOut() {
           <h4 className="text-sm font-medium text-green-900 mb-2">How it works:</h4>
           <ol className="text-sm text-green-800 space-y-1">
             <li>1. Enter amount and mobile number</li>
-            <li>2. You'll receive an SMS with payment instructions</li>
+            <li>2. You&apos;ll receive an SMS with payment instructions</li>
             <li>3. Complete payment on your mobile money app</li>
             <li>4. CELO tokens will be credited to your wallet</li>
           </ol>
@@ -176,7 +176,7 @@ export default function CashInOut() {
           <ol className="text-sm text-orange-800 space-y-1">
             <li>1. Enter amount and mobile number</li>
             <li>2. CELO tokens will be deducted from your wallet</li>
-            <li>3. You'll receive cash on your mobile money account</li>
+            <li>3. You&apos;ll receive cash on your mobile money account</li>
             <li>4. Transaction usually completes in 1-5 minutes</li>
           </ol>
         </div>
