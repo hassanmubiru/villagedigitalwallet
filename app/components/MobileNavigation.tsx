@@ -9,7 +9,9 @@ import {
   Settings,
   Globe,
   BarChart3,
-  Shield
+  Shield,
+  Store,
+  QrCode
 } from 'lucide-react'
 import { useLanguage } from '../providers/LanguageProvider'
 import { CompactLanguageSelector } from './LanguageSelector'
@@ -28,6 +30,15 @@ export default function MobileNavigation({ currentView, setCurrentView }: Mobile
     { id: 'loans', icon: CreditCard, label: t('loans') },
     { id: 'wallet', icon: Wallet, label: t('wallet') },
     { id: 'phase3', icon: Globe, label: t('phase_3') },
+    { id: 'merchants', icon: Store, label: t('merchant_payments') },
+  ]
+
+  const moreItems = [
+    { id: 'qr-payment', icon: QrCode, label: t('qr_payment') },
+    { id: 'analytics', icon: BarChart3, label: t('analytics') },
+    { id: 'security', icon: Shield, label: t('security') },
+    { id: 'profile', icon: User, label: t('profile') },
+    { id: 'settings', icon: Settings, label: t('settings') },
   ]
 
   return (
@@ -47,7 +58,7 @@ export default function MobileNavigation({ currentView, setCurrentView }: Mobile
 
       {/* Bottom Navigation - Mobile */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 lg:hidden z-50">
-        <div className="grid grid-cols-5 gap-1">
+        <div className="grid grid-cols-6 gap-1">
           {navItems.map((item) => {
             const Icon = item.icon
             const isActive = currentView === item.id
@@ -62,7 +73,7 @@ export default function MobileNavigation({ currentView, setCurrentView }: Mobile
                     : 'text-gray-600 hover:text-gray-900'
                 }`}
               >
-                <Icon className="w-5 h-5 mb-1" />
+                <Icon className="w-4 h-4 mb-1" />
                 <span className="text-xs font-medium">{item.label}</span>
               </button>
             )
@@ -96,7 +107,32 @@ export default function MobileNavigation({ currentView, setCurrentView }: Mobile
 
           {/* Navigation */}
           <nav className="flex-1 px-4 py-6 space-y-2">
+            {/* Main Navigation Items */}
             {navItems.map((item) => {
+              const Icon = item.icon
+              const isActive = currentView === item.id
+              
+              return (
+                <button
+                  key={item.id}
+                  onClick={() => setCurrentView(item.id)}
+                  className={`w-full flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-colors ${
+                    isActive
+                      ? 'text-green-700 bg-green-100'
+                      : 'text-gray-700 hover:text-gray-900 hover:bg-gray-100'
+                  }`}
+                >
+                  <Icon className="w-5 h-5 mr-3" />
+                  {item.label}
+                </button>
+              )
+            })}
+            
+            {/* Separator */}
+            <div className="border-t border-gray-200 my-4"></div>
+            
+            {/* Additional Items */}
+            {moreItems.map((item) => {
               const Icon = item.icon
               const isActive = currentView === item.id
               

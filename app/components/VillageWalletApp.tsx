@@ -17,6 +17,8 @@ import MobileNavigation from './MobileNavigation'
 import EnhancedSecurity from './EnhancedSecurity'
 import AnalyticsDashboard from './analytics/AnalyticsDashboard'
 import LanguageSelector from './LanguageSelector'
+import MerchantDashboard from './MerchantDashboard'
+import QRPayment from './QRPayment'
 
 // App Header with Language Selector
 function AppHeader() {
@@ -208,6 +210,10 @@ function VillageWalletAppContent() {
         return <EnhancedSecurity />
       case 'phase3':
         return <Dashboard userId={account.address} />
+      case 'merchants':
+        return <MerchantDashboard />
+      case 'qr-payment':
+        return <QRPayment onBack={() => setCurrentView('merchants')} />
       case 'profile':
         return <Profile />
       default:
