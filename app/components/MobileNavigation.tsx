@@ -12,6 +12,7 @@ import {
   Shield
 } from 'lucide-react'
 import { useLanguage } from '../providers/LanguageProvider'
+import { CompactLanguageSelector } from './LanguageSelector'
 
 interface MobileNavigationProps {
   currentView: string
@@ -19,15 +20,15 @@ interface MobileNavigationProps {
 }
 
 export default function MobileNavigation({ currentView, setCurrentView }: MobileNavigationProps) {
-  const { t, language, setLanguage } = useLanguage()
+  const { t } = useLanguage()
 
   const navItems = [
     { id: 'dashboard', icon: Home, label: t('dashboard') },
     { id: 'savings', icon: Users, label: t('savings') },
     { id: 'loans', icon: CreditCard, label: t('loans') },
     { id: 'wallet', icon: Wallet, label: t('wallet') },
-    { id: 'analytics', icon: BarChart3, label: 'Analytics' },
-    { id: 'security', icon: Shield, label: 'Security' },
+    { id: 'analytics', icon: BarChart3, label: t('analytics') },
+    { id: 'security', icon: Shield, label: t('security') },
   ]
 
   return (
@@ -36,17 +37,9 @@ export default function MobileNavigation({ currentView, setCurrentView }: Mobile
       <div className="bg-white border-b border-gray-200 px-4 py-2 flex justify-between items-center lg:hidden">
         <div className="flex items-center space-x-2">
           <Globe className="w-4 h-4 text-gray-600" />
-          <select
-            value={language}
-            onChange={(e) => setLanguage(e.target.value as any)}
-            className="text-sm border-none bg-transparent focus:outline-none text-gray-700"
-          >
-            <option value="en">English</option>
-            <option value="sw">Kiswahili</option>
-            <option value="fr">Français</option>
-            <option value="es">Español</option>
-          </select>
+          <span className="text-sm text-gray-600">{t('language')}</span>
         </div>
+        <CompactLanguageSelector />
         
         <div className="text-sm text-gray-600">
           Village Wallet
@@ -93,18 +86,12 @@ export default function MobileNavigation({ currentView, setCurrentView }: Mobile
 
           {/* Language Selector */}
           <div className="px-6 py-4 border-b border-gray-200">
-            <div className="flex items-center space-x-2">
-              <Globe className="w-4 h-4 text-gray-600" />
-              <select
-                value={language}
-                onChange={(e) => setLanguage(e.target.value as any)}
-                className="text-sm border border-gray-300 rounded px-2 py-1 bg-white focus:outline-none focus:ring-2 focus:ring-green-500"
-              >
-                <option value="en">English</option>
-                <option value="sw">Kiswahili</option>
-                <option value="fr">Français</option>
-                <option value="es">Español</option>
-              </select>
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-2">
+                <Globe className="w-4 h-4 text-gray-600" />
+                <span className="text-sm text-gray-600">{t('language')}</span>
+              </div>
+              <CompactLanguageSelector />
             </div>
           </div>
 

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { useActiveAccount } from 'thirdweb/react'
-import { LanguageProvider } from '../providers/LanguageProvider'
+import { LanguageProvider, useLanguage } from '../providers/LanguageProvider'
 
 // Components
 import WalletConnect from './WalletConnect'
@@ -16,15 +16,49 @@ import CashInOut from './CashInOut'
 import MobileNavigation from './MobileNavigation'
 import EnhancedSecurity from './EnhancedSecurity'
 import AnalyticsDashboard from './analytics/AnalyticsDashboard'
+import LanguageSelector from './LanguageSelector'
+
+// App Header with Language Selector
+function AppHeader() {
+  const { t } = useLanguage()
+  
+  return (
+    <header className="bg-white border-b border-gray-200 sticky top-0 z-40">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <div className="flex items-center">
+            <h1 className="text-xl font-bold text-gray-900">
+              Village Digital Wallet
+            </h1>
+          </div>
+          <div className="flex items-center space-x-4">
+            <LanguageSelector />
+          </div>
+        </div>
+      </div>
+    </header>
+  )
+}
 
 // Profile component (simplified)
 function Profile() {
+  const { t } = useLanguage()
+  
   return (
     <div className="min-h-screen bg-gray-50 pb-20 lg:pb-0">
       <div className="max-w-2xl mx-auto px-4 py-6">
-        <h1 className="text-3xl font-bold text-gray-900 mb-6">Profile</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-6">{t('profile')}</h1>
         <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-          <p className="text-gray-600">Profile management coming soon...</p>
+          <p className="text-gray-600">{t('personalInfo')}...</p>
+          
+          {/* Language Settings Section */}
+          <div className="mt-6 pt-6 border-t border-gray-200">
+            <h3 className="text-lg font-medium text-gray-900 mb-4">{t('language')}</h3>
+            <div className="flex items-center justify-between">
+              <span className="text-sm text-gray-600">{t('selectLanguage')}</span>
+              <LanguageSelector />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -34,11 +68,12 @@ function Profile() {
 // Enhanced Wallet component
 function EnhancedWallet() {
   const [walletTab, setWalletTab] = useState<'balance' | 'transfer' | 'cash'>('balance')
+  const { t } = useLanguage()
 
   return (
     <div className="min-h-screen bg-gray-50 pb-20 lg:pb-0">
       <div className="max-w-2xl mx-auto px-4 py-6">
-        <h1 className="text-3xl font-bold text-gray-900 mb-6">Wallet</h1>
+        <h1 className="text-3xl font-bold text-gray-900 mb-6">{t('wallet')}</h1>
         
         {/* Wallet Tabs */}
         <div className="flex space-x-1 mb-6 bg-gray-100 p-1 rounded-lg">
@@ -85,8 +120,17 @@ function EnhancedWallet() {
 }
 
 export default function VillageWalletApp() {
+  return (
+    <LanguageProvider>
+      <VillageWalletAppContent />
+    </LanguageProvider>
+  )
+}
+
+function VillageWalletAppContent() {
   const [currentView, setCurrentView] = useState('dashboard')
   const account = useActiveAccount()
+  const { t } = useLanguage()
 
   const renderCurrentView = () => {
     if (!account) {
@@ -101,7 +145,7 @@ export default function VillageWalletApp() {
                 Village Digital Wallet
               </h1>
               <p className="text-gray-600 mb-8">
-                Empowering rural communities through accessible DeFi tools on Celo blockchain
+                {t('connectWallet')} to get started with DeFi tools on Celo blockchain
               </p>
             </div>
             
@@ -115,7 +159,7 @@ export default function VillageWalletApp() {
                 <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-2">
                   <span className="text-green-600 font-bold">💰</span>
                 </div>
-                <h3 className="font-medium text-gray-900">Savings Groups</h3>
+                <h3 className="font-medium text-gray-900">{t('savings')}</h3>
                 <p className="text-sm text-gray-600">Community ROSCAs</p>
               </div>
               
@@ -123,7 +167,7 @@ export default function VillageWalletApp() {
                 <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-2">
                   <span className="text-blue-600 font-bold">🏦</span>
                 </div>
-                <h3 className="font-medium text-gray-900">Microloans</h3>
+                <h3 className="font-medium text-gray-900">{t('loans')}</h3>
                 <p className="text-sm text-gray-600">Accessible credit</p>
               </div>
               
@@ -170,16 +214,17 @@ export default function VillageWalletApp() {
   }
 
   return (
-    <LanguageProvider>
-      <div className="min-h-screen bg-gray-50">
-        {/* Mobile Navigation */}
-        <MobileNavigation currentView={currentView} setCurrentView={setCurrentView} />
-        
-        {/* Main Content */}
-        <div className="lg:pl-64">
-          {renderCurrentView()}
-        </div>
+    <div className="min-h-screen bg-gray-50">
+      {/* App Header with Language Selector */}
+      <AppHeader />
+      
+      {/* Mobile Navigation */}
+      <MobileNavigation currentView={currentView} setCurrentView={setCurrentView} />
+      
+      {/* Main Content */}
+      <div className="lg:pl-64 pt-16">
+        {renderCurrentView()}
       </div>
-    </LanguageProvider>
+    </div>
   )
 }

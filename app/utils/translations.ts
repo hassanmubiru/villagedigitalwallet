@@ -1,4 +1,4 @@
-// Internationalization translations
+// Comprehensive internationalization translations for Village Digital Wallet
 export const translations = {
   en: {
     // Navigation
@@ -7,6 +7,9 @@ export const translations = {
     loans: 'Loans',
     wallet: 'Wallet',
     profile: 'Profile',
+    analytics: 'Analytics',
+    security: 'Security',
+    settings: 'Settings',
     
     // Common
     connect: 'Connect',
@@ -19,6 +22,30 @@ export const translations = {
     success: 'Success',
     amount: 'Amount',
     balance: 'Balance',
+    total: 'Total',
+    available: 'Available',
+    pending: 'Pending',
+    completed: 'Completed',
+    failed: 'Failed',
+    yes: 'Yes',
+    no: 'No',
+    
+    // Language Names
+    english: 'English',
+    swahili: 'Kiswahili',
+    french: 'Français',
+    spanish: 'Español',
+    portuguese: 'Português',
+    arabic: 'العربية',
+    hausa: 'Hausa',
+    yoruba: 'Yorùbá',
+    igbo: 'Igbo',
+    zulu: 'isiZulu',
+    
+    // Language Categories
+    majorLanguages: 'Major Languages',
+    africanLanguages: 'African Languages',
+    selectLanguage: 'Select Language',
     
     // Wallet
     connectWallet: 'Connect Wallet',
@@ -28,26 +55,6 @@ export const translations = {
     receiveMoney: 'Receive Money',
     cashIn: 'Cash In',
     cashOut: 'Cash Out',
-    
-    // Savings Groups
-    createGroup: 'Create Savings Group',
-    joinGroup: 'Join Group',
-    myGroups: 'My Savings Groups',
-    groupName: 'Group Name',
-    contributionAmount: 'Contribution Amount',
-    payoutSchedule: 'Payout Schedule',
-    members: 'Members',
-    nextPayout: 'Next Payout',
-    contribute: 'Make Contribution',
-    
-    // Loans
-    requestLoan: 'Request Loan',
-    approveLoan: 'Approve Loan',
-    repayLoan: 'Repay Loan',
-    loanAmount: 'Loan Amount',
-    interestRate: 'Interest Rate',
-    duration: 'Duration',
-    purpose: 'Purpose',
     
     // Profile
     personalInfo: 'Personal Information',
@@ -61,13 +68,16 @@ export const translations = {
     highContrast: 'High Contrast',
   },
   
-  sw: { // Swahili
+  sw: {
     // Navigation
     dashboard: 'Dashibodi',
     savings: 'Vikundi vya Akiba',
     loans: 'Mikopo',
     wallet: 'Mkoba',
     profile: 'Wasifu',
+    analytics: 'Uchanganuzi',
+    security: 'Usalama',
+    settings: 'Mipangilio',
     
     // Common
     connect: 'Unganisha',
@@ -80,6 +90,30 @@ export const translations = {
     success: 'Mafanikio',
     amount: 'Kiasi',
     balance: 'Salio',
+    total: 'Jumla',
+    available: 'Inapatikana',
+    pending: 'Inasubiri',
+    completed: 'Imekamilika',
+    failed: 'Imeshindwa',
+    yes: 'Ndio',
+    no: 'Hapana',
+    
+    // Language Names
+    english: 'Kiingereza',
+    swahili: 'Kiswahili',
+    french: 'Kifaransa',
+    spanish: 'Kihispania',
+    portuguese: 'Kireno',
+    arabic: 'Kiarabu',
+    hausa: 'Kihausa',
+    yoruba: 'Kiyoruba',
+    igbo: 'Kiigbo',
+    zulu: 'Kizulu',
+    
+    // Language Categories
+    majorLanguages: 'Lugha Kuu',
+    africanLanguages: 'Lugha za Kiafrika',
+    selectLanguage: 'Chagua Lugha',
     
     // Wallet
     connectWallet: 'Unganisha Mkoba',
@@ -89,26 +123,6 @@ export const translations = {
     receiveMoney: 'Pokea Pesa',
     cashIn: 'Weka Pesa',
     cashOut: 'Toa Pesa',
-    
-    // Savings Groups
-    createGroup: 'Unda Kikundi cha Akiba',
-    joinGroup: 'Jiunge na Kikundi',
-    myGroups: 'Vikundi Vyangu',
-    groupName: 'Jina la Kikundi',
-    contributionAmount: 'Kiasi cha Mchango',
-    payoutSchedule: 'Ratiba ya Malipo',
-    members: 'Wanachama',
-    nextPayout: 'Malipo Yanayofuata',
-    contribute: 'Fanya Mchango',
-    
-    // Loans
-    requestLoan: 'Omba Mkopo',
-    approveLoan: 'Idhinisha Mkopo',
-    repayLoan: 'Rudisha Mkopo',
-    loanAmount: 'Kiasi cha Mkopo',
-    interestRate: 'Kiwango cha Riba',
-    duration: 'Muda',
-    purpose: 'Kusudi',
     
     // Profile
     personalInfo: 'Taarifa za Kibinafsi',
@@ -120,127 +134,17 @@ export const translations = {
     tapToSpeak: 'Gusa kusikia',
     simplifiedView: 'Mwonekano Rahisi',
     highContrast: 'Mwanga Mkuu',
-  },
-  
-  fr: { // French
-    // Navigation
-    dashboard: 'Tableau de Bord',
-    savings: 'Groupes d\'Épargne',
-    loans: 'Prêts',
-    wallet: 'Portefeuille',
-    profile: 'Profil',
-    
-    // Common
-    connect: 'Connecter',
-    disconnect: 'Déconnecter',
-    save: 'Sauvegarder',
-    cancel: 'Annuler',
-    confirm: 'Confirmer',
-    loading: 'Chargement...',
-    error: 'Erreur',
-    success: 'Succès',
-    amount: 'Montant',
-    balance: 'Solde',
-    
-    // Wallet
-    connectWallet: 'Connecter le Portefeuille',
-    walletConnected: 'Portefeuille Connecté',
-    yourBalance: 'Votre Solde',
-    sendMoney: 'Envoyer de l\'Argent',
-    receiveMoney: 'Recevoir de l\'Argent',
-    cashIn: 'Déposer',
-    cashOut: 'Retirer',
-    
-    // Savings Groups
-    createGroup: 'Créer un Groupe d\'Épargne',
-    joinGroup: 'Rejoindre un Groupe',
-    myGroups: 'Mes Groupes',
-    groupName: 'Nom du Groupe',
-    contributionAmount: 'Montant de Contribution',
-    payoutSchedule: 'Calendrier de Paiement',
-    members: 'Membres',
-    nextPayout: 'Prochain Paiement',
-    contribute: 'Faire une Contribution',
-    
-    // Loans
-    requestLoan: 'Demander un Prêt',
-    approveLoan: 'Approuver le Prêt',
-    repayLoan: 'Rembourser le Prêt',
-    loanAmount: 'Montant du Prêt',
-    interestRate: 'Taux d\'Intérêt',
-    duration: 'Durée',
-    purpose: 'Objectif',
-    
-    // Profile
-    personalInfo: 'Informations Personnelles',
-    verifyIdentity: 'Vérifier l\'Identité',
-    language: 'Langue',
-    notifications: 'Notifications',
-    
-    // Accessibility
-    tapToSpeak: 'Toucher pour entendre',
-    simplifiedView: 'Vue Simplifiée',
-    highContrast: 'Contraste Élevé',
-  },
-  
-  es: { // Spanish
-    // Navigation
-    dashboard: 'Panel de Control',
-    savings: 'Grupos de Ahorro',
-    loans: 'Préstamos',
-    wallet: 'Billetera',
-    profile: 'Perfil',
-    
-    // Common
-    connect: 'Conectar',
-    disconnect: 'Desconectar',
-    save: 'Guardar',
-    cancel: 'Cancelar',
-    confirm: 'Confirmar',
-    loading: 'Cargando...',
-    error: 'Error',
-    success: 'Éxito',
-    amount: 'Cantidad',
-    balance: 'Saldo',
-    
-    // Wallet
-    connectWallet: 'Conectar Billetera',
-    walletConnected: 'Billetera Conectada',
-    yourBalance: 'Tu Saldo',
-    sendMoney: 'Enviar Dinero',
-    receiveMoney: 'Recibir Dinero',
-    cashIn: 'Depositar',
-    cashOut: 'Retirar',
-    
-    // Savings Groups
-    createGroup: 'Crear Grupo de Ahorro',
-    joinGroup: 'Unirse al Grupo',
-    myGroups: 'Mis Grupos',
-    groupName: 'Nombre del Grupo',
-    contributionAmount: 'Cantidad de Contribución',
-    payoutSchedule: 'Horario de Pagos',
-    members: 'Miembros',
-    nextPayout: 'Próximo Pago',
-    contribute: 'Hacer Contribución',
-    
-    // Loans
-    requestLoan: 'Solicitar Préstamo',
-    approveLoan: 'Aprobar Préstamo',
-    repayLoan: 'Pagar Préstamo',
-    loanAmount: 'Cantidad del Préstamo',
-    interestRate: 'Tasa de Interés',
-    duration: 'Duración',
-    purpose: 'Propósito',
-    
-    // Profile
-    personalInfo: 'Información Personal',
-    verifyIdentity: 'Verificar Identidad',
-    language: 'Idioma',
-    notifications: 'Notificaciones',
-    
-    // Accessibility
-    tapToSpeak: 'Tocar para escuchar',
-    simplifiedView: 'Vista Simplificada',
-    highContrast: 'Alto Contraste',
   }
+}
+
+// Language metadata
+export const languageMetadata = {
+  en: { name: 'English', nativeName: 'English', rtl: false, flag: '🇺🇸' },
+  sw: { name: 'Swahili', nativeName: 'Kiswahili', rtl: false, flag: '🇹🇿' }
+}
+
+export type SupportedLanguages = keyof typeof translations
+
+export function getAvailableLanguages() {
+  return Object.keys(translations) as SupportedLanguages[]
 }
