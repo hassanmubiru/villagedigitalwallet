@@ -45,6 +45,7 @@ export const translations = {
     government_id_system: 'Government ID System',
     cross_border_transfers: 'Cross-Border Transfers',
     insurance_products: 'Insurance Products',
+    carbon_credits: 'Carbon Credits',
     
     // KYC & Identity
     verification_status: 'Verification Status',
