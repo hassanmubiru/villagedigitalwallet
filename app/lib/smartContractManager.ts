@@ -238,18 +238,18 @@ export class SmartContractManager {
       estimates: {
         addMember: {
           gasUnits: Number(estimates.addMember),
-          costInWei: estimates.addMember * (gasPrice.gasPrice || 0n),
-          costInCelo: ethers.formatEther(estimates.addMember * (gasPrice.gasPrice || 0n))
+          costInWei: estimates.addMember * (gasPrice.gasPrice || BigInt(0)),
+          costInCelo: ethers.formatEther(estimates.addMember * (gasPrice.gasPrice || BigInt(0)))
         },
         makeContribution: {
           gasUnits: Number(estimates.makeContribution),
-          costInWei: estimates.makeContribution * (gasPrice.gasPrice || 0n),
-          costInCelo: ethers.formatEther(estimates.makeContribution * (gasPrice.gasPrice || 0n))
+          costInWei: estimates.makeContribution * (gasPrice.gasPrice || BigInt(0)),
+          costInCelo: ethers.formatEther(estimates.makeContribution * (gasPrice.gasPrice || BigInt(0)))
         },
         requestLoan: {
           gasUnits: Number(estimates.requestLoan),
-          costInWei: estimates.requestLoan * (gasPrice.gasPrice || 0n),
-          costInCelo: ethers.formatEther(estimates.requestLoan * (gasPrice.gasPrice || 0n))
+          costInWei: estimates.requestLoan * (gasPrice.gasPrice || BigInt(0)),
+          costInCelo: ethers.formatEther(estimates.requestLoan * (gasPrice.gasPrice || BigInt(0)))
         }
       }
     };
