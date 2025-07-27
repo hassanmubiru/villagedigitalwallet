@@ -34,7 +34,13 @@ interface QRPaymentProps {
 
 export default function QRPayment({ onBack }: QRPaymentProps) {
   const { language } = useLanguage();
-  const t = (key: string) => translations[language][key] || key;
+  // Fix type safety by checking if key exists in translations
+  const t = (key: string) => {
+    const translationsForLang = translations[language as keyof typeof translations];
+    return translationsForLang && key in translationsForLang 
+      ? translationsForLang[key as keyof typeof translationsForLang] 
+      : key;
+  };
 
   const [step, setStep] = useState<'scan' | 'amount' | 'confirm' | 'processing' | 'success' | 'error'>('scan');
   const [qrData, setQrData] = useState<string>('');

@@ -42,7 +42,13 @@ interface MerchantDashboardProps {
 
 export default function MerchantDashboard({ merchantId }: MerchantDashboardProps) {
   const { language } = useLanguage();
-  const t = (key: string) => translations[language][key] || key;
+  // Fix type safety by checking if key exists in translations
+  const t = (key: string) => {
+    const translationsForLang = translations[language as keyof typeof translations];
+    return translationsForLang && key in translationsForLang 
+      ? translationsForLang[key as keyof typeof translationsForLang] 
+      : key;
+  };
 
   const [activeTab, setActiveTab] = useState<'overview' | 'transactions' | 'qr-codes' | 'analytics' | 'settings'>('overview');
   const [merchant, setMerchant] = useState<Merchant | null>(null);
