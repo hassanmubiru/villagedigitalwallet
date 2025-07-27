@@ -437,6 +437,20 @@ function ConfirmStep({
 
   return (
     <div className="max-w-md mx-auto space-y-6">
+      {/* QR Code Display */}
+      <div className="bg-white p-4 rounded-lg border border-gray-200 flex justify-center">
+        <div className="bg-white p-4 rounded">
+          <QRCodeSVG 
+            value={qrPayment.paymentUrl} 
+            size={200} 
+            bgColor={"#ffffff"} 
+            fgColor={"#000000"} 
+            level={"L"}
+            includeMargin={true}
+          />
+        </div>
+      </div>
+      
       {/* Payment Summary */}
       <div className="bg-gray-50 rounded-lg p-6 space-y-4">
         <h3 className="text-lg font-medium text-gray-900">Payment Summary</h3>
