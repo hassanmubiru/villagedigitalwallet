@@ -13,8 +13,8 @@ const celoAlfajores = defineChain({
 })
 
 // Create the client with your client ID
-const client = createThirdwebClient({
-  clientId: process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID || "your-client-id-here"
+export const client = createThirdwebClient({
+  clientId: process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID || "11cd270615f1968861313dbd6d968954"
 })
 
 export function ThirdwebProvider({ children }: { children: React.ReactNode }) {
@@ -25,6 +25,5 @@ export function ThirdwebProvider({ children }: { children: React.ReactNode }) {
   )
 }
 
-// Export the client and chains for use in components
-export { client }
+// Export the chains for use in components
 export const supportedChains = [celo, celoAlfajores]
