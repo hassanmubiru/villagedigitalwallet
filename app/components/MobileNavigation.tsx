@@ -7,7 +7,9 @@ import {
   Wallet, 
   User,
   Settings,
-  Globe
+  Globe,
+  BarChart3,
+  Shield
 } from 'lucide-react'
 import { useLanguage } from '../providers/LanguageProvider'
 
@@ -24,7 +26,8 @@ export default function MobileNavigation({ currentView, setCurrentView }: Mobile
     { id: 'savings', icon: Users, label: t('savings') },
     { id: 'loans', icon: CreditCard, label: t('loans') },
     { id: 'wallet', icon: Wallet, label: t('wallet') },
-    { id: 'profile', icon: User, label: t('profile') },
+    { id: 'analytics', icon: BarChart3, label: 'Analytics' },
+    { id: 'security', icon: Shield, label: 'Security' },
   ]
 
   return (

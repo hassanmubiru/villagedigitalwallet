@@ -8,11 +8,14 @@ import { LanguageProvider } from '../providers/LanguageProvider'
 import WalletConnect from './WalletConnect'
 import Dashboard from './Dashboard'
 import SavingsGroups from './SavingsGroups'
+import EnhancedSavingsGroups from './EnhancedSavingsGroups'
 import Loans from './Loans'
 import TransferForm from './TransferForm'
 import TokenBalance from './TokenBalance'
 import CashInOut from './CashInOut'
 import MobileNavigation from './MobileNavigation'
+import EnhancedSecurity from './EnhancedSecurity'
+import AnalyticsDashboard from './analytics/AnalyticsDashboard'
 
 // Profile component (simplified)
 function Profile() {
@@ -150,11 +153,15 @@ export default function VillageWalletApp() {
       case 'dashboard':
         return <Dashboard currentView={currentView} setCurrentView={setCurrentView} />
       case 'savings':
-        return <SavingsGroups />
+        return <EnhancedSavingsGroups />
       case 'loans':
         return <Loans />
       case 'wallet':
         return <EnhancedWallet />
+      case 'analytics':
+        return <AnalyticsDashboard />
+      case 'security':
+        return <EnhancedSecurity />
       case 'profile':
         return <Profile />
       default:
