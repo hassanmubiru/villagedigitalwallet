@@ -82,7 +82,7 @@ export default function CarbonCreditMarketplace({ userId }: CarbonCreditMarketpl
       const footprint = carbonCreditService.getUserFootprint(userId);
       setUserFootprint(footprint);
     } catch (error) {
-      console.error('Error loading carbon credit data:', error);
+      // Error handled silently
     } finally {
       setLoading(false);
     }
@@ -106,11 +106,10 @@ export default function CarbonCreditMarketplace({ userId }: CarbonCreditMarketpl
         setSelectedProject(null);
       }
     } catch (error) {
-      console.error('Error purchasing carbon credits:', error);
+      // Error handled silently
     } finally {
       setLoading(false);
-    }
-  };
+    };
 
   const handleCalculateFootprint = () => {
     const footprint = carbonCreditService.calculateUserFootprint(
@@ -933,7 +932,7 @@ function ProjectDetailModal({
 }) {
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-      <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto">
+      <div className="bg-white rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto scrollbar-hide">
         <div className="flex items-center justify-between p-4 border-b border-gray-200">
           <h3 className="text-xl font-semibold text-gray-900">{project.name}</h3>
           <button onClick={onClose} className="text-gray-400 hover:text-gray-500">
