@@ -19,6 +19,7 @@ import {
   ArrowLeft,
   ArrowRight
 } from 'lucide-react';
+import { QRCodeSVG } from 'qrcode.react';
 import { 
   merchantServices, 
   Merchant, 

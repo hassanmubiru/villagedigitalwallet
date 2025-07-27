@@ -27,6 +27,7 @@ import {
   Eye,
   Filter
 } from 'lucide-react';
+import { QRCodeSVG } from 'qrcode.react';
 import { 
   merchantServices, 
   Merchant, 
@@ -616,8 +617,17 @@ function QRCodesTab({
           {qrPayment ? (
             <div className="space-y-4">
               <div className="bg-white p-8 rounded-lg border-2 border-dashed border-gray-300 inline-block">
-                <QrCode className="h-32 w-32 text-gray-400 mx-auto" />
-                <p className="text-xs text-gray-500 mt-2">QR Code Display</p>
+                {qrPayment.paymentUrl && (
+                <QRCodeSVG 
+                  value={qrPayment.paymentUrl} 
+                  size={200} 
+                  bgColor={"#ffffff"} 
+                  fgColor={"#000000"} 
+                  level={"L"}
+                  includeMargin={true}
+                />
+              )}
+              <p className="text-xs text-gray-500 mt-2">Scan to pay</p>
               </div>
               
               <div className="text-left space-y-2">
