@@ -27,8 +27,7 @@ export default function MobileNavigation({ currentView, setCurrentView }: Mobile
     { id: 'savings', icon: Users, label: t('savings') },
     { id: 'loans', icon: CreditCard, label: t('loans') },
     { id: 'wallet', icon: Wallet, label: t('wallet') },
-    { id: 'analytics', icon: BarChart3, label: t('analytics') },
-    { id: 'security', icon: Shield, label: t('security') },
+    { id: 'phase3', icon: Globe, label: t('phase_3') },
   ]
 
   return (

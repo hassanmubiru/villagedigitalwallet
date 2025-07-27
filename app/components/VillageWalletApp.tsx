@@ -195,7 +195,7 @@ function VillageWalletAppContent() {
     // Render views based on current selection
     switch (currentView) {
       case 'dashboard':
-        return <Dashboard currentView={currentView} setCurrentView={setCurrentView} />
+        return <Dashboard userId={account.address} />
       case 'savings':
         return <EnhancedSavingsGroups />
       case 'loans':
@@ -206,10 +206,12 @@ function VillageWalletAppContent() {
         return <AnalyticsDashboard />
       case 'security':
         return <EnhancedSecurity />
+      case 'phase3':
+        return <Dashboard userId={account.address} />
       case 'profile':
         return <Profile />
       default:
-        return <Dashboard currentView={currentView} setCurrentView={setCurrentView} />
+        return <Dashboard userId={account.address} />
     }
   }
 
