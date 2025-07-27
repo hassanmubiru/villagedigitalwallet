@@ -109,7 +109,8 @@ export default function CarbonCreditMarketplace({ userId }: CarbonCreditMarketpl
       // Error handled silently
     } finally {
       setLoading(false);
-    };
+    }
+  };
 
   const handleCalculateFootprint = () => {
     const footprint = carbonCreditService.calculateUserFootprint(
