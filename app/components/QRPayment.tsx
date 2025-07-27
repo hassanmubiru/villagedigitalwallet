@@ -291,7 +291,13 @@ function ScanStep({
               <span className="ml-2 text-gray-600">Processing...</span>
             </div>
           ) : (
-            <button className="bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 flex items-center space-x-2 mx-auto">
+            <button className="bg-blue-600 text-white py-3 px-6 rounded-lg hover:bg-blue-700 flex items-center space-x-2 mx-auto"
+              onClick={() => {
+                // In a real app, this would open the camera
+                // For demo purposes, use one of the mock scans
+                onMockScan('merchant_1234_abc', 25.00);
+              }}
+            >
               <Scan className="h-5 w-5" />
               <span>Open Camera</span>
             </button>
