@@ -19,6 +19,7 @@ import AnalyticsDashboard from './analytics/AnalyticsDashboard'
 import LanguageSelector from './LanguageSelector'
 import MerchantDashboard from './MerchantDashboard'
 import QRPayment from './QRPayment'
+import CarbonCreditMarketplace from './CarbonCreditMarketplace'
 
 // App Header with Language Selector
 function AppHeader() {
@@ -214,6 +215,8 @@ function VillageWalletAppContent() {
         return <MerchantDashboard />
       case 'qr-payment':
         return <QRPayment onBack={() => setCurrentView('merchants')} />
+      case 'carbon':
+        return <CarbonCreditMarketplace userId={account.address} />
       case 'profile':
         return <Profile />
       default:

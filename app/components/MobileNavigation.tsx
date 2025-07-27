@@ -11,7 +11,8 @@ import {
   BarChart3,
   Shield,
   Store,
-  QrCode
+  QrCode,
+  Leaf
 } from 'lucide-react'
 import { useLanguage } from '../providers/LanguageProvider'
 import { CompactLanguageSelector } from './LanguageSelector'
@@ -31,6 +32,7 @@ export default function MobileNavigation({ currentView, setCurrentView }: Mobile
     { id: 'wallet', icon: Wallet, label: t('wallet') },
     { id: 'phase3', icon: Globe, label: t('phase_3') },
     { id: 'merchants', icon: Store, label: t('merchant_payments') },
+    { id: 'carbon', icon: Leaf, label: t('carbon_credits') },
   ]
 
   const moreItems = [
