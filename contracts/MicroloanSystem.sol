@@ -99,7 +99,8 @@ contract MicroloanSystem is Ownable, ReentrancyGuard {
         address _loanTokenAddress,
         address _feeCollector,
         uint256 _platformFeePercent
-    ) Ownable(initialOwner) {
+    ) {
+        _transferOwnership(initialOwner); // Use _transferOwnership instead of constructor parameter
         loanToken = IERC20(_loanTokenAddress);
         feeCollector = _feeCollector;
         platformFeePercent = _platformFeePercent;
