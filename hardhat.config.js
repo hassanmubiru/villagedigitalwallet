@@ -49,7 +49,7 @@ module.exports = {
       url: ALFAJORES_RPC_URL,
       accounts: formattedPrivateKey ? [formattedPrivateKey] : [],
       chainId: 44787,
-      gasPrice: 5000000000 // 5 gwei
+      gasPrice: 20000000000 // 20 gwei - increased to meet the base-fee-floor
     },
     // Celo mainnet
     celo: {
