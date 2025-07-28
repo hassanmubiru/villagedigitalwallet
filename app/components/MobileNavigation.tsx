@@ -12,7 +12,8 @@ import {
   Shield,
   Store,
   QrCode,
-  Leaf
+  Leaf,
+  CircleDollarSign
 } from 'lucide-react'
 import { useLanguage } from '../providers/LanguageProvider'
 import { CompactLanguageSelector } from './LanguageSelector'
@@ -30,6 +31,7 @@ export default function MobileNavigation({ currentView, setCurrentView }: Mobile
     { id: 'savings', icon: Users, label: t('savings') },
     { id: 'loans', icon: CreditCard, label: t('loans') },
     { id: 'wallet', icon: Wallet, label: t('wallet') },
+    { id: 'celo', icon: CircleDollarSign, label: 'Celo' },
     { id: 'phase3', icon: Globe, label: t('phase_3') },
     { id: 'merchants', icon: Store, label: t('merchant_payments') },
     { id: 'carbon', icon: Leaf, label: t('carbon_credits') },
@@ -60,7 +62,7 @@ export default function MobileNavigation({ currentView, setCurrentView }: Mobile
 
       {/* Bottom Navigation - Mobile */}
       <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 lg:hidden z-50">
-        <div className="grid grid-cols-6 gap-1">
+        <div className="grid grid-cols-7 gap-1">
           {navItems.map((item) => {
             const Icon = item.icon
             const isActive = currentView === item.id

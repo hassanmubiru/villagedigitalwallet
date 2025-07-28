@@ -11,11 +11,18 @@
     "deploy:mainnet": "npx hardhat run scripts/deploy.js --network celo",
     "verify": "npx hardhat run scripts/manual-verify.js --network alfajores",
     "verify:mainnet": "npx hardhat run scripts/manual-verify.js --network celo",
-    "celo:deploy": "./deploy.sh --network alfajores",
-    "celo:deploy:mainnet": "./deploy.sh --network celo"
+    "celo:deploy": "./celo-deploy.sh --network=alfajores",
+    "celo:deploy:mainnet": "./celo-deploy.sh --network=celo",
+    "celo:setup": "npm install @celo-tools/celo-ethers-wrapper @celo-tools/use-contractkit @celo/react-celo --force",
+    "update:abis": "node scripts/update-contract-abis.js",
+    "composer:deploy": "node composer-deploy.js",
+    "composer:deploy:mainnet": "node composer-deploy.js --network=celo"
   },
   "dependencies": {
-    "@celo/contractkit": "^10.0.0",
+    "@celo-tools/celo-ethers-wrapper": "^2.3.0",
+    "@celo-tools/use-contractkit": "^3.1.0",
+    "@celo/contractkit": "^3.2.0",
+    "@celo/react-celo": "^5.0.4",
     "@types/node": "^24.1.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",

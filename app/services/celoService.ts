@@ -1,12 +1,19 @@
 import { ContractKit, newKit } from '@celo/contractkit';
 import { ERC20 } from '@celo/contractkit/lib/generated/IERC20';
 import { getContractAddresses } from '../utils/contractAddresses';
+import { Alfajores, Celo } from '@celo/react-celo';
 
 // ABI imports (make sure to create these files)
 import SavingsGroupAbi from '../abis/SavingsGroup.json';
 import MicroloanSystemAbi from '../abis/MicroloanSystem.json';
 
 export type CeloNetwork = 'alfajores' | 'celo';
+
+// Network configuration for Celo Composer
+export const NETWORKS = {
+  alfajores: Alfajores,
+  celo: Celo
+};
 
 export class CeloService {
   private kit: ContractKit;
@@ -20,6 +27,20 @@ export class CeloService {
     
     this.kit = newKit(rpcUrl);
     this.network = network;
+  }
+  
+  /**
+   * Format transaction value from wei to a readable format
+   * @param value Value in wei
+   * @returns Formatted value in ether
+   */
+  public formatWeiToEther(value: string): string {
+    try {
+      return this.kit.web3.utils.fromWei(value, 'ether');
+    } catch (error) {
+      console.error("Error formatting wei to ether:", error);
+      return value;
+    }
   }
   
   /**
@@ -185,7 +206,13 @@ export class CeloService {
               tx.to?.toLowerCase() === address.toLowerCase()
           );
           
-          transactions.push(...relevantTxs);
+          // Format values to be more readable
+          const formattedTxs = relevantTxs.map(tx => ({
+            ...tx,
+            formattedValue: tx.value ? this.formatWeiToEther(tx.value) : '0'
+          }));
+          
+          transactions.push(...formattedTxs);
           if (transactions.length >= limit) break;
         }
       }
@@ -195,6 +222,91 @@ export class CeloService {
       console.error('Error fetching transaction history:', error);
       throw new Error('Failed to get transaction history');
     }
+  }
+
+  /**
+   * Get the current gas price on the Celo network
+   * @returns Gas price in wei
+   */
+  public async getGasPrice(): Promise<string> {
+    try {
+      const gasPrice = await this.kit.web3.eth.getGasPrice();
+      return gasPrice;
+    } catch (error) {
+      console.error('Error getting gas price:', error);
+      throw new Error('Failed to get gas price');
+    }
+  }
+
+  /**
+   * Get all token balances for an address (CELO, cUSD, cEUR)
+   * @param address Wallet address
+   * @returns Object with all token balances
+   */
+  public async getAllTokenBalances(address: string): Promise<{
+    CELO: string;
+    cUSD: string;
+    cEUR: string;
+  }> {
+    try {
+      const goldtoken = await this.kit.contracts.getGoldToken();
+      const stabletoken = await this.kit.contracts.getStableToken();
+      // Note: Different versions of ContractKit may have different ways to access cEUR
+      // This approach works for the current version
+      const ceurotoken = await this.kit.contracts.getStableToken('cEUR');
+
+      const [celoBalance, cusdBalance, ceurBalance] = await Promise.all([
+        goldtoken.balanceOf(address),
+        stabletoken.balanceOf(address),
+        ceurotoken.balanceOf(address)
+      ]);
+
+      return {
+        CELO: this.kit.web3.utils.fromWei(celoBalance.toString(), 'ether'),
+        cUSD: this.kit.web3.utils.fromWei(cusdBalance.toString(), 'ether'),
+        cEUR: this.kit.web3.utils.fromWei(ceurBalance.toString(), 'ether')
+      };
+    } catch (error) {
+      console.error('Error fetching token balances:', error);
+      throw new Error('Failed to get token balances');
+    }
+  }
+
+  /**
+   * Get the current network ID
+   * @returns Network ID (44787 for Alfajores, 42220 for Celo mainnet)
+   */
+  public async getNetworkId(): Promise<number> {
+    try {
+      return await this.kit.web3.eth.net.getId();
+    } catch (error) {
+      console.error('Error getting network ID:', error);
+      throw new Error('Failed to get network ID');
+    }
+  }
+  
+  /**
+   * Get the explorer URL for the current network
+   * @param txHash Optional transaction hash to get transaction URL
+   * @returns Explorer URL
+   */
+  public getExplorerUrl(txHash?: string): string {
+    const baseUrl = this.network === 'alfajores' 
+      ? 'https://alfajores.celoscan.io' 
+      : 'https://celoscan.io';
+      
+    if (txHash) {
+      return `${baseUrl}/tx/${txHash}`;
+    }
+    return baseUrl;
+  }
+
+  /**
+   * Get Celo Composer network configuration
+   * @returns Network configuration for Celo Composer
+   */
+  public getComposerNetworkConfig() {
+    return NETWORKS[this.network];
   }
 }
 

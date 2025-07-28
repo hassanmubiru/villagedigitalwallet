@@ -46,6 +46,13 @@ A comprehensive, mobile-first blockchain-powered digital wallet tailored specifi
 - **Audit Trail**: Complete transaction history for transparency
 - **Regulatory Compliance**: Built to meet local financial regulations
 
+### 🌐 **Celo Blockchain Integration**
+- **Celo Composer Framework**: Built with standardized Celo development tools
+- **Native Asset Support**: Seamlessly handle CELO, cUSD, cEUR tokens
+- **RealFi Features**: Connect real-world financial activities with DeFi
+- **Carbon Negative**: Environmentally sustainable blockchain transactions
+- **Low Gas Fees**: Affordable transaction costs for rural communities
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -91,7 +98,11 @@ A comprehensive, mobile-first blockchain-powered digital wallet tailored specifi
 
 4. **Run the development server:**
    ```bash
+   # Option 1: Standard startup
    npm run dev
+   
+   # Option 2: Use the fix-and-start script (recommended for first run)
+   ./fix-and-start.sh
    ```
 
 5. **Open your browser:**
@@ -104,6 +115,15 @@ A comprehensive, mobile-first blockchain-powered digital wallet tailored specifi
 3. Create a new project
 4. Copy the Client ID from your project dashboard
 5. Add it to your `.env.local` file
+
+## 📂 Key Features Usage
+
+### Celo Network Overview
+1. Connect your wallet using the "Connect Wallet" button on the homepage
+2. Click on the "Celo" tab in the navigation menu
+3. View your token balances (CELO, cUSD, cEUR)
+4. Check your recent transactions on the Celo blockchain
+5. Access links to the Celo Explorer to view more details
 
 ## � Smart Contract Deployment
 
@@ -221,7 +241,7 @@ Physical cash-in/cash-out locations:
 - **Celo ContractKit**: Integrated for direct blockchain interaction
 - **Celo Composer**: Simplified dApp development framework
 
-See [CELO_INTEGRATION.md](./CELO_INTEGRATION.md) for detailed information about the Celo integration.
+See [CELO_INTEGRATION.md](./CELO_INTEGRATION.md) for detailed information about the Celo integration and [CELO_COMPOSER.md](./CELO_COMPOSER.md) for Celo Composer implementation details.
 
 ### Mobile Integration
 - **Progressive Web App**: Installable on mobile devices

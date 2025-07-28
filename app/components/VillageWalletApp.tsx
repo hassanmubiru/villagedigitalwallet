@@ -20,6 +20,7 @@ import LanguageSelector from './LanguageSelector'
 import MerchantDashboard from './MerchantDashboard'
 import QRPayment from './QRPayment'
 import CarbonCreditMarketplace from './CarbonCreditMarketplace'
+import CeloOverview from './CeloOverview'
 
 // App Header with Language Selector
 function AppHeader() {
@@ -205,6 +206,8 @@ function VillageWalletAppContent() {
         return <Loans />
       case 'wallet':
         return <EnhancedWallet />
+      case 'celo':
+        return <CeloOverview address={account.address} />
       case 'analytics':
         return <AnalyticsDashboard />
       case 'security':
