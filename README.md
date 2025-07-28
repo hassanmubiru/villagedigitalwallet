@@ -83,6 +83,11 @@ A comprehensive, mobile-first blockchain-powered digital wallet tailored specifi
    ```
    PRIVATE_KEY=your-private-key-here
    ```
+   
+   For contract verification, get a free API key from [CeloScan](https://celoscan.io/register) and add it to your `.env` file:
+   ```
+   ETHERSCAN_API_KEY=your-celoscan-api-key-here
+   ```
 
 4. **Run the development server:**
    ```bash
@@ -132,10 +137,12 @@ A comprehensive, mobile-first blockchain-powered digital wallet tailored specifi
 
 ### Manual Verification
 
-If contract verification fails during deployment, you can manually verify later:
+If contract verification fails during deployment, you can use the interactive manual verification script:
 ```bash
-npx hardhat run scripts/verify-contracts.js --network alfajores
+npx hardhat run scripts/manual-verify.js --network alfajores
 ```
+
+This script will prompt you for the contract addresses and handle the verification process.
 
 ### Getting CELO and cUSD for Testing
 

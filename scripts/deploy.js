@@ -97,27 +97,34 @@ async function main() {
   if (hre.network.name !== "hardhat" && hre.network.name !== "localhost") {
     console.log("\nWaiting for block confirmations...");
     
+    // Check for API key
+    if (!process.env.ETHERSCAN_API_KEY || process.env.ETHERSCAN_API_KEY === "") {
+      console.log("\n⚠️  WARNING: Missing ETHERSCAN_API_KEY in your .env file");
+      console.log("Contract verification will likely fail without an API key");
+      console.log("Register for a free API key at https://celoscan.io/register");
+      console.log("Then add it to your .env file as: ETHERSCAN_API_KEY=your_api_key_here");
+      console.log("\nSkipping automatic verification...");
+      
+      console.log("\nDeployed Contract Addresses (SAVE THESE):");
+      console.log(`SavingsGroup: ${savingsAddress}`);
+      console.log(`MicroloanSystem: ${microloanAddress}`);
+      console.log("\nYou can manually verify later using:");
+      console.log(`npx hardhat run scripts/manual-verify.js --network ${hre.network.name}`);
+      return;
+    }
+    
     // Wait for some time to ensure the contracts are mined
     console.log("Waiting for 30 seconds before verification...");
     await new Promise(resolve => setTimeout(resolve, 30000)); // Wait 30 seconds
     
-    console.log("\nVerifying contracts on block explorer...");
+    console.log("\nVerifying contracts on Celo Explorer...");
     
     try {
-      // Verify MicroloanSystem
-      await hre.run("verify:verify", {
-        address: microloanAddress,
-        constructorArguments: [
-          deployer.address,
-          cUSDAddress,
-          deployer.address, // fee collector
-          platformFee
-        ],
-      });
-      
-      // Verify SavingsGroup
+      // Verify SavingsGroup first
+      console.log(`Verifying SavingsGroup at ${savingsAddress}...`);
       await hre.run("verify:verify", {
         address: savingsAddress,
+        contract: "contracts/SavingsGroup.sol:SavingsGroup",
         constructorArguments: [
           groupName,
           cUSDAddress,
@@ -128,10 +135,25 @@ async function main() {
         ],
       });
       
-      console.log("Contract verification completed!");
+      // Verify MicroloanSystem next
+      console.log(`\nVerifying MicroloanSystem at ${microloanAddress}...`);
+      await hre.run("verify:verify", {
+        address: microloanAddress,
+        contract: "contracts/MicroloanSystem.sol:MicroloanSystem",
+        constructorArguments: [
+          deployer.address,
+          cUSDAddress,
+          deployer.address, // fee collector
+          platformFee
+        ],
+      });
+      
+      console.log("\nContract verification completed successfully!");
     } catch (error) {
-      console.log("Verification may have failed or contracts might already be verified");
+      console.log("\nVerification failed or contracts might already be verified");
       console.log("Error details:", error.message);
+      console.log("\nYou can try manual verification with:");
+      console.log(`npx hardhat run scripts/manual-verify.js --network ${hre.network.name}`);
     }
   }
 }

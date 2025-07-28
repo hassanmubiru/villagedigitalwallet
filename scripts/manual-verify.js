@@ -2,6 +2,9 @@
 const hre = require("hardhat");
 const { ethers } = require('hardhat');
 const readline = require('readline');
+const fs = require('fs');
+const path = require('path');
+require('dotenv').config();
 
 // Create readline interface
 const rl = readline.createInterface({
@@ -16,9 +19,32 @@ function question(query) {
   });
 }
 
+// Function to check if API key is set
+function checkApiKey() {
+  const apiKey = process.env.ETHERSCAN_API_KEY;
+  if (!apiKey || apiKey === "") {
+    console.log("\n⚠️  WARNING: No ETHERSCAN_API_KEY found in .env file");
+    console.log("You'll need to register for an API key at https://celoscan.io/register");
+    console.log("Then add it to your .env file as ETHERSCAN_API_KEY=your_api_key_here\n");
+    return false;
+  }
+  return true;
+}
+
 async function main() {
   console.log("Manual Contract Verification Tool");
   console.log("================================\n");
+  
+  // Check if API key is set
+  const hasApiKey = checkApiKey();
+  if (!hasApiKey) {
+    const proceed = await question("Do you want to proceed anyway? (y/n): ");
+    if (proceed.toLowerCase() !== 'y') {
+      console.log("Verification cancelled. Please set up your API key and try again.");
+      rl.close();
+      return;
+    }
+  }
   
   // Get contract addresses from user input
   const savingsAddress = await question("Enter SavingsGroup contract address: ");

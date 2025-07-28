@@ -39,13 +39,10 @@ module.exports = {
       }
     }
   },
-  // Configure custom verification for Celo networks
+  // Configure custom verification for Celo networks - using updated Etherscan v2 API format
   etherscan: {
-    apiKey: {
-      // No API key needed for Celo Explorer
-      alfajores: "no-api-key-needed",
-      celo: "no-api-key-needed",
-    },
+    // Use a single API key for all networks as per new standard
+    apiKey: process.env.ETHERSCAN_API_KEY || "",
     customChains: [
       {
         network: "alfajores",
