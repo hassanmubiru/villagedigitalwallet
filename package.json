@@ -9,13 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^5.4.0",
     "@types/node": "^24.1.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@types/uuid": "^10.0.0",
     "date-fns": "^4.1.0",
-    "ethers": "^6.15.0",
     "framer-motion": "^12.23.9",
     "lucide-react": "^0.526.0",
     "next": "^15.4.4",
@@ -30,10 +28,21 @@
     "uuid": "^11.1.0"
   },
   "devDependencies": {
+    "@nomicfoundation/hardhat-ethers": "^3.1.0",
+    "@nomicfoundation/hardhat-verify": "^2.1.0",
+    "@nomiclabs/hardhat-ethers": "^2.2.3",
+    "@nomiclabs/hardhat-waffle": "^2.0.6",
+    "@openzeppelin/contracts": "^4.9.3",
+    "@openzeppelin/hardhat-upgrades": "^3.9.1",
     "autoprefixer": "^10.4.21",
+    "dotenv": "^16.6.1",
     "eslint": "^8.57.1",
     "eslint-config-next": "^15.4.4",
+    "ethereum-waffle": "^4.0.10",
+    "ethers": "^6.15.0",
+    "hardhat": "^2.26.1",
     "postcss": "^8.5.6",
+    "solidity-coverage": "^0.8.16",
     "tailwindcss": "^3.4.17"
   }
 }

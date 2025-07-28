@@ -293,7 +293,75 @@ For partnerships, integrations, or business development:
 - Email: business@villagewalletapp.com
 - LinkedIn: Village Wallet App
 
-## 🗺️ Roadmap
+## � Smart Contract Deployment
+
+### Prerequisites
+
+- Private key of a wallet with CELO/cUSD funds
+- Node.js 18.x or later
+- NPM or Yarn
+
+### Setting up for Deployment
+
+1. **Configure environment variables**:
+   ```bash
+   cp .env.example .env
+   ```
+   
+   Edit `.env` and add your private key:
+   ```
+   PRIVATE_KEY=your_wallet_private_key_here
+   ```
+
+2. **Install deployment dependencies**:
+   ```bash
+   npm install --save-dev hardhat @nomiclabs/hardhat-ethers @nomiclabs/hardhat-waffle ethereum-waffle ethers solidity-coverage @openzeppelin/hardhat-upgrades dotenv
+   ```
+
+3. **Get testnet funds**:
+   - For Alfajores (testnet): Use the [Celo Faucet](https://faucet.celo.org)
+   - Request both CELO and cUSD tokens
+
+### Deploying Contracts
+
+1. **Deploy to Alfajores testnet**:
+   ```bash
+   npx hardhat run scripts/deploy.js --network alfajores
+   ```
+
+2. **Deploy to Celo mainnet**:
+   ```bash
+   npx hardhat run scripts/deploy.js --network celo
+   ```
+
+### After Deployment
+
+1. **Save contract addresses**:
+   - Copy the contract addresses from the deployment console output
+   - Store them securely for use in your frontend
+
+2. **Verify contracts on Celoscan**:
+   - Contracts are automatically verified during deployment
+   - You can manually verify using:
+     ```bash
+     npx hardhat verify --network alfajores CONTRACT_ADDRESS CONSTRUCTOR_ARGS
+     ```
+
+3. **Update frontend configuration**:
+   - Add contract addresses to your frontend environment variables
+
+### Contract Interaction
+
+Once deployed, you can interact with your contracts through:
+
+1. **Thirdweb SDK**: Already integrated in your application
+2. **Hardhat Console**: 
+   ```bash
+   npx hardhat console --network alfajores
+   ```
+3. **Celoscan**: Through the contract read/write interface
+
+## �🗺️ Roadmap
 
 ### Phase 1: Core Features ✅
 - [x] Wallet connection and management
