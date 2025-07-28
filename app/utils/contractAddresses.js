@@ -1,9 +1,9 @@
 // Contract addresses for Village Digital Wallet
 
-// Replace these addresses with the ones from your deployment
+// Contract addresses from deployment on July 28, 2025
 export const CONTRACT_ADDRESSES = {
   alfajores: {
-    // Test network
+    // Test network - these addresses will be updated after successful deployment
     savingsGroup: "0x...", // Replace with your SavingsGroup address after deployment
     microloanSystem: "0x..."  // Replace with your MicroloanSystem address after deployment
   },
