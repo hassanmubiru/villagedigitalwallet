@@ -193,8 +193,8 @@
       ]
     },
     "/home/error51/Project/Celo/villagedigitalwallet/contracts/SavingsGroup.sol": {
-      "lastModificationDate": 1753567987498,
-      "contentHash": "3de24bb171e0fe0f0e7184337afc8bab",
+      "lastModificationDate": 1753717276359,
+      "contentHash": "c76b6faca87bd2b8ca9b07eb4f3222f5",
       "sourceName": "contracts/SavingsGroup.sol",
       "solcConfig": {
         "version": "0.8.20",

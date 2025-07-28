@@ -59,12 +59,12 @@ async function main() {
   console.log("\nDeployment complete!");
   
   // Verify contracts if not on a local network
-  if (network.name !== "hardhat" && network.name !== "localhost") {
+  if (hre.network.name !== "hardhat" && hre.network.name !== "localhost") {
     console.log("\nWaiting for block confirmations...");
     
-    // Wait for 5 block confirmations to ensure the contracts are mined
-    await microloanSystem.deployTransaction.wait(5);
-    await savingsGroup.deployTransaction.wait(5);
+    // Wait for some time to ensure the contracts are mined
+    console.log("Waiting for 30 seconds before verification...");
+    await new Promise(resolve => setTimeout(resolve, 30000)); // Wait 30 seconds
     
     console.log("\nVerifying contracts on block explorer...");
     
@@ -95,7 +95,8 @@ async function main() {
       
       console.log("Contract verification completed!");
     } catch (error) {
-      console.error("Error verifying contracts:", error);
+      console.log("Verification may have failed or contracts might already be verified");
+      console.log("Error details:", error.message);
     }
   }
 }

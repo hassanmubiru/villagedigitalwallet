@@ -314,7 +314,7 @@ contract SavingsGroup is ReentrancyGuard, AccessControl {
     /**
      * @dev Calculate interest rate based on member's credit score
      * @param _member Address of the member
-     * @param _amount Loan amount
+     * Note: Loan amount parameter is commented out as it's not used currently
      */
     function _calculateInterestRate(address _member, uint256 /* _amount */) internal view returns (uint256) {
         uint256 creditScore = members[_member].creditScore;
