@@ -71,11 +71,17 @@ A comprehensive, mobile-first blockchain-powered digital wallet tailored specifi
 3. **Environment Setup:**
    ```bash
    cp .env.local.example .env.local
+   cp .env.example .env
    ```
    
    Edit `.env.local` and add your Thirdweb client ID:
    ```
    NEXT_PUBLIC_THIRDWEB_CLIENT_ID=your-actual-client-id-here
+   ```
+   
+   Edit `.env` and add your private key for smart contract deployment:
+   ```
+   PRIVATE_KEY=your-private-key-here
    ```
 
 4. **Run the development server:**
@@ -94,7 +100,51 @@ A comprehensive, mobile-first blockchain-powered digital wallet tailored specifi
 4. Copy the Client ID from your project dashboard
 5. Add it to your `.env.local` file
 
-## 📱 Mobile-First Design
+## � Smart Contract Deployment
+
+### Deploying to Celo Networks
+
+1. **Setup environment variables:**
+   Make sure you have set up your `.env` file with your wallet's private key:
+   ```
+   PRIVATE_KEY=your-private-key-here
+   ```
+
+2. **Run the deployment script:**
+   ```bash
+   ./deploy.sh --network alfajores
+   ```
+   This will:
+   - Compile your contracts
+   - Deploy them to the Celo Alfajores testnet
+   - Wait for confirmation
+   - Verify contracts on the block explorer
+   - Update the contract addresses in your app
+
+3. **Verify deployment:**
+   After deployment, you'll see the contract addresses in the terminal output and they will be automatically updated in `app/lib/contractAddresses.js`.
+
+### Available Networks
+
+- `hardhat`: Local development network
+- `alfajores`: Celo Alfajores testnet
+- `celo`: Celo mainnet (use with caution - real funds!)
+
+### Manual Verification
+
+If contract verification fails during deployment, you can manually verify later:
+```bash
+npx hardhat run scripts/verify-contracts.js --network alfajores
+```
+
+### Getting CELO and cUSD for Testing
+
+For testing on Alfajores testnet, you can get free testnet CELO and cUSD:
+1. Visit the [Celo Faucet](https://faucet.celo.org/)
+2. Enter your wallet address
+3. Request both CELO and cUSD tokens
+
+## �📱 Mobile-First Design
 
 The application is specifically designed for mobile devices commonly used in rural areas:
 

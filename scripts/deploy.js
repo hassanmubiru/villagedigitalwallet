@@ -17,8 +17,7 @@ async function main() {
   // cUSD address on Alfajores testnet
   const cUSDAddress = "0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1";
   
-  // Deploy the MicroloanSystem contract
-  console.log("Deploying MicroloanSystem...");
+  // Platform fee constant
   const platformFee = 250; // 2.5% as basis points
   
   // Get current gas price from the network and add a buffer
@@ -32,35 +31,18 @@ async function main() {
       return bufferedPrice;
     });
   
-  const microloanSystem = await MicroloanSystem.deploy(
-    deployer.address, // initial owner
-    cUSDAddress,      // loan token address (cUSD)
-    deployer.address, // fee collector
-    platformFee,      // platform fee percentage
-    { 
-      gasLimit: 8000000,
-      maxFeePerGas: gasPrice
-    }
-  );
-
-  await microloanSystem.waitForDeployment();
-  const microloanAddress = await microloanSystem.getAddress();
-  console.log(`MicroloanSystem deployed to: ${microloanAddress}`);
-
-  // Deploy an example SavingsGroup
+  // Deploy an example SavingsGroup first
   console.log("Deploying example SavingsGroup...");
   const groupName = "Community Savings Group";
-  const groupDescription = "Demo group for Village Digital Wallet";
   const contributionAmount = ethers.parseEther("10"); // 10 cUSD
-  const payoutIntervalDays = 30; // Monthly payouts
 
   const savingsGroup = await SavingsGroup.deploy(
-    deployer.address,    // initial owner
     groupName,
-    groupDescription,
-    contributionAmount,
-    payoutIntervalDays,
     cUSDAddress,         // payment token address (cUSD)
+    contributionAmount,  // minimum contribution
+    ethers.parseEther("100"), // maxLoanAmount - 100 cUSD
+    250,                 // defaultInterestRate - 2.5% in basis points
+    deployer.address,    // group admin
     { 
       gasLimit: 8000000,
       maxFeePerGas: gasPrice
@@ -71,12 +53,39 @@ async function main() {
   const savingsAddress = await savingsGroup.getAddress();
   console.log(`SavingsGroup deployed to: ${savingsAddress}`);
 
+  // Now deploy the MicroloanSystem with the savings group address
+  console.log("Deploying MicroloanSystem...");
+  
+  const microloanSystem = await MicroloanSystem.deploy(
+    deployer.address,    // initial owner
+    cUSDAddress,         // payment token address (cUSD)
+    deployer.address,    // fee collector (same as owner for simplicity)
+    platformFee,         // platform fee in basis points
+    { 
+      gasLimit: 8000000,
+      maxFeePerGas: gasPrice
+    }
+  );
+
+  await microloanSystem.waitForDeployment();
+  const microloanAddress = await microloanSystem.getAddress();
+  console.log(`MicroloanSystem deployed to: ${microloanAddress}`);
+
   // Log all contract addresses for easy reference
   console.log("\nContract Addresses:");
   console.log("====================");
   console.log(`MicroloanSystem: ${microloanAddress}`);
   console.log(`SavingsGroup: ${savingsAddress}`);
   console.log("\nDeployment complete!");
+  
+  // Update the contract addresses file
+  try {
+    const { updateContractAddresses } = require('./update-contract-addresses');
+    await updateContractAddresses(savingsAddress, microloanAddress);
+    console.log("Contract addresses file updated successfully");
+  } catch (error) {
+    console.error("Failed to update contract addresses file:", error.message);
+  }
   
   // Verify contracts if not on a local network
   if (hre.network.name !== "hardhat" && hre.network.name !== "localhost") {
@@ -95,7 +104,7 @@ async function main() {
         constructorArguments: [
           deployer.address,
           cUSDAddress,
-          deployer.address,
+          deployer.address, // fee collector
           platformFee
         ],
       });
@@ -104,12 +113,12 @@ async function main() {
       await hre.run("verify:verify", {
         address: savingsAddress,
         constructorArguments: [
-          deployer.address,
           groupName,
-          groupDescription,
+          cUSDAddress,
           contributionAmount,
-          payoutIntervalDays,
-          cUSDAddress
+          ethers.parseEther("100"), // maxLoanAmount
+          250,                      // defaultInterestRate
+          deployer.address          // group admin
         ],
       });
       
