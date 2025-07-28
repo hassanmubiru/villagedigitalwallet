@@ -1,0 +1,33 @@
+{
+  "name": "Village Digital Wallet",
+  "chains": ["alfajores", "celo"],
+  "modules": [
+    {
+      "name": "react-app",
+      "useDefaultWrappers": true,
+      "features": {
+        "useContractKit": true,
+        "useCELO": true,
+        "useWallet": true
+      }
+    },
+    {
+      "name": "hardhat-project",
+      "directories": ["contracts", "deploy", "test"],
+      "commands": {
+        "compile": "npx hardhat compile",
+        "test": "npx hardhat test",
+        "deploy": "npx hardhat run scripts/deploy.js",
+        "verify": "npx hardhat run scripts/manual-verify.js"
+      },
+      "features": {
+        "celoExtensions": true,
+        "customSolcVersion": "0.8.20",
+        "openZeppelin": true
+      }
+    }
+  ],
+  "authorName": "Village Digital Wallet Team",
+  "authorEmail": "info@villagedigitalwallet.com",
+  "license": "MIT"
+}

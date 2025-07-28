@@ -1,32 +1,38 @@
 'use client'
 
 import { ThirdwebProvider as Provider } from "thirdweb/react"
-import { createThirdwebClient } from "thirdweb"
-import { celo, defineChain } from "thirdweb/chains"
+import { createThirdwebClient, defineChain } from "thirdweb"
 
-// Define Celo Alfajores testnet
+// Define Celo chains
+const celo = defineChain({
+  id: 42220,
+  name: "Celo",
+  nativeCurrency: { name: "CELO", symbol: "CELO", decimals: 18 },
+  rpc: "https://forno.celo.org",
+  explorers: ["https://explorer.celo.org"],
+});
+
 const celoAlfajores = defineChain({
   id: 44787,
   name: "Celo Alfajores",
   nativeCurrency: { name: "CELO", symbol: "CELO", decimals: 18 },
   rpc: "https://alfajores-forno.celo-testnet.org",
-})
+  explorers: ["https://alfajores-blockscout.celo-testnet.org"],
+  testnet: true,
+});
 
-// Export the chains for use in components
-export const supportedChains = [celo, celoAlfajores]
-
-// Create the client with your client ID
-export const client = createThirdwebClient({
+// Create the thirdweb client
+const client = createThirdwebClient({
   clientId: process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID || "11cd270615f1968861313dbd6d968954"
-})
+});
 
 export function ThirdwebProvider({ children }: { children: React.ReactNode }) {
   return (
     <Provider
-      // You can add provider props here as documented in thirdweb v5 docs
-      // This will be passed as context to all components
+      clientId={process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID || "11cd270615f1968861313dbd6d968954"}
+      activeChain={celoAlfajores}
     >
       {children}
     </Provider>
-  )
+  );
 }

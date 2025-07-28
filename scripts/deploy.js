@@ -84,13 +84,20 @@ async function main() {
   console.log(`SavingsGroup: ${savingsAddress}`);
   console.log("\nDeployment complete!");
   
-  // Update the contract addresses file
+  // Update the contract addresses file and ABIs
   try {
+    // Update contract addresses
     const { updateContractAddresses } = require('./update-contract-addresses');
     await updateContractAddresses(savingsAddress, microloanAddress);
-    console.log("Contract addresses file updated successfully");
+    console.log("✅ Contract addresses file updated successfully");
+    
+    // Update contract ABIs
+    const { updateContractAbi } = require('./update-contract-abis');
+    await updateContractAbi('SavingsGroup');
+    await updateContractAbi('MicroloanSystem');
+    console.log("✅ Contract ABIs updated successfully");
   } catch (error) {
-    console.error("Failed to update contract addresses file:", error.message);
+    console.error("❌ Failed to update contract files:", error.message);
   }
   
   // Verify contracts if not on a local network

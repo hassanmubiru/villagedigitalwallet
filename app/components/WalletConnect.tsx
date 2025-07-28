@@ -3,6 +3,9 @@
 import { ConnectButton, useActiveAccount, useActiveWallet, useDisconnect } from "thirdweb/react"
 import { client, supportedChains } from "../providers/ThirdwebProvider"
 import { createWallet } from "thirdweb/wallets"
+import { useEffect, useState } from "react"
+import celoService from "../services/celoService"
+import { switchToCeloNetwork } from "../utils/networkHelpers"
 
 // Extend Window interface to include ethereum
 declare global {
@@ -13,6 +16,9 @@ declare global {
       chainId?: string
       networkVersion?: string
       request?: (args: { method: string; params?: any[] }) => Promise<any>
+      on?: (eventName: string, callback: any) => void
+      removeListener?: (eventName: string, callback: any) => void
+      // Add more Ethereum provider methods as needed
     }
   }
 }
@@ -29,9 +35,67 @@ export default function WalletConnect() {
   const account = useActiveAccount()
   const wallet = useActiveWallet()
   const { disconnect } = useDisconnect()
+  const [isCeloNetwork, setIsCeloNetwork] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
 
   // Check if MetaMask is available
   const isMetaMaskAvailable = typeof window !== 'undefined' && !!window.ethereum?.isMetaMask
+  
+  // Connect to Celo network when wallet is connected
+  useEffect(() => {
+    async function connectToCelo() {
+      if (account && wallet && window.ethereum) {
+        try {
+          // Check if on Celo network already
+          const chainId = parseInt(window.ethereum.chainId || '0x0', 16)
+          const isCeloAlfajores = chainId === 44787 // 0xaef3
+          const isCeloMainnet = chainId === 42220 // 0xa4ec
+          
+          setIsCeloNetwork(isCeloAlfajores || isCeloMainnet)
+          
+          if (isCeloAlfajores || isCeloMainnet) {
+            // Connect to Celo using the window.ethereum provider
+            await celoService.connectWithWallet(
+              account.address, 
+              window.ethereum
+            )
+            console.log("Connected to Celo network")
+          }
+        } catch (error) {
+          console.error("Failed to connect to Celo network:", error)
+        }
+      }
+    }
+    
+    connectToCelo()
+    
+    // Listen for chain changes
+    if (window.ethereum) {
+      const handleChainChanged = (chainId: string) => {
+        const chainIdNum = parseInt(chainId, 16)
+        setIsCeloNetwork(chainIdNum === 44787 || chainIdNum === 42220)
+      }
+      
+      window.ethereum.on('chainChanged', handleChainChanged)
+      
+      return () => {
+        window.ethereum.removeListener('chainChanged', handleChainChanged)
+      }
+    }
+  }, [account, wallet])
+  
+  // Function to switch to Celo Alfajores testnet
+  const handleSwitchNetwork = async () => {
+    setIsLoading(true)
+    try {
+      await switchToCeloNetwork(true) // true for testnet
+      setIsCeloNetwork(true)
+    } catch (error) {
+      console.error("Failed to switch to Celo network:", error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   if (account) {
     return (
@@ -48,7 +112,25 @@ export default function WalletConnect() {
               Connected via {wallet.id}
             </p>
           )}
+          
+          {!isCeloNetwork && (
+            <div className="mt-2 p-2 bg-yellow-100 border border-yellow-300 rounded">
+              <p className="text-xs text-yellow-800">
+                ⚠️ Not connected to Celo network
+              </p>
+            </div>
+          )}
         </div>
+        
+        {!isCeloNetwork && (
+          <button
+            onClick={handleSwitchNetwork}
+            disabled={isLoading}
+            className="w-full py-2 px-4 bg-green-500 hover:bg-green-600 disabled:bg-green-300 text-white rounded-lg transition-colors mb-2"
+          >
+            {isLoading ? 'Switching...' : 'Switch to Celo Network'}
+          </button>
+        )}
         
         <button
           onClick={() => wallet && disconnect(wallet)}

@@ -218,6 +218,10 @@ Physical cash-in/cash-out locations:
 - **Celo Alfajores**: Testnet for development and testing
 - **Smart Contracts**: Automated savings and lending logic
 - **Multi-sig Wallets**: Enhanced security for group funds
+- **Celo ContractKit**: Integrated for direct blockchain interaction
+- **Celo Composer**: Simplified dApp development framework
+
+See [CELO_INTEGRATION.md](./CELO_INTEGRATION.md) for detailed information about the Celo integration.
 
 ### Mobile Integration
 - **Progressive Web App**: Installable on mobile devices

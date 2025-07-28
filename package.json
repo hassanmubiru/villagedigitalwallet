@@ -6,9 +6,16 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "deploy": "npx hardhat run scripts/deploy.js --network alfajores",
+    "deploy:mainnet": "npx hardhat run scripts/deploy.js --network celo",
+    "verify": "npx hardhat run scripts/manual-verify.js --network alfajores",
+    "verify:mainnet": "npx hardhat run scripts/manual-verify.js --network celo",
+    "celo:deploy": "./deploy.sh --network alfajores",
+    "celo:deploy:mainnet": "./deploy.sh --network celo"
   },
   "dependencies": {
+    "@celo/contractkit": "^10.0.0",
     "@types/node": "^24.1.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
