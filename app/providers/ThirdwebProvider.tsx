@@ -12,6 +12,9 @@ const celoAlfajores = defineChain({
   rpc: "https://alfajores-forno.celo-testnet.org",
 })
 
+// Export the chains for use in components
+export const supportedChains = [celo, celoAlfajores]
+
 // Create the client with your client ID
 export const client = createThirdwebClient({
   clientId: process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID || "11cd270615f1968861313dbd6d968954"
@@ -19,11 +22,11 @@ export const client = createThirdwebClient({
 
 export function ThirdwebProvider({ children }: { children: React.ReactNode }) {
   return (
-    <Provider>
+    <Provider
+      // You can add provider props here as documented in thirdweb v5 docs
+      // This will be passed as context to all components
+    >
       {children}
     </Provider>
   )
 }
-
-// Export the chains for use in components
-export const supportedChains = [celo, celoAlfajores]

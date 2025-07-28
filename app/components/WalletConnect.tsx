@@ -3,7 +3,6 @@
 import { ConnectButton, useActiveAccount, useActiveWallet, useDisconnect } from "thirdweb/react"
 import { client, supportedChains } from "../providers/ThirdwebProvider"
 import { createWallet } from "thirdweb/wallets"
-import WalletDebugInfo from "./WalletDebugInfo"
 
 // Extend Window interface to include ethereum
 declare global {
@@ -105,8 +104,6 @@ export default function WalletConnect() {
       <div className="mt-4 text-xs text-gray-500">
         <p>Don&apos;t have a wallet? Install MetaMask or another supported wallet from their official website.</p>
       </div>
-      
-      <WalletDebugInfo />
     </div>
   )
 }
