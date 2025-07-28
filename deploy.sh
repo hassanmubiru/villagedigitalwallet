@@ -74,9 +74,16 @@ echo -e "${GREEN}Contracts compiled successfully${NC}"
 
 # Deploy contracts
 echo -e "${YELLOW}Deploying contracts to $NETWORK...${NC}"
+echo -e "${YELLOW}This may take a few minutes. Please be patient...${NC}"
+echo -e "${YELLOW}If deployment fails due to gas issues, try increasing maxFeePerGas and maxPriorityFeePerGas in hardhat.config.js${NC}"
 cd "$PROJECT_DIR" && npx hardhat run scripts/deploy.js --network $NETWORK
 if [ $? -ne 0 ]; then
     echo -e "${RED}Error: Failed to deploy contracts${NC}"
+    echo -e "${YELLOW}Troubleshooting tips:${NC}"
+    echo -e "  - Check if your wallet has sufficient funds"
+    echo -e "  - Try increasing gas values in hardhat.config.js"
+    echo -e "  - Ensure your private key is correctly set in .env"
+    echo -e "  - The Celo network might be congested, try again later"
     exit 1
 fi
 echo -e "${GREEN}Contracts deployed successfully${NC}"

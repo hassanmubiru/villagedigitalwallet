@@ -39,6 +39,32 @@ module.exports = {
       }
     }
   },
+  // Configure custom verification for Celo networks
+  etherscan: {
+    apiKey: {
+      // No API key needed for Celo Explorer
+      alfajores: "no-api-key-needed",
+      celo: "no-api-key-needed",
+    },
+    customChains: [
+      {
+        network: "alfajores",
+        chainId: 44787,
+        urls: {
+          apiURL: "https://api-alfajores.celoscan.io/api",
+          browserURL: "https://alfajores.celoscan.io"
+        }
+      },
+      {
+        network: "celo",
+        chainId: 42220,
+        urls: {
+          apiURL: "https://api.celoscan.io/api",
+          browserURL: "https://celoscan.io"
+        }
+      }
+    ]
+  },
   networks: {
     // Local development network
     hardhat: {
@@ -49,7 +75,9 @@ module.exports = {
       url: ALFAJORES_RPC_URL,
       accounts: formattedPrivateKey ? [formattedPrivateKey] : [],
       chainId: 44787,
-      gasPrice: 50000000000, // 50 gwei - significantly increased to overcome base-fee-floor
+      // Using EIP-1559 gas parameters
+      maxFeePerGas: 50000000000, // 50 gwei max fee
+      maxPriorityFeePerGas: 1000000000, // 1 gwei priority fee
       gasLimit: 8000000 // Explicitly set gas limit to avoid estimation issues
     },
     // Celo mainnet

@@ -21,15 +21,19 @@ async function main() {
   const platformFee = 250; // 2.5% as basis points
   
   // Get current gas price from the network and add a buffer
-  const gasPrice = await ethers.provider.getFeeData()
-    .then(data => {
-      // Use maxFeePerGas if available, or gasPrice, and add 50% buffer
-      const basePrice = data.maxFeePerGas || data.gasPrice;
-      console.log(`Current network gas price: ${ethers.formatUnits(basePrice, 'gwei')} gwei`);
-      const bufferedPrice = basePrice * BigInt(150) / BigInt(100); // Add 50% buffer
-      console.log(`Using gas price with buffer: ${ethers.formatUnits(bufferedPrice, 'gwei')} gwei`);
-      return bufferedPrice;
-    });
+  const feeData = await ethers.provider.getFeeData();
+  
+  // Extract and calculate gas prices
+  const maxFeePerGas = feeData.maxFeePerGas || feeData.gasPrice;
+  const maxPriorityFeePerGas = feeData.maxPriorityFeePerGas || 
+    (feeData.maxFeePerGas ? feeData.maxFeePerGas / BigInt(2) : BigInt("1000000000")); // 1 gwei default
+  
+  // Add 50% buffer to maxFeePerGas
+  const bufferedMaxFeePerGas = maxFeePerGas * BigInt(150) / BigInt(100);
+  
+  console.log(`Current network base fee: ${ethers.formatUnits(feeData.gasPrice || maxFeePerGas, 'gwei')} gwei`);
+  console.log(`Using maxFeePerGas: ${ethers.formatUnits(bufferedMaxFeePerGas, 'gwei')} gwei`);
+  console.log(`Using maxPriorityFeePerGas: ${ethers.formatUnits(maxPriorityFeePerGas, 'gwei')} gwei`);
   
   // Deploy an example SavingsGroup first
   console.log("Deploying example SavingsGroup...");
@@ -45,7 +49,8 @@ async function main() {
     deployer.address,    // group admin
     { 
       gasLimit: 8000000,
-      maxFeePerGas: gasPrice
+      maxFeePerGas: bufferedMaxFeePerGas,
+      maxPriorityFeePerGas: maxPriorityFeePerGas
     }
   );
 
@@ -63,7 +68,8 @@ async function main() {
     platformFee,         // platform fee in basis points
     { 
       gasLimit: 8000000,
-      maxFeePerGas: gasPrice
+      maxFeePerGas: bufferedMaxFeePerGas,
+      maxPriorityFeePerGas: maxPriorityFeePerGas
     }
   );
 
