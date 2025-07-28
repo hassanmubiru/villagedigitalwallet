@@ -316,7 +316,7 @@ contract SavingsGroup is ReentrancyGuard, AccessControl {
      * @param _member Address of the member
      * @param _amount Loan amount
      */
-    function _calculateInterestRate(address _member, uint256 _amount) internal view returns (uint256) {
+    function _calculateInterestRate(address _member, uint256 /* _amount */) internal view returns (uint256) {
         uint256 creditScore = members[_member].creditScore;
         uint256 baseRate = defaultInterestRate;
         
