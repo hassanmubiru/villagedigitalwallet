@@ -20,11 +20,27 @@ async function main() {
   // Deploy the MicroloanSystem contract
   console.log("Deploying MicroloanSystem...");
   const platformFee = 250; // 2.5% as basis points
+  
+  // Get current gas price from the network and add a buffer
+  const gasPrice = await ethers.provider.getFeeData()
+    .then(data => {
+      // Use maxFeePerGas if available, or gasPrice, and add 50% buffer
+      const basePrice = data.maxFeePerGas || data.gasPrice;
+      console.log(`Current network gas price: ${ethers.formatUnits(basePrice, 'gwei')} gwei`);
+      const bufferedPrice = basePrice * BigInt(150) / BigInt(100); // Add 50% buffer
+      console.log(`Using gas price with buffer: ${ethers.formatUnits(bufferedPrice, 'gwei')} gwei`);
+      return bufferedPrice;
+    });
+  
   const microloanSystem = await MicroloanSystem.deploy(
     deployer.address, // initial owner
     cUSDAddress,      // loan token address (cUSD)
     deployer.address, // fee collector
-    platformFee       // platform fee percentage
+    platformFee,      // platform fee percentage
+    { 
+      gasLimit: 8000000,
+      maxFeePerGas: gasPrice
+    }
   );
 
   await microloanSystem.waitForDeployment();
@@ -44,7 +60,11 @@ async function main() {
     groupDescription,
     contributionAmount,
     payoutIntervalDays,
-    cUSDAddress          // payment token address (cUSD)
+    cUSDAddress,         // payment token address (cUSD)
+    { 
+      gasLimit: 8000000,
+      maxFeePerGas: gasPrice
+    }
   );
 
   await savingsGroup.waitForDeployment();

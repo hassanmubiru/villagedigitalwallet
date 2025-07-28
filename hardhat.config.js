@@ -49,7 +49,8 @@ module.exports = {
       url: ALFAJORES_RPC_URL,
       accounts: formattedPrivateKey ? [formattedPrivateKey] : [],
       chainId: 44787,
-      gasPrice: 20000000000 // 20 gwei - increased to meet the base-fee-floor
+      gasPrice: 50000000000, // 50 gwei - significantly increased to overcome base-fee-floor
+      gasLimit: 8000000 // Explicitly set gas limit to avoid estimation issues
     },
     // Celo mainnet
     celo: {
