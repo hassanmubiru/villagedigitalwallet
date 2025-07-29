@@ -128,6 +128,16 @@ export function useTokenBalances(userAddress?: string) {
   };
 }
 
+// Define transaction type
+export interface CeloTransaction {
+  hash: string;
+  blockNumber: number;
+  from: string;
+  to?: string;
+  value: string;
+  formattedValue?: string;
+}
+
 /**
  * Custom hook for transaction history on Celo
  * @param limit Number of transactions to fetch (default: 10)
@@ -137,7 +147,7 @@ export function useTokenBalances(userAddress?: string) {
 export function useTransactionHistory(limit = 10, userAddress?: string) {
   const { address: connectedAddress, connected } = useCelo();
   const address = userAddress || connectedAddress;
-  const [transactions, setTransactions] = useState<any[]>([]);
+  const [transactions, setTransactions] = useState<CeloTransaction[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

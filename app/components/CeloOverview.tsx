@@ -11,7 +11,7 @@ interface CeloOverviewProps {
 
 export default function CeloOverview({ address: externalAddress }: CeloOverviewProps) {
   const { connect, address: celoAddress, connected, network } = useCelo()
-  const userAddress = externalAddress || celoAddress
+  const userAddress = externalAddress || celoAddress || ""
   const { CELO, cUSD, cEUR, loading: balancesLoading, refreshBalances } = useTokenBalances(userAddress)
   const { transactions, loading: txLoading } = useTransactionHistory(5, userAddress)
   const [networkId, setNetworkId] = useState<number | null>(null)

@@ -70,7 +70,7 @@ export default function WalletConnect() {
     connectToCelo()
     
     // Listen for chain changes
-    if (window.ethereum) {
+    if (window.ethereum && window.ethereum.on && window.ethereum.removeListener) {
       const handleChainChanged = (chainId: string) => {
         const chainIdNum = parseInt(chainId, 16)
         setIsCeloNetwork(chainIdNum === 44787 || chainIdNum === 42220)
@@ -79,7 +79,7 @@ export default function WalletConnect() {
       window.ethereum.on('chainChanged', handleChainChanged)
       
       return () => {
-        window.ethereum.removeListener('chainChanged', handleChainChanged)
+        window.ethereum?.removeListener?.('chainChanged', handleChainChanged)
       }
     }
   }, [account, wallet])

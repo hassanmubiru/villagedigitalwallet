@@ -1,6 +1,11 @@
+'use client'
+
 // Celo Utilities - Helper functions for interacting with the Celo blockchain
 import { ContractKit, newKitFromWeb3 } from '@celo/contractkit';
 import Web3 from 'web3';
+
+// Create a function that can safely be used in browser context
+let kitCache: { [network: string]: ContractKit } = {};
 
 /**
  * Create a ContractKit instance connected to the specified Celo network
@@ -8,12 +13,27 @@ import Web3 from 'web3';
  * @returns {ContractKit} - Connected ContractKit instance
  */
 export function getCeloKit(network = 'alfajores'): ContractKit {
-  const url = network === 'mainnet' 
-    ? 'https://forno.celo.org' 
-    : 'https://alfajores-forno.celo-testnet.org';
+  // Check if we already have a kit for this network
+  if (kitCache[network]) {
+    return kitCache[network];
+  }
   
-  const web3 = new Web3(url);
-  return newKitFromWeb3(web3);
+  try {
+    const url = network === 'mainnet' 
+      ? 'https://forno.celo.org' 
+      : 'https://alfajores-forno.celo-testnet.org';
+    
+    // Use a Web3 provider that works in browser
+    const web3 = new Web3(url);
+    const kit = newKitFromWeb3(web3);
+    
+    // Cache the kit
+    kitCache[network] = kit;
+    return kit;
+  } catch (error) {
+    console.error('Error creating ContractKit:', error);
+    throw new Error('Failed to initialize Celo ContractKit');
+  }
 }
 
 /**

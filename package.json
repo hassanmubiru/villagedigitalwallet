@@ -27,6 +27,7 @@
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",
     "@types/uuid": "^10.0.0",
+    "crypto-browserify": "^3.12.1",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.23.9",
     "lucide-react": "^0.526.0",
@@ -39,7 +40,7 @@
     "recharts": "^3.1.0",
     "thirdweb": "^5.105.21",
     "typescript": "^5.8.3",
-    "uuid": "^11.1.0"
+    "uuid": "^7.0.3"
   },
   "devDependencies": {
     "@nomicfoundation/hardhat-ethers": "^3.1.0",
@@ -52,11 +53,11 @@
     "dotenv": "^16.6.1",
     "eslint": "^8.57.1",
     "eslint-config-next": "^15.4.4",
-    "ethereum-waffle": "^4.0.10",
+    "ethereum-waffle": "^3.4.4",
     "ethers": "^6.15.0",
     "hardhat": "^2.26.1",
     "postcss": "^8.5.6",
-    "solidity-coverage": "^0.8.16",
+    "solidity-coverage": "^0.7.22",
     "tailwindcss": "^3.4.17"
   }
 }
