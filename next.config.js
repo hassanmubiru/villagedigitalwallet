@@ -32,8 +32,10 @@ const nextConfig = {
     
     return config;
   },
-  // Disable swcMinify to avoid potential issues
-  swcMinify: false,
+  // SWC is enabled by default in Next.js 15+ and doesn't need explicit configuration
+  experimental: {
+    // Any experimental features can be configured here if needed
+  },
 }
 
 module.exports = nextConfig

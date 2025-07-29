@@ -1,0 +1,16 @@
+{
+  "name": "Village Digital Wallet",
+  "short_name": "VDW",
+  "description": "A comprehensive DeFi platform for village communities",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#3b82f6",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ]
+}

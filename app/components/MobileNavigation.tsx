@@ -13,7 +13,9 @@ import {
   Store,
   QrCode,
   Leaf,
-  CircleDollarSign
+  CircleDollarSign,
+  Vote,
+  Zap
 } from 'lucide-react'
 import { useLanguage } from '../providers/LanguageProvider'
 import { CompactLanguageSelector } from './LanguageSelector'
@@ -31,14 +33,14 @@ export default function MobileNavigation({ currentView, setCurrentView }: Mobile
     { id: 'savings', icon: Users, label: t('savings') },
     { id: 'loans', icon: CreditCard, label: t('loans') },
     { id: 'wallet', icon: Wallet, label: t('wallet') },
-    { id: 'celo', icon: CircleDollarSign, label: 'Celo' },
-    { id: 'phase3', icon: Globe, label: t('phase_3') },
+    { id: 'governance', icon: Vote, label: 'Governance' },
+    { id: 'automation', icon: Zap, label: 'Automation' },
     { id: 'merchants', icon: Store, label: t('merchant_payments') },
-    { id: 'carbon', icon: Leaf, label: t('carbon_credits') },
   ]
 
   const moreItems = [
     { id: 'qr-payment', icon: QrCode, label: t('qr_payment') },
+    { id: 'carbon', icon: Leaf, label: t('carbon_credits') },
     { id: 'analytics', icon: BarChart3, label: t('analytics') },
     { id: 'security', icon: Shield, label: t('security') },
     { id: 'profile', icon: User, label: t('profile') },

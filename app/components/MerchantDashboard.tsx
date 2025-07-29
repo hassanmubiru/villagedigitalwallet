@@ -306,7 +306,7 @@ function OverviewTab({
         <div className="bg-gradient-to-r from-blue-500 to-blue-600 rounded-lg p-6 text-white">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-blue-100 text-sm">Today's Revenue</p>
+              <p className="text-blue-100 text-sm">Today&apos;s Revenue</p>
               <p className="text-2xl font-bold">${dailySummary.totalAmount.toFixed(2)}</p>
             </div>
             <DollarSign className="h-8 w-8 text-blue-200" />
@@ -316,7 +316,7 @@ function OverviewTab({
         <div className="bg-gradient-to-r from-green-500 to-green-600 rounded-lg p-6 text-white">
           <div className="flex items-center justify-between">
             <div>
-              <p className="text-green-100 text-sm">Today's Transactions</p>
+              <p className="text-green-100 text-sm">Today&apos;s Transactions</p>
               <p className="text-2xl font-bold">{dailySummary.transactionCount}</p>
             </div>
             <CreditCard className="h-8 w-8 text-green-200" />

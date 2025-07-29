@@ -282,7 +282,7 @@ function ScanStep({
           <Camera className="h-24 w-24 text-gray-400 mx-auto mb-4" />
           <h3 className="text-lg font-medium text-gray-900 mb-2">Scan QR Code</h3>
           <p className="text-gray-600 mb-6">
-            Point your camera at the merchant's QR code to start payment
+            Point your camera at the merchant&apos;s QR code to start payment
           </p>
           
           {loading ? (

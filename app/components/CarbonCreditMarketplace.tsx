@@ -3,7 +3,7 @@
 
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { 
   Leaf, 
   TreePine as Tree, 
@@ -65,12 +65,7 @@ export default function CarbonCreditMarketplace({ userId }: CarbonCreditMarketpl
     flightsPerYear: 2
   });
 
-  // Load initial data
-  useEffect(() => {
-    loadData();
-  }, [userId]);
-
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     setLoading(true);
     try {
       const availableProjects = carbonCreditService.getAvailableProjects();
@@ -86,7 +81,12 @@ export default function CarbonCreditMarketplace({ userId }: CarbonCreditMarketpl
     } finally {
       setLoading(false);
     }
-  };
+  }, [userId]);
+
+  // Load initial data
+  useEffect(() => {
+    loadData();
+  }, [loadData]);
 
   const handlePurchase = async () => {
     if (!selectedProject) return;

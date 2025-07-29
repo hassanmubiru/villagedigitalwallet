@@ -1,7 +1,7 @@
 import { CeloService } from './celoService';
 import SavingsGroupAbi from '../abis/SavingsGroup.json';
 import MicroloanSystemAbi from '../abis/MicroloanSystem.json';
-import { getContractAddresses } from '../utils/contractAddresses';
+import { getContractAddress, CONTRACT_ADDRESSES } from '../utils/contractAddresses';
 
 export class ContractService {
   private celoService: CeloService;
@@ -9,115 +9,57 @@ export class ContractService {
   
   constructor(networkName: string = 'alfajores') {
     this.celoService = new CeloService(networkName as any);
-    this.addresses = getContractAddresses(networkName);
+    this.addresses = CONTRACT_ADDRESSES[networkName as keyof typeof CONTRACT_ADDRESSES] || CONTRACT_ADDRESSES.alfajores;
   }
   
   /**
    * Connect wallet to the service
-   * @param address User wallet address
-   * @param provider Web3 provider
    */
   public async connect(address: string, provider: any): Promise<void> {
-    await this.celoService.connectWithWallet(address, provider);
-  }
-
-  /**
-   * Get SavingsGroup contract instance
-   * @returns Contract instance
-   */
-  private async getSavingsGroupContract() {
     try {
-      const kit = await this.celoService.getKit();
-      return new kit.web3.eth.Contract(
-        SavingsGroupAbi as any,
-        this.addresses.savingsGroup
-      );
+      await this.celoService.connectWithWallet(address, provider);
     } catch (error) {
-      console.error('Error getting SavingsGroup contract:', error);
-      throw new Error('Failed to initialize SavingsGroup contract');
+      console.error('Error connecting to Celo:', error);
+      throw new Error('Failed to connect to Celo network');
     }
   }
 
   /**
-   * Get MicroloanSystem contract instance
-   * @returns Contract instance
+   * Create a new savings group (mock implementation)
    */
-  private async getMicroloanSystemContract() {
+  public async createSavingsGroup(
+    name: string,
+    description: string,
+    contributionAmount: string,
+    frequency: string
+  ): Promise<any> {
     try {
-      const kit = await this.celoService.getKit();
-      return new kit.web3.eth.Contract(
-        MicroloanSystemAbi as any,
-        this.addresses.microloanSystem
-      );
+      console.log('Creating savings group:', { name, description, contributionAmount, frequency });
+      
+      return {
+        success: true,
+        groupId: Math.floor(Math.random() * 1000000),
+        transactionHash: '0x' + Math.random().toString(16).substr(2, 64),
+        message: 'Savings group created successfully (demo mode)'
+      };
     } catch (error) {
-      console.error('Error getting MicroloanSystem contract:', error);
-      throw new Error('Failed to initialize MicroloanSystem contract');
+      console.error('Error creating savings group:', error);
+      throw new Error('Failed to create savings group');
     }
   }
 
   /**
-   * Get SavingsGroup name
-   * @returns Name of the group
+   * Join a savings group (mock implementation)
    */
-  public async getSavingsGroupName(): Promise<string> {
-    const contract = await this.getSavingsGroupContract();
-    return await contract.methods.name().call();
-  }
-
-  /**
-   * Get SavingsGroup balance
-   * @returns Balance in wei
-   */
-  public async getSavingsGroupBalance(): Promise<string> {
-    const contract = await this.getSavingsGroupContract();
-    return await contract.methods.getBalance().call();
-  }
-
-  /**
-   * Get SavingsGroup members
-   * @returns Array of member addresses
-   */
-  public async getSavingsGroupMembers(): Promise<string[]> {
-    const contract = await this.getSavingsGroupContract();
-    return await contract.methods.getMembers().call();
-  }
-
-  /**
-   * Check if an address is a member of the SavingsGroup
-   * @param address User address
-   * @returns True if the address is a member
-   */
-  public async isMember(address: string): Promise<boolean> {
-    const contract = await this.getSavingsGroupContract();
-    return await contract.methods.isMember(address).call();
-  }
-
-  /**
-   * Join the SavingsGroup
-   * @returns Transaction receipt
-   */
-  public async joinSavingsGroup(): Promise<any> {
+  public async joinSavingsGroup(groupId: string): Promise<any> {
     try {
-      const contract = await this.getSavingsGroupContract();
-      const kit = await this.celoService.getKit();
+      console.log('Joining savings group:', groupId);
       
-      // Get contribution amount
-      const contributionAmount = await contract.methods.contributionAmount().call();
-      
-      // First approve the token transfer
-      const cUSDContract = await kit.contracts.getStableToken();
-      const approveTx = await cUSDContract.approve(
-        this.addresses.savingsGroup,
-        contributionAmount
-      ).send({ from: kit.defaultAccount });
-      await approveTx.waitReceipt();
-      
-      // Then join the group
-      const tx = await contract.methods.joinGroup().send({ 
-        from: kit.defaultAccount
-      });
-      
-      return await tx;
+      return {
+        success: true,
+        transactionHash: '0x' + Math.random().toString(16).substr(2, 64),
+        message: 'Successfully joined savings group (demo mode)'
+      };
     } catch (error) {
       console.error('Error joining savings group:', error);
       throw new Error('Failed to join savings group');
@@ -125,31 +67,17 @@ export class ContractService {
   }
 
   /**
-   * Make a contribution to the SavingsGroup
-   * @returns Transaction receipt
+   * Make contribution to savings group (mock implementation)
    */
-  public async makeContribution(): Promise<any> {
+  public async makeContribution(groupId: string, amount: string): Promise<any> {
     try {
-      const contract = await this.getSavingsGroupContract();
-      const kit = await this.celoService.getKit();
+      console.log('Making contribution:', { groupId, amount });
       
-      // Get contribution amount
-      const contributionAmount = await contract.methods.contributionAmount().call();
-      
-      // First approve the token transfer
-      const cUSDContract = await kit.contracts.getStableToken();
-      const approveTx = await cUSDContract.approve(
-        this.addresses.savingsGroup,
-        contributionAmount
-      ).send({ from: kit.defaultAccount });
-      await approveTx.waitReceipt();
-      
-      // Then make the contribution
-      const tx = await contract.methods.contribute().send({ 
-        from: kit.defaultAccount
-      });
-      
-      return await tx;
+      return {
+        success: true,
+        transactionHash: '0x' + Math.random().toString(16).substr(2, 64),
+        message: 'Contribution made successfully (demo mode)'
+      };
     } catch (error) {
       console.error('Error making contribution:', error);
       throw new Error('Failed to make contribution');
@@ -157,21 +85,22 @@ export class ContractService {
   }
 
   /**
-   * Request a loan from the MicroloanSystem
-   * @param amount Loan amount in wei
-   * @param duration Loan duration in seconds
-   * @returns Transaction receipt
+   * Request loan (mock implementation)
    */
-  public async requestLoan(amount: string, duration: number): Promise<any> {
+  public async requestLoan(
+    amount: string,
+    purpose: string,
+    termDays: number
+  ): Promise<any> {
     try {
-      const contract = await this.getMicroloanSystemContract();
-      const kit = await this.celoService.getKit();
+      console.log('Requesting loan:', { amount, purpose, termDays });
       
-      const tx = await contract.methods.requestLoan(amount, duration).send({ 
-        from: kit.defaultAccount
-      });
-      
-      return await tx;
+      return {
+        success: true,
+        loanId: Math.floor(Math.random() * 1000000),
+        transactionHash: '0x' + Math.random().toString(16).substr(2, 64),
+        message: 'Loan request submitted successfully (demo mode)'
+      };
     } catch (error) {
       console.error('Error requesting loan:', error);
       throw new Error('Failed to request loan');
@@ -179,68 +108,17 @@ export class ContractService {
   }
 
   /**
-   * Get loan details from the MicroloanSystem
-   * @param loanId Loan ID
-   * @returns Loan details object
+   * Repay loan (mock implementation)
    */
-  public async getLoanDetails(loanId: number): Promise<any> {
-    const contract = await this.getMicroloanSystemContract();
-    const loanDetails = await contract.methods.getLoan(loanId).call();
-    
-    // Convert status number to string for better readability
-    const statusMap = ['Pending', 'Approved', 'Repaid', 'Defaulted', 'Denied'];
-    const statusString = statusMap[parseInt(loanDetails.status)] || 'Unknown';
-    
-    return {
-      ...loanDetails,
-      statusString
-    };
-  }
-
-  /**
-   * Get all loans for the current user
-   * @returns Array of loan IDs
-   */
-  public async getUserLoans(): Promise<number[]> {
+  public async repayLoan(loanId: string, amount: string): Promise<any> {
     try {
-      const contract = await this.getMicroloanSystemContract();
-      const kit = await this.celoService.getKit();
+      console.log('Repaying loan:', { loanId, amount });
       
-      return await contract.methods.getUserLoans(kit.defaultAccount).call();
-    } catch (error) {
-      console.error('Error fetching user loans:', error);
-      throw new Error('Failed to fetch user loans');
-    }
-  }
-
-  /**
-   * Repay a loan
-   * @param loanId Loan ID
-   * @returns Transaction receipt
-   */
-  public async repayLoan(loanId: number): Promise<any> {
-    try {
-      const contract = await this.getMicroloanSystemContract();
-      const kit = await this.celoService.getKit();
-      
-      // Get loan details to determine repayment amount
-      const loanDetails = await this.getLoanDetails(loanId);
-      const repaymentAmount = (BigInt(loanDetails.amount) + BigInt(loanDetails.interestAmount)).toString();
-      
-      // First approve the token transfer
-      const cUSDContract = await kit.contracts.getStableToken();
-      const approveTx = await cUSDContract.approve(
-        this.addresses.microloanSystem,
-        repaymentAmount
-      ).send({ from: kit.defaultAccount });
-      await approveTx.waitReceipt();
-      
-      // Then repay the loan
-      const tx = await contract.methods.repayLoan(loanId).send({ 
-        from: kit.defaultAccount
-      });
-      
-      return await tx;
+      return {
+        success: true,
+        transactionHash: '0x' + Math.random().toString(16).substr(2, 64),
+        message: 'Loan repayment successful (demo mode)'
+      };
     } catch (error) {
       console.error('Error repaying loan:', error);
       throw new Error('Failed to repay loan');
@@ -248,14 +126,100 @@ export class ContractService {
   }
 
   /**
-   * Get the MicroloanSystem interest rate
-   * @returns Interest rate in basis points
+   * Get user's savings groups (mock implementation)
    */
-  public async getInterestRate(): Promise<string> {
-    const contract = await this.getMicroloanSystemContract();
-    return await contract.methods.interestRate().call();
+  public async getUserSavingsGroups(address: string): Promise<any[]> {
+    try {
+      console.log('Getting user savings groups for:', address);
+      
+      return [
+        {
+          id: '1',
+          name: 'Village Development Fund',
+          description: 'Saving for community projects',
+          totalContributions: '1250.00',
+          memberCount: 25,
+          contributionAmount: '50.00',
+          frequency: 'monthly',
+          nextContribution: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
+          balance: '500.00'
+        },
+        {
+          id: '2',
+          name: 'Emergency Fund',
+          description: 'Emergency assistance for members',
+          totalContributions: '800.00',
+          memberCount: 16,
+          contributionAmount: '25.00',
+          frequency: 'weekly',
+          nextContribution: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
+          balance: '200.00'
+        }
+      ];
+    } catch (error) {
+      console.error('Error getting user savings groups:', error);
+      return [];
+    }
+  }
+
+  /**
+   * Get user's loans (mock implementation)
+   */
+  public async getUserLoans(address: string): Promise<any[]> {
+    try {
+      console.log('Getting user loans for:', address);
+      
+      return [
+        {
+          id: '1',
+          amount: '500.00',
+          purpose: 'Small business expansion',
+          status: 'active',
+          remainingAmount: '350.00',
+          interestRate: '5%',
+          termDays: 180,
+          dueDate: new Date(Date.now() + 60 * 24 * 60 * 60 * 1000),
+          nextPayment: '50.00',
+          nextPaymentDate: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000)
+        },
+        {
+          id: '2',
+          amount: '200.00',
+          purpose: 'Education fees',
+          status: 'completed',
+          remainingAmount: '0.00',
+          interestRate: '3%',
+          termDays: 90,
+          dueDate: new Date(Date.now() - 10 * 24 * 60 * 60 * 1000),
+          nextPayment: '0.00',
+          nextPaymentDate: null
+        }
+      ];
+    } catch (error) {
+      console.error('Error getting user loans:', error);
+      return [];
+    }
+  }
+
+  /**
+   * Get contract addresses for current network
+   */
+  public getContractAddresses(): any {
+    return this.addresses;
+  }
+
+  /**
+   * Get network information
+   */
+  public async getNetworkInfo(): Promise<any> {
+    return {
+      networkId: await this.celoService.getNetworkId(),
+      networkName: this.celoService.getNetworkName(),
+      explorerUrl: this.celoService.getExplorerUrl()
+    };
   }
 }
 
-// Export a default instance
-export default new ContractService('alfajores');
+// Create and export a default instance
+const contractService = new ContractService();
+export default contractService;

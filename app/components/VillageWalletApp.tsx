@@ -20,7 +20,8 @@ import LanguageSelector from './LanguageSelector'
 import MerchantDashboard from './MerchantDashboard'
 import QRPayment from './QRPayment'
 import CarbonCreditMarketplace from './CarbonCreditMarketplace'
-import CeloOverview from './CeloOverview'
+import GovernanceView from './GovernanceView'
+import AutomationView from './AutomationView'
 
 // App Header with Language Selector
 function AppHeader() {
@@ -177,18 +178,18 @@ function VillageWalletAppContent() {
               
               <div className="bg-white/50 rounded-lg p-4">
                 <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <span className="text-purple-600 font-bold">📱</span>
+                  <span className="text-purple-600 font-bold">�️</span>
                 </div>
-                <h3 className="font-medium text-gray-900">Mobile Money</h3>
-                <p className="text-sm text-gray-600">Easy cash in/out</p>
+                <h3 className="font-medium text-gray-900">Governance</h3>
+                <p className="text-sm text-gray-600">Community voting</p>
               </div>
               
               <div className="bg-white/50 rounded-lg p-4">
-                <div className="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center mx-auto mb-2">
-                  <span className="text-yellow-600 font-bold">🏆</span>
+                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center mx-auto mb-2">
+                  <span className="text-orange-600 font-bold">🤖</span>
                 </div>
-                <h3 className="font-medium text-gray-900">Rewards</h3>
-                <p className="text-sm text-gray-600">Earn tokens</p>
+                <h3 className="font-medium text-gray-900">Automation</h3>
+                <p className="text-sm text-gray-600">Smart contracts</p>
               </div>
             </div>
           </div>
@@ -206,8 +207,10 @@ function VillageWalletAppContent() {
         return <Loans />
       case 'wallet':
         return <EnhancedWallet />
-      case 'celo':
-        return <CeloOverview address={account.address} />
+      case 'governance':
+        return <GovernanceView onClose={() => setCurrentView('dashboard')} walletAddress={account.address} />
+      case 'automation':
+        return <AutomationView onClose={() => setCurrentView('dashboard')} walletAddress={account.address} />
       case 'analytics':
         return <AnalyticsDashboard />
       case 'security':
