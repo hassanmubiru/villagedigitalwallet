@@ -22,6 +22,7 @@ import QRPayment from './QRPayment'
 import CarbonCreditMarketplace from './CarbonCreditMarketplace'
 import GovernanceView from './GovernanceView'
 import AutomationView from './AutomationView'
+import { LogoIcon } from './Logo'
 
 // App Header with Language Selector
 function AppHeader() {
@@ -31,7 +32,8 @@ function AppHeader() {
     <header className="bg-white border-b border-gray-200 sticky top-0 z-40">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <div className="flex items-center">
+          <div className="flex items-center space-x-3">
+            <LogoIcon className="w-8 h-8" />
             <h1 className="text-xl font-bold text-gray-900">
               Village Digital Wallet
             </h1>

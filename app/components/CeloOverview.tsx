@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from 'react'
 import { useTokenBalances, useTransactionHistory } from '../hooks/useCeloContracts'
-import { useCelo } from '../providers/CeloProvider'
 import celoService from '../services/celoService'
 
 interface CeloOverviewProps {
@@ -10,11 +9,11 @@ interface CeloOverviewProps {
 }
 
 export default function CeloOverview({ address: externalAddress }: CeloOverviewProps) {
-  const { connect, address: celoAddress, connected, network } = useCelo()
-  const userAddress = externalAddress || celoAddress || ""
+  const userAddress = externalAddress || ""
   const { CELO, cUSD, cEUR, loading: balancesLoading, refreshBalances } = useTokenBalances(userAddress)
   const { transactions, loading: txLoading } = useTransactionHistory(5, userAddress)
   const [networkId, setNetworkId] = useState<number | null>(null)
+  const [connected, setConnected] = useState(false)
 
   useEffect(() => {
     async function getNetworkInfo() {
@@ -35,22 +34,17 @@ export default function CeloOverview({ address: externalAddress }: CeloOverviewP
     <div className="p-6 bg-white rounded-lg shadow-sm">
       <h2 className="text-2xl font-bold mb-6">Celo Network Overview</h2>
       
-      {!connected ? (
+      {!userAddress ? (
         <div className="mb-6">
           <p className="text-gray-600 mb-4">Connect your wallet to see your Celo account details</p>
-          <button
-            onClick={() => connect()}
-            className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600 transition-colors"
-          >
-            Connect Wallet
-          </button>
+          <p className="text-sm text-gray-500">Use the Connect Wallet button in the main interface.</p>
         </div>
       ) : (
         <>
           <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-md">
             <h3 className="font-medium text-green-800 mb-2">Connected Account</h3>
             <p className="font-mono text-sm text-green-700 break-all">{userAddress}</p>
-            <p className="text-sm text-green-600 mt-1">Network: {network} {networkId && `(ID: ${networkId})`}</p>
+            <p className="text-sm text-green-600 mt-1">Network: {networkId ? `Network ID: ${networkId}` : 'Not connected'}</p>
           </div>
           
           <div className="mb-8">
@@ -131,7 +125,7 @@ export default function CeloOverview({ address: externalAddress }: CeloOverviewP
           rel="noopener noreferrer"
           className="text-blue-500 hover:underline"
         >
-          {network === 'alfajores' ? 'Alfajores Celoscan' : 'Celoscan'}
+          {'Celoscan'}
         </a></p>
       </div>
     </div>

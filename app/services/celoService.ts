@@ -8,6 +8,7 @@ export const NETWORKS = {
     chainId: 44787,
     name: "Celo Alfajores",
     rpc: "https://alfajores-forno.celo-testnet.org",
+    explorerUrl: "https://explorer.celo.org/alfajores",
     gasTokens: ["CELO"],
     nativeCurrency: {
       decimals: 18,
@@ -18,7 +19,8 @@ export const NETWORKS = {
   celo: {
     chainId: 42220,
     name: "Celo",
-    rpc: "https://forno.celo.org",
+    rpc: "https://forno.celo.org", 
+    explorerUrl: "https://explorer.celo.org/mainnet",
     gasTokens: ["CELO"],
     nativeCurrency: {
       decimals: 18,
@@ -40,115 +42,126 @@ export class CeloService {
    */
   public formatWeiToEther(value: string): string {
     try {
-      const bigIntValue = BigInt(value);
-      const etherValue = Number(bigIntValue) / Math.pow(10, 18);
+      // Use parseFloat for browser compatibility
+      const etherValue = parseFloat(value) / Math.pow(10, 18);
       return etherValue.toFixed(6);
     } catch (error) {
       console.error("Error formatting wei to ether:", error);
       return value;
     }
   }
-  
+
   /**
-   * Connect to Celo with user's wallet (placeholder)
+   * Get current network configuration
    */
-  public async connectWithWallet(address: string, provider: any): Promise<void> {
-    try {
-      console.log("Connecting with wallet:", address);
-    } catch (error) {
-      console.error('Error connecting wallet:', error);
-      throw new Error('Failed to connect wallet');
-    }
+  public getCurrentNetwork(): CeloNetwork {
+    return this.network;
+  }
+
+  /**
+   * Set current network
+   */
+  public setNetwork(network: CeloNetwork): void {
+    this.network = network;
   }
 
   /**
    * Get network ID
    */
   public async getNetworkId(): Promise<number> {
-    return this.network === 'alfajores' ? 44787 : 42220;
+    return NETWORKS[this.network].chainId;
+  }
+
+  /**
+   * Get explorer URL
+   */
+  public getExplorerUrl(txHash?: string): string {
+    const baseUrl = NETWORKS[this.network].explorerUrl;
+    return txHash ? `${baseUrl}/tx/${txHash}` : baseUrl;
   }
 
   /**
    * Get network name
    */
   public getNetworkName(): string {
-    return this.network === 'alfajores' ? 'Celo Alfajores Testnet' : 'Celo Mainnet';
+    return NETWORKS[this.network].name;
   }
 
   /**
-   * Get all token balances for an address (placeholder)
+   * Mock connection method for compatibility
    */
-  public async getAllTokenBalances(address: string): Promise<{
-    CELO: string;
-    cUSD: string;
-    cEUR: string;
-  }> {
-    try {
-      console.log("Getting token balances for:", address);
+  public async connectWithWallet(provider: any): Promise<void> {
+    // This is handled by Thirdweb's wallet connection
+    console.log('Wallet connection handled by Thirdweb');
+  }
+
+  /**
+   * Get mock account balance (replaced by Thirdweb hooks)
+   */
+  public async getAccountBalance(address: string): Promise<string> {
+    // This should be handled by useBalance hook from Thirdweb
+    return '0';
+  }
+
+  /**
+   * Get token addresses for current network
+   */
+  public getTokenAddresses() {
+    if (this.network === 'alfajores') {
       return {
-        CELO: "0.0",
-        cUSD: "0.0", 
-        cEUR: "0.0"
+        CELO: '0xF194afDf50B03e69Bd7D057c1Aa9e10c9954E4C9',
+        cUSD: '0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1',
+        cEUR: '0x10c892A6EC43a53E45D0B916B4b7D383B1b78C0F',
       };
-    } catch (error) {
-      console.error('Error fetching token balances:', error);
-      throw new Error('Failed to get token balances');
+    } else {
+      return {
+        CELO: '0x471EcE3750Da237f93B8E339c536989b8978a438',
+        cUSD: '0x765DE816845861e75A25fCA122bb6898B8B1282a',
+        cEUR: '0xD8763CBa276a3738E6DE85b4b3bF5FDed6D6cA73',
+      };
     }
   }
 
   /**
-   * Get transaction history for an address (placeholder)
+   * Check if connected (mock implementation)
    */
-  public async getTransactionHistory(address: string, limit = 10): Promise<any[]> {
-    try {
-      console.log("Getting transaction history for:", address);
-      return [];
-    } catch (error) {
-      console.error('Error fetching transaction history:', error);
-      throw new Error('Failed to get transaction history');
-    }
+  public isConnected(): boolean {
+    return true; // Handled by Thirdweb
   }
 
   /**
-   * Get explorer URL for transaction or address
+   * Get mock recent transactions for compatibility
    */
-  public getExplorerUrl(hash?: string): string {
-    const baseUrl = this.network === 'alfajores' 
-      ? 'https://alfajores.celoscan.io'
-      : 'https://celoscan.io';
-    
-    return hash ? `${baseUrl}/tx/${hash}` : baseUrl;
-  }
-
-  /**
-   * Get gas price estimation (placeholder)
-   */
-  public async getGasPrice(): Promise<string> {
-    try {
-      return "1000000000"; // 1 Gwei
-    } catch (error) {
-      console.error('Error getting gas price:', error);
-      throw new Error('Failed to get gas price');
-    }
-  }
-
-  /**
-   * Get savings group contract (placeholder)
-   */
-  public async getSavingsGroupContract(): Promise<any> {
-    console.warn("Savings group contract not available in simplified mode");
-    return null;
-  }
-
-  /**
-   * Get microloan system contract (placeholder)
-   */
-  public async getMicroloanSystemContract(): Promise<any> {
-    console.warn("Microloan system contract not available in simplified mode");
-    return null;
+  public async getRecentTransactions(): Promise<any[]> {
+    // Mock data for now - real implementation would use Thirdweb or API
+    return [
+      {
+        hash: '0x1234567890abcdef1234567890abcdef12345678',
+        from: '0xabc123...',
+        to: '0xdef456...',
+        value: '10.5',
+        timestamp: Date.now() - 3600000,
+        type: 'received',
+        token: 'cUSD'
+      },
+      {
+        hash: '0xfedcba0987654321fedcba0987654321fedcba09',
+        from: '0xdef456...',
+        to: '0xabc123...',
+        value: '5.0',
+        timestamp: Date.now() - 7200000,
+        type: 'sent',
+        token: 'CELO'
+      }
+    ];
   }
 }
 
-// Create and export a default instance
+// Export singleton instance
 const celoService = new CeloService();
+
+// Set network from environment variable
+const network = (typeof window !== 'undefined' && (window as any).NEXT_PUBLIC_CELO_NETWORK) || 'alfajores';
+celoService.setNetwork(network as CeloNetwork);
+
 export default celoService;

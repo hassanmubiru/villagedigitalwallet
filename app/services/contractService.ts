@@ -17,7 +17,7 @@ export class ContractService {
    */
   public async connect(address: string, provider: any): Promise<void> {
     try {
-      await this.celoService.connectWithWallet(address, provider);
+      await this.celoService.connectWithWallet(provider);
     } catch (error) {
       console.error('Error connecting to Celo:', error);
       throw new Error('Failed to connect to Celo network');

@@ -1,0 +1,99 @@
+<svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="appBgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#60A5FA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2563EB;stop-opacity:1" />
+    </linearGradient>
+    
+    <linearGradient id="phoneGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#10B981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#059669;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- App Icon Background -->
+  <rect x="0" y="0" width="512" height="512" rx="90" ry="90" fill="url(#appBgGradient)"/>
+  
+  <!-- Village Houses -->
+  <g transform="translate(80, 120)">
+    <!-- House 1 -->
+    <rect x="0" y="80" width="70" height="60" fill="#FED7AA" stroke="#EA580C" stroke-width="3"/>
+    <polygon points="0,80 35,30 70,80" fill="#DC2626"/>
+    <rect x="20" y="105" width="18" height="25" fill="#7C2D12"/>
+    <rect x="45" y="95" width="15" height="15" fill="#3B82F6"/>
+    <circle cx="60" cy="115" r="4" fill="#FDE047"/>
+    
+    <!-- House 2 (center, taller) -->
+    <rect x="90" y="60" width="80" height="80" fill="#FED7AA" stroke="#EA580C" stroke-width="3"/>
+    <polygon points="90,60 130,10 170,60" fill="#DC2626"/>
+    <rect x="105" y="90" width="20" height="35" fill="#7C2D12"/>
+    <rect x="135" y="80" width="18" height="18" fill="#3B82F6"/>
+    <circle cx="155" cy="115" r="4" fill="#FDE047"/>
+    
+    <!-- House 3 -->
+    <rect x="190" y="85" width="65" height="55" fill="#FED7AA" stroke="#EA580C" stroke-width="3"/>
+    <polygon points="190,85 222.5,35 255,85" fill="#DC2626"/>
+    <rect x="210" y="110" width="16" height="22" fill="#7C2D12"/>
+    <circle cx="240" cy="115" r="4" fill="#FDE047"/>
+  </g>
+  
+  <!-- Large Central Phone/Wallet -->
+  <g transform="translate(180, 220)">
+    <!-- Phone body -->
+    <rect x="0" y="0" width="152" height="240" rx="25" ry="25" fill="#1F2937" stroke="#374151" stroke-width="6"/>
+    
+    <!-- Screen -->
+    <rect x="15" y="25" width="122" height="180" fill="url(#phoneGradient)" rx="8"/>
+    
+    <!-- Screen Content -->
+    <text x="76" y="70" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="24" font-weight="bold">Village</text>
+    <text x="76" y="100" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="24" font-weight="bold">Wallet</text>
+    
+    <!-- Currency Display -->
+    <text x="76" y="135" text-anchor="middle" fill="#FCFF52" font-family="Arial, sans-serif" font-size="18" font-weight="bold">₵USD</text>
+    <text x="76" y="165" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="32" font-weight="bold">2,450</text>
+    
+    <!-- Bottom elements -->
+    <circle cx="76" cy="220" r="8" fill="#6B7280"/>
+    <rect x="25" y="250" width="102" height="3" rx="1.5" fill="#4B5563"/>
+  </g>
+  
+  <!-- Community Connection Network -->
+  <g stroke="#34D399" stroke-width="6" fill="none" opacity="0.8">
+    <!-- Connecting houses to phone with curved lines -->
+    <path d="M 115 200 Q 200 180 240 260" stroke-dasharray="10,5"/>
+    <path d="M 170 200 Q 220 200 250 250" stroke-dasharray="10,5"/>
+    <path d="M 222 200 Q 280 220 320 280" stroke-dasharray="10,5"/>
+  </g>
+  
+  <!-- Floating Elements -->
+  <g opacity="0.7">
+    <!-- Blockchain nodes -->
+    <circle cx="100" cy="300" r="8" fill="#34D399"/>
+    <circle cx="400" cy="200" r="8" fill="#34D399"/>
+    <circle cx="420" cy="350" r="8" fill="#34D399"/>
+    <circle cx="80" cy="450" r="8" fill="#34D399"/>
+    <circle cx="380" cy="450" r="8" fill="#34D399"/>
+    
+    <!-- Celo symbol -->
+    <g transform="translate(430, 120)">
+      <circle cx="0" cy="0" r="25" fill="#FCFF52" stroke="#F0CA00" stroke-width="3"/>
+      <text x="0" y="8" text-anchor="middle" fill="#1F2937" font-family="Arial" font-size="24" font-weight="bold">₵</text>
+    </g>
+    
+    <!-- Security shield -->
+    <g transform="translate(50, 80)">
+      <path d="M 0 0 L 20 0 L 20 30 L 10 40 L 0 30 Z" fill="#10B981" stroke="#059669" stroke-width="2"/>
+      <path d="M 5 15 L 8.5 18.5 L 15 10" stroke="#FFFFFF" stroke-width="3" fill="none" stroke-linecap="round"/>
+    </g>
+  </g>
+  
+  <!-- Subtle background pattern -->
+  <g opacity="0.1">
+    <pattern id="bgPattern" x="0" y="0" width="50" height="50" patternUnits="userSpaceOnUse">
+      <rect width="50" height="50" fill="none"/>
+      <rect x="5" y="5" width="40" height="40" fill="none" stroke="#FFFFFF" stroke-width="1"/>
+    </pattern>
+    <rect x="0" y="0" width="512" height="512" fill="url(#bgPattern)"/>
+  </g>
+</svg>

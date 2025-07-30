@@ -55,10 +55,7 @@ export default function WalletConnect() {
           
           if (isCeloAlfajores || isCeloMainnet) {
             // Connect to Celo using the window.ethereum provider
-            await celoService.connectWithWallet(
-              account.address, 
-              window.ethereum
-            )
+            await celoService.connectWithWallet(window.ethereum)
             console.log("Connected to Celo network")
           }
         } catch (error) {

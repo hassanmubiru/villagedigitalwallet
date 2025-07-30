@@ -1,5 +1,4 @@
-import { useEffect, useState } from 'react';
-import { useCelo } from '../providers/CeloProvider';
+import { useState, useEffect } from 'react';
 import celoService from '../services/celoService';
 
 /**
@@ -8,7 +7,11 @@ import celoService from '../services/celoService';
  * @returns Contract instance and helper functions
  */
 export function useContract(contractType: 'savingsGroup' | 'microloanSystem') {
-  const { kit, address, connected } = useCelo();
+  // Mock implementation - replace with actual wallet connection logic
+  const kit = null;
+  const address = null;
+  const connected = false;
+  
   const [contract, setContract] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -25,10 +28,27 @@ export function useContract(contractType: 'savingsGroup' | 'microloanSystem') {
         setError(null);
 
         if (contractType === 'savingsGroup') {
-          const instance = await celoService.getSavingsGroupContract();
+          // Mock savings group contract
+          const instance = {
+            address: '0x1234567890123456789012345678901234567890',
+            methods: {
+              createGroup: () => ({ send: () => Promise.resolve() }),
+              joinGroup: () => ({ send: () => Promise.resolve() }),
+              contribute: () => ({ send: () => Promise.resolve() }),
+              withdraw: () => ({ send: () => Promise.resolve() })
+            }
+          };
           setContract(instance);
         } else {
-          const instance = await celoService.getMicroloanSystemContract();
+          // Mock microloan system contract
+          const instance = {
+            address: '0x0987654321098765432109876543210987654321',
+            methods: {
+              requestLoan: () => ({ send: () => Promise.resolve() }),
+              approveLoan: () => ({ send: () => Promise.resolve() }),
+              repayLoan: () => ({ send: () => Promise.resolve() })
+            }
+          };
           setContract(instance);
         }
       } catch (err: any) {
@@ -50,11 +70,28 @@ export function useContract(contractType: 'savingsGroup' | 'microloanSystem') {
       setLoading(true);
       try {
         if (contractType === 'savingsGroup') {
-          const instance = await celoService.getSavingsGroupContract();
+          // Mock savings group contract
+          const instance = {
+            address: '0x1234567890123456789012345678901234567890',
+            methods: {
+              createGroup: () => ({ send: () => Promise.resolve() }),
+              joinGroup: () => ({ send: () => Promise.resolve() }),
+              contribute: () => ({ send: () => Promise.resolve() }),
+              withdraw: () => ({ send: () => Promise.resolve() })
+            }
+          };
           setContract(instance);
           setError(null);
         } else {
-          const instance = await celoService.getMicroloanSystemContract();
+          // Mock microloan system contract
+          const instance = {
+            address: '0x0987654321098765432109876543210987654321',
+            methods: {
+              requestLoan: () => ({ send: () => Promise.resolve() }),
+              approveLoan: () => ({ send: () => Promise.resolve() }),
+              repayLoan: () => ({ send: () => Promise.resolve() })
+            }
+          };
           setContract(instance);
           setError(null);
         }
@@ -73,7 +110,9 @@ export function useContract(contractType: 'savingsGroup' | 'microloanSystem') {
  * @returns CELO, cUSD, and cEUR balances and loading state
  */
 export function useTokenBalances(userAddress?: string) {
-  const { address: connectedAddress, connected } = useCelo();
+  // Mock implementation - replace with actual wallet connection logic
+  const connectedAddress = null;
+  const connected = false;
   const address = userAddress || connectedAddress;
   const [balances, setBalances] = useState({
     CELO: '0',
@@ -94,7 +133,12 @@ export function useTokenBalances(userAddress?: string) {
         setLoading(true);
         setError(null);
         
-        const tokenBalances = await celoService.getAllTokenBalances(address);
+        // Mock token balances
+        const tokenBalances = {
+          CELO: "100.50",
+          cUSD: "50.25", 
+          cEUR: "25.75"
+        };
         setBalances(tokenBalances);
       } catch (err: any) {
         console.error('Error fetching token balances:', err);
@@ -116,7 +160,12 @@ export function useTokenBalances(userAddress?: string) {
       
       setLoading(true);
       try {
-        const tokenBalances = await celoService.getAllTokenBalances(address);
+        // Mock token balances
+        const tokenBalances = {
+          CELO: "100.50",
+          cUSD: "50.25", 
+          cEUR: "25.75"
+        };
         setBalances(tokenBalances);
         setError(null);
       } catch (err: any) {
@@ -145,7 +194,9 @@ export interface CeloTransaction {
  * @returns Transaction history and loading state
  */
 export function useTransactionHistory(limit = 10, userAddress?: string) {
-  const { address: connectedAddress, connected } = useCelo();
+  // Mock implementation - replace with actual wallet connection logic
+  const connectedAddress = null;
+  const connected = false;
   const address = userAddress || connectedAddress;
   const [transactions, setTransactions] = useState<CeloTransaction[]>([]);
   const [loading, setLoading] = useState(true);
@@ -162,7 +213,25 @@ export function useTransactionHistory(limit = 10, userAddress?: string) {
         setLoading(true);
         setError(null);
         
-        const history = await celoService.getTransactionHistory(address, limit);
+        // Mock transaction history
+        const history: CeloTransaction[] = [
+          {
+            hash: '0x1234567890abcdef1234567890abcdef12345678',
+            blockNumber: 12345678,
+            from: '0xabcdef1234567890abcdef1234567890abcdef12',
+            to: address,
+            value: '10500000000000000000',
+            formattedValue: '10.5 cUSD'
+          },
+          {
+            hash: '0xfedcba0987654321fedcba0987654321fedcba09',
+            blockNumber: 12345677,
+            from: address,
+            to: '0x1234567890abcdef1234567890abcdef12345678',
+            value: '5000000000000000000',
+            formattedValue: '5.0 CELO'
+          }
+        ];
         setTransactions(history);
       } catch (err: any) {
         console.error('Error fetching transaction history:', err);
@@ -184,7 +253,25 @@ export function useTransactionHistory(limit = 10, userAddress?: string) {
       
       setLoading(true);
       try {
-        const history = await celoService.getTransactionHistory(address, limit);
+        // Mock transaction history
+        const history: CeloTransaction[] = [
+          {
+            hash: '0x1234567890abcdef1234567890abcdef12345678',
+            blockNumber: 12345678,
+            from: '0xabcdef1234567890abcdef1234567890abcdef12',
+            to: address,
+            value: '10500000000000000000',
+            formattedValue: '10.5 cUSD'
+          },
+          {
+            hash: '0xfedcba0987654321fedcba0987654321fedcba09',
+            blockNumber: 12345677,
+            from: address,
+            to: '0x1234567890abcdef1234567890abcdef12345678',
+            value: '5000000000000000000',
+            formattedValue: '5.0 CELO'
+          }
+        ];
         setTransactions(history);
         setError(null);
       } catch (err: any) {

@@ -1,0 +1,70 @@
+<svg width="400" height="80" viewBox="0 0 400 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Logo Circle -->
+  <g transform="translate(10, 10)">
+    <circle cx="30" cy="30" r="28" fill="#3B82F6" stroke="#1E40AF" stroke-width="1"/>
+    
+    <!-- Village Houses -->
+    <g transform="translate(12, 18)">
+      <rect x="0" y="10" width="8" height="6" fill="#FED7AA"/>
+      <polygon points="0,10 4,6 8,10" fill="#DC2626"/>
+      
+      <rect x="10" y="8" width="10" height="8" fill="#FED7AA"/>
+      <polygon points="10,8 15,3 20,8" fill="#DC2626"/>
+      
+      <rect x="22" y="11" width="7" height="5" fill="#FED7AA"/>
+      <polygon points="22,11 25.5,7 29,11" fill="#DC2626"/>
+    </g>
+    
+    <!-- Mobile Phone -->
+    <g transform="translate(20, 30)">
+      <rect x="0" y="0" width="18" height="28" rx="3" fill="#1F2937"/>
+      <rect x="2" y="3" width="14" height="20" fill="#10B981" rx="1"/>
+      <text x="9" y="14" text-anchor="middle" fill="#FFFFFF" font-family="Arial" font-size="6" font-weight="bold">₵USD</text>
+      <circle cx="9" cy="25" r="1.5" fill="#6B7280"/>
+    </g>
+    
+    <!-- Connection lines -->
+    <g stroke="#34D399" stroke-width="1" fill="none" opacity="0.8">
+      <path d="M 16 28 Q 22 30 25 35"/>
+      <path d="M 25 24 Q 28 28 30 32"/>
+      <path d="M 32 28 Q 34 30 35 35"/>
+    </g>
+  </g>
+  
+  <!-- Text -->
+  <g transform="translate(80, 15)">
+    <text x="0" y="25" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#1F2937">
+      Village Digital Wallet
+    </text>
+    <text x="0" y="45" font-family="Arial, sans-serif" font-size="12" fill="#6B7280">
+      Bridging Traditional Finance with Blockchain Technology
+    </text>
+    <text x="0" y="58" font-family="Arial, sans-serif" font-size="10" fill="#10B981" font-weight="bold">
+      Powered by Celo Blockchain
+    </text>
+  </g>
+  
+  <!-- Decorative elements -->
+  <g transform="translate(350, 20)">
+    <!-- Blockchain pattern -->
+    <g stroke="#3B82F6" stroke-width="0.5" fill="none" opacity="0.3">
+      <rect x="0" y="0" width="8" height="8"/>
+      <rect x="10" y="0" width="8" height="8"/>
+      <rect x="20" y="0" width="8" height="8"/>
+      <rect x="5" y="10" width="8" height="8"/>
+      <rect x="15" y="10" width="8" height="8"/>
+      
+      <!-- Connection lines -->
+      <line x1="8" y1="4" x2="10" y2="4"/>
+      <line x1="18" y1="4" x2="20" y2="4"/>
+      <line x1="4" y1="8" x2="9" y2="10"/>
+      <line x1="14" y1="8" x2="19" y2="10"/>
+    </g>
+  </g>
+  
+  <!-- Celo symbol -->
+  <g transform="translate(380, 10)">
+    <circle cx="0" cy="0" r="8" fill="#FCFF52" stroke="#F0CA00" stroke-width="0.5"/>
+    <text x="0" y="3" text-anchor="middle" fill="#1F2937" font-family="Arial" font-size="8" font-weight="bold">₵</text>
+  </g>
+</svg>

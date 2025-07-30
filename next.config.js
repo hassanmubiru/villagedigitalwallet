@@ -23,13 +23,6 @@ const nextConfig = {
       };
     }
     
-    // Ignore certain problematic modules
-    config.resolve.alias = {
-      ...config.resolve.alias,
-      '@celo/contractkit/lib/identity/metadata': false,
-      '@celo/contractkit/lib/setupForKits': false,
-    };
-    
     return config;
   },
   // SWC is enabled by default in Next.js 15+ and doesn't need explicit configuration

@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "npm install --legacy-peer-deps && next build",
+    "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "deploy": "npx hardhat run scripts/deploy.js --network alfajores",
@@ -22,10 +22,6 @@
     "vercel:build": "npm install --legacy-peer-deps && next build"
   },
   "dependencies": {
-    "@celo-tools/celo-ethers-wrapper": "^2.3.0",
-    "@celo-tools/use-contractkit": "^3.1.0",
-    "@celo/contractkit": "^3.0.0",
-    "@celo/react-celo": "^5.0.4",
     "@types/node": "^24.1.0",
     "@types/react": "^19.1.8",
     "@types/react-dom": "^19.1.6",

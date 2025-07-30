@@ -2,8 +2,6 @@
 
 import { ThirdwebProvider as Provider } from "thirdweb/react"
 import { createThirdwebClient } from "thirdweb"
-import { useCelo } from "./CeloProvider"
-import { useEffect, useState } from "react"
 import { celo } from "thirdweb/chains"
 import { defineChain } from "thirdweb/chains"
 
@@ -24,14 +22,7 @@ export const client = createThirdwebClient({
 export const supportedChains = [celoAlfajores, celo];
 
 export function ThirdwebProvider({ children }: { children: React.ReactNode }) {
-  const { network } = useCelo();
-  const [activeChain, setActiveChain] = useState(celoAlfajores);
-  
-  // Update active chain when Celo network changes
-  useEffect(() => {
-    setActiveChain(network === 'mainnet' ? celo : celoAlfajores);
-  }, [network]);
-  
+  // Use Alfajores testnet by default
   return (
     <Provider>
       {children}
