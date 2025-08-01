@@ -1,0 +1,2622 @@
+{
+  "version": "3.4",
+  "log": [
+    {
+      "@openzeppelin/contracts/access/Ownable.sol:Ownable": {
+        "src": "@openzeppelin/contracts/access/Ownable.sol:20",
+        "inherit": [
+          "@openzeppelin/contracts/utils/Context.sol:Context"
+        ],
+        "libraries": [],
+        "methods": [
+          "owner()",
+          "renounceOwnership()",
+          "transferOwnership(address)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "Ownable",
+            "src": "@openzeppelin/contracts/access/Ownable.sol:28"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "_owner",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_address",
+              "contract": "Ownable",
+              "src": "@openzeppelin/contracts/access/Ownable.sol:21"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "@openzeppelin/contracts/interfaces/IERC5267.sol:IERC5267": {
+        "src": "@openzeppelin/contracts/interfaces/IERC5267.sol:6",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "eip712Domain()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "@openzeppelin/contracts/security/Pausable.sol:Pausable": {
+        "src": "@openzeppelin/contracts/security/Pausable.sol:17",
+        "inherit": [
+          "@openzeppelin/contracts/utils/Context.sol:Context"
+        ],
+        "libraries": [],
+        "methods": [
+          "paused()"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "Pausable",
+            "src": "@openzeppelin/contracts/security/Pausable.sol:33"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "_paused",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_bool",
+              "contract": "Pausable",
+              "src": "@openzeppelin/contracts/security/Pausable.sol:28"
+            }
+          ],
+          "types": {
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "@openzeppelin/contracts/security/ReentrancyGuard.sol:ReentrancyGuard": {
+        "src": "@openzeppelin/contracts/security/ReentrancyGuard.sol:22",
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "ReentrancyGuard",
+            "src": "@openzeppelin/contracts/security/ReentrancyGuard.sol:39"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "_status",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint256",
+              "contract": "ReentrancyGuard",
+              "src": "@openzeppelin/contracts/security/ReentrancyGuard.sol:37"
+            }
+          ],
+          "types": {
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "@openzeppelin/contracts/token/ERC20/ERC20.sol:ERC20": {
+        "src": "@openzeppelin/contracts/token/ERC20/ERC20.sol:38",
+        "version": {
+          "withMetadata": "f4b0bd1164d2d8594926380f8bda22eb42d1c66196adaefd3a856a92a80aedc7",
+          "withoutMetadata": "5c880a403831e77bcb50b7145ddf2de0da091829f45515ecc5363d5eace185ca",
+          "linkedWithoutMetadata": "5c880a403831e77bcb50b7145ddf2de0da091829f45515ecc5363d5eace185ca"
+        },
+        "inherit": [
+          "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol:IERC20Metadata",
+          "@openzeppelin/contracts/token/ERC20/IERC20.sol:IERC20",
+          "@openzeppelin/contracts/utils/Context.sol:Context"
+        ],
+        "libraries": [],
+        "methods": [
+          "(string,string)",
+          "name()",
+          "symbol()",
+          "decimals()",
+          "totalSupply()",
+          "balanceOf(address)",
+          "transfer(address,uint256)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transferFrom(address,address,uint256)",
+          "increaseAllowance(address,uint256)",
+          "decreaseAllowance(address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "ERC20",
+            "src": "@openzeppelin/contracts/token/ERC20/ERC20.sol:54"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "_balances",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_mapping(t_address,t_uint256)",
+              "contract": "ERC20",
+              "src": "@openzeppelin/contracts/token/ERC20/ERC20.sol:39"
+            },
+            {
+              "label": "_allowances",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+              "contract": "ERC20",
+              "src": "@openzeppelin/contracts/token/ERC20/ERC20.sol:41"
+            },
+            {
+              "label": "_totalSupply",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_uint256",
+              "contract": "ERC20",
+              "src": "@openzeppelin/contracts/token/ERC20/ERC20.sol:43"
+            },
+            {
+              "label": "_name",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_string_storage",
+              "contract": "ERC20",
+              "src": "@openzeppelin/contracts/token/ERC20/ERC20.sol:45"
+            },
+            {
+              "label": "_symbol",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_string_storage",
+              "contract": "ERC20",
+              "src": "@openzeppelin/contracts/token/ERC20/ERC20.sol:46"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+              "label": "mapping(address => mapping(address => uint256))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "@openzeppelin/contracts/token/ERC20/IERC20.sol:IERC20": {
+        "src": "@openzeppelin/contracts/token/ERC20/IERC20.sol:9",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "totalSupply()",
+          "balanceOf(address)",
+          "transfer(address,uint256)",
+          "allowance(address,address)",
+          "approve(address,uint256)",
+          "transferFrom(address,address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol:ERC20Burnable": {
+        "src": "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol:14",
+        "inherit": [
+          "@openzeppelin/contracts/token/ERC20/ERC20.sol:ERC20",
+          "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol:IERC20Metadata",
+          "@openzeppelin/contracts/token/ERC20/IERC20.sol:IERC20",
+          "@openzeppelin/contracts/utils/Context.sol:Context"
+        ],
+        "libraries": [],
+        "methods": [
+          "burn(uint256)",
+          "burnFrom(address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [
+            {
+              "label": "_balances",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_mapping(t_address,t_uint256)",
+              "contract": "ERC20",
+              "src": "@openzeppelin/contracts/token/ERC20/ERC20.sol:39"
+            },
+            {
+              "label": "_allowances",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+              "contract": "ERC20",
+              "src": "@openzeppelin/contracts/token/ERC20/ERC20.sol:41"
+            },
+            {
+              "label": "_totalSupply",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_uint256",
+              "contract": "ERC20",
+              "src": "@openzeppelin/contracts/token/ERC20/ERC20.sol:43"
+            },
+            {
+              "label": "_name",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_string_storage",
+              "contract": "ERC20",
+              "src": "@openzeppelin/contracts/token/ERC20/ERC20.sol:45"
+            },
+            {
+              "label": "_symbol",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_string_storage",
+              "contract": "ERC20",
+              "src": "@openzeppelin/contracts/token/ERC20/ERC20.sol:46"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+              "label": "mapping(address => mapping(address => uint256))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol:ERC20Permit": {
+        "src": "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol:22",
+        "inherit": [
+          "@openzeppelin/contracts/utils/cryptography/EIP712.sol:EIP712",
+          "@openzeppelin/contracts/interfaces/IERC5267.sol:IERC5267",
+          "@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol:IERC20Permit",
+          "@openzeppelin/contracts/token/ERC20/ERC20.sol:ERC20",
+          "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol:IERC20Metadata",
+          "@openzeppelin/contracts/token/ERC20/IERC20.sol:IERC20",
+          "@openzeppelin/contracts/utils/Context.sol:Context"
+        ],
+        "libraries": [
+          "@openzeppelin/contracts/utils/Counters.sol:Counters",
+          "@openzeppelin/contracts/utils/cryptography/ECDSA.sol:ECDSA"
+        ],
+        "methods": [
+          "permit(address,address,uint256,uint256,uint8,bytes32,bytes32)",
+          "nonces(address)",
+          "DOMAIN_SEPARATOR()"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "ERC20Permit",
+            "src": "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol:44"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "_balances",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_mapping(t_address,t_uint256)",
+              "contract": "ERC20",
+              "src": "@openzeppelin/contracts/token/ERC20/ERC20.sol:39"
+            },
+            {
+              "label": "_allowances",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+              "contract": "ERC20",
+              "src": "@openzeppelin/contracts/token/ERC20/ERC20.sol:41"
+            },
+            {
+              "label": "_totalSupply",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_uint256",
+              "contract": "ERC20",
+              "src": "@openzeppelin/contracts/token/ERC20/ERC20.sol:43"
+            },
+            {
+              "label": "_name",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_string_storage",
+              "contract": "ERC20",
+              "src": "@openzeppelin/contracts/token/ERC20/ERC20.sol:45"
+            },
+            {
+              "label": "_symbol",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_string_storage",
+              "contract": "ERC20",
+              "src": "@openzeppelin/contracts/token/ERC20/ERC20.sol:46"
+            },
+            {
+              "label": "_nameFallback",
+              "offset": 0,
+              "slot": "5",
+              "type": "t_string_storage",
+              "contract": "EIP712",
+              "src": "@openzeppelin/contracts/utils/cryptography/EIP712.sol:52"
+            },
+            {
+              "label": "_versionFallback",
+              "offset": 0,
+              "slot": "6",
+              "type": "t_string_storage",
+              "contract": "EIP712",
+              "src": "@openzeppelin/contracts/utils/cryptography/EIP712.sol:53"
+            },
+            {
+              "label": "_nonces",
+              "offset": 0,
+              "slot": "7",
+              "type": "t_mapping(t_address,t_struct(Counter)1994_storage)",
+              "contract": "ERC20Permit",
+              "src": "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol:25"
+            },
+            {
+              "label": "_PERMIT_TYPEHASH_DEPRECATED_SLOT",
+              "offset": 0,
+              "slot": "8",
+              "type": "t_bytes32",
+              "contract": "ERC20Permit",
+              "src": "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol:37",
+              "renamedFrom": "_PERMIT_TYPEHASH"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_bytes32": {
+              "label": "bytes32",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+              "label": "mapping(address => mapping(address => uint256))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_struct(Counter)1994_storage)": {
+              "label": "mapping(address => struct Counters.Counter)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(Counter)1994_storage": {
+              "label": "struct Counters.Counter",
+              "members": [
+                {
+                  "label": "_value",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                }
+              ],
+              "numberOfBytes": "32"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol:IERC20Metadata": {
+        "src": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol:13",
+        "inherit": [
+          "@openzeppelin/contracts/token/ERC20/IERC20.sol:IERC20"
+        ],
+        "libraries": [],
+        "methods": [
+          "name()",
+          "symbol()",
+          "decimals()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol:IERC20Permit": {
+        "src": "@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol:42",
+        "inherit": [],
+        "libraries": [],
+        "methods": [
+          "permit(address,address,uint256,uint256,uint8,bytes32,bytes32)",
+          "nonces(address)",
+          "DOMAIN_SEPARATOR()"
+        ],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol:SafeERC20": {
+        "src": "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol:19",
+        "version": {
+          "withMetadata": "d8ea11f045721581dafe676228359df566158993329695883da12e27636d33af",
+          "withoutMetadata": "e2a89a66865458f0d9fedd4bc7faf0ee62e4c341d176ab79d29bd77a1bdfc32a",
+          "linkedWithoutMetadata": "e2a89a66865458f0d9fedd4bc7faf0ee62e4c341d176ab79d29bd77a1bdfc32a"
+        },
+        "inherit": [],
+        "libraries": [
+          "@openzeppelin/contracts/utils/Address.sol:Address"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "@openzeppelin/contracts/utils/Address.sol:Address": {
+        "src": "@openzeppelin/contracts/utils/Address.sol:9",
+        "version": {
+          "withMetadata": "28f20ee775c85e652c25917bdc3080ed07862688a4fc14befdeb4699945d5e9c",
+          "withoutMetadata": "e2a89a66865458f0d9fedd4bc7faf0ee62e4c341d176ab79d29bd77a1bdfc32a",
+          "linkedWithoutMetadata": "e2a89a66865458f0d9fedd4bc7faf0ee62e4c341d176ab79d29bd77a1bdfc32a"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin/contracts/utils/Address.sol:185"
+          },
+          {
+            "kind": "delegatecall",
+            "src": "@openzeppelin/contracts/utils/Address.sol:185"
+          }
+        ],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "@openzeppelin/contracts/utils/Context.sol:Context": {
+        "src": "@openzeppelin/contracts/utils/Context.sol:16",
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "@openzeppelin/contracts/utils/Counters.sol:Counters": {
+        "src": "@openzeppelin/contracts/utils/Counters.sol:14",
+        "version": {
+          "withMetadata": "2f4fe88d6377bc7dc4c3f8d090b64375663655c6c54fd853690e586e2db0aa5c",
+          "withoutMetadata": "e2a89a66865458f0d9fedd4bc7faf0ee62e4c341d176ab79d29bd77a1bdfc32a",
+          "linkedWithoutMetadata": "e2a89a66865458f0d9fedd4bc7faf0ee62e4c341d176ab79d29bd77a1bdfc32a"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "@openzeppelin/contracts/utils/ShortStrings.sol:ShortStrings": {
+        "src": "@openzeppelin/contracts/utils/ShortStrings.sol:40",
+        "version": {
+          "withMetadata": "9f56a7daef9d20b67a938049bd58ff3056366e6a5abcf527cea6340e26b2b89f",
+          "withoutMetadata": "e2a89a66865458f0d9fedd4bc7faf0ee62e4c341d176ab79d29bd77a1bdfc32a",
+          "linkedWithoutMetadata": "e2a89a66865458f0d9fedd4bc7faf0ee62e4c341d176ab79d29bd77a1bdfc32a"
+        },
+        "inherit": [],
+        "libraries": [
+          "@openzeppelin/contracts/utils/StorageSlot.sol:StorageSlot"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "@openzeppelin/contracts/utils/StorageSlot.sol:StorageSlot": {
+        "src": "@openzeppelin/contracts/utils/StorageSlot.sol:34",
+        "version": {
+          "withMetadata": "3c0edec8c5c361fa966e75439637b213fd3be7088eab9003bcc36834f7d61cb9",
+          "withoutMetadata": "e2a89a66865458f0d9fedd4bc7faf0ee62e4c341d176ab79d29bd77a1bdfc32a",
+          "linkedWithoutMetadata": "e2a89a66865458f0d9fedd4bc7faf0ee62e4c341d176ab79d29bd77a1bdfc32a"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "@openzeppelin/contracts/utils/Strings.sol:Strings": {
+        "src": "@openzeppelin/contracts/utils/Strings.sol:12",
+        "version": {
+          "withMetadata": "b9590b6de55eca1a159650f8eb8aa3e24ef6b378aa222744141fc34d489b8c4e",
+          "withoutMetadata": "e2a89a66865458f0d9fedd4bc7faf0ee62e4c341d176ab79d29bd77a1bdfc32a",
+          "linkedWithoutMetadata": "e2a89a66865458f0d9fedd4bc7faf0ee62e4c341d176ab79d29bd77a1bdfc32a"
+        },
+        "inherit": [],
+        "libraries": [
+          "@openzeppelin/contracts/utils/math/Math.sol:Math",
+          "@openzeppelin/contracts/utils/math/SignedMath.sol:SignedMath"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "@openzeppelin/contracts/utils/cryptography/ECDSA.sol:ECDSA": {
+        "src": "@openzeppelin/contracts/utils/cryptography/ECDSA.sol:14",
+        "version": {
+          "withMetadata": "c96a08bf262c5c60cfbe4aa7df6ac9dc864935f873eaaf94efae74ca828970e0",
+          "withoutMetadata": "e2a89a66865458f0d9fedd4bc7faf0ee62e4c341d176ab79d29bd77a1bdfc32a",
+          "linkedWithoutMetadata": "e2a89a66865458f0d9fedd4bc7faf0ee62e4c341d176ab79d29bd77a1bdfc32a"
+        },
+        "inherit": [],
+        "libraries": [
+          "@openzeppelin/contracts/utils/Strings.sol:Strings"
+        ],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "@openzeppelin/contracts/utils/cryptography/EIP712.sol:EIP712": {
+        "src": "@openzeppelin/contracts/utils/cryptography/EIP712.sol:35",
+        "inherit": [
+          "@openzeppelin/contracts/interfaces/IERC5267.sol:IERC5267"
+        ],
+        "libraries": [
+          "@openzeppelin/contracts/utils/ShortStrings.sol:ShortStrings",
+          "@openzeppelin/contracts/utils/cryptography/ECDSA.sol:ECDSA"
+        ],
+        "methods": [
+          "eip712Domain()"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "EIP712",
+            "src": "@openzeppelin/contracts/utils/cryptography/EIP712.sol:67"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "_nameFallback",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_string_storage",
+              "contract": "EIP712",
+              "src": "@openzeppelin/contracts/utils/cryptography/EIP712.sol:52"
+            },
+            {
+              "label": "_versionFallback",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_string_storage",
+              "contract": "EIP712",
+              "src": "@openzeppelin/contracts/utils/cryptography/EIP712.sol:53"
+            }
+          ],
+          "types": {
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "@openzeppelin/contracts/utils/math/Math.sol:Math": {
+        "src": "@openzeppelin/contracts/utils/math/Math.sol:9",
+        "version": {
+          "withMetadata": "5b6bda927093ffb2fd854c16199be200105c73bfe0892fb482d8233ba4c084ed",
+          "withoutMetadata": "e2a89a66865458f0d9fedd4bc7faf0ee62e4c341d176ab79d29bd77a1bdfc32a",
+          "linkedWithoutMetadata": "e2a89a66865458f0d9fedd4bc7faf0ee62e4c341d176ab79d29bd77a1bdfc32a"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "@openzeppelin/contracts/utils/math/SafeMath.sol:SafeMath": {
+        "src": "@openzeppelin/contracts/utils/math/SafeMath.sol:16",
+        "version": {
+          "withMetadata": "d9723c24a52a1f58aa576db63e64ae0c34d3e522fa6cfc56c6300fcc8a55e37b",
+          "withoutMetadata": "e2a89a66865458f0d9fedd4bc7faf0ee62e4c341d176ab79d29bd77a1bdfc32a",
+          "linkedWithoutMetadata": "e2a89a66865458f0d9fedd4bc7faf0ee62e4c341d176ab79d29bd77a1bdfc32a"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "@openzeppelin/contracts/utils/math/SignedMath.sol:SignedMath": {
+        "src": "@openzeppelin/contracts/utils/math/SignedMath.sol:9",
+        "version": {
+          "withMetadata": "574bfca8ebfdcb0b5817ac0235a7259db28202a509e40e6da5519cbd8a74c1b1",
+          "withoutMetadata": "e2a89a66865458f0d9fedd4bc7faf0ee62e4c341d176ab79d29bd77a1bdfc32a",
+          "linkedWithoutMetadata": "e2a89a66865458f0d9fedd4bc7faf0ee62e4c341d176ab79d29bd77a1bdfc32a"
+        },
+        "inherit": [],
+        "libraries": [],
+        "methods": [],
+        "linkReferences": [],
+        "errors": [],
+        "layout": {
+          "storage": [],
+          "types": {},
+          "layoutVersion": "1.2",
+          "flat": false,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "contracts/MicroloanSystem.sol:MicroloanSystem": {
+        "src": "contracts/MicroloanSystem.sol:15",
+        "version": {
+          "withMetadata": "a2eb726e5c13f3ba752aec85e3b21ab2874dba453cc460914fbc023d8ac466aa",
+          "withoutMetadata": "e1271fc3ff3cbdce86bb3b0d6e09361ad891e6e345016992d23aa909979b83ff",
+          "linkedWithoutMetadata": "e1271fc3ff3cbdce86bb3b0d6e09361ad891e6e345016992d23aa909979b83ff"
+        },
+        "inherit": [
+          "@openzeppelin/contracts/access/Ownable.sol:Ownable",
+          "@openzeppelin/contracts/security/Pausable.sol:Pausable",
+          "@openzeppelin/contracts/utils/Context.sol:Context",
+          "@openzeppelin/contracts/security/ReentrancyGuard.sol:ReentrancyGuard"
+        ],
+        "libraries": [
+          "@openzeppelin/contracts/utils/math/SafeMath.sol:SafeMath",
+          "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol:SafeERC20"
+        ],
+        "methods": [
+          "(address,address)",
+          "registerLender(uint256,address[])",
+          "depositFunds(address,uint256)",
+          "withdrawFunds(address,uint256)",
+          "createLoanOffer(uint256,uint256,uint256,uint256,enum MicroloanSystem.LoanType[])",
+          "requestLoan(address,uint256,uint256,uint8,string,bool)",
+          "approveLoan(uint256,uint256)",
+          "depositCollateral(uint256,uint256)",
+          "fundLoan(uint256)",
+          "makeRepayment(uint256)",
+          "markLoanDefaulted(uint256)",
+          "updateCreditScore(address,uint256)",
+          "getLoanDetails(uint256)",
+          "getBorrowerInfo(address)",
+          "getLenderFunds(address,address)",
+          "updateSettings(uint256,uint256,uint256,uint256)",
+          "pause()",
+          "unpause()"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "MicroloanSystem",
+            "src": "contracts/MicroloanSystem.sol:110"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "nextLoanId",
+            "src": "contracts/MicroloanSystem.sol:99"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "nextOfferId",
+            "src": "contracts/MicroloanSystem.sol:100"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "platformFee",
+            "src": "contracts/MicroloanSystem.sol:101"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "latePenaltyRate",
+            "src": "contracts/MicroloanSystem.sol:102"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "maxLoanAmount",
+            "src": "contracts/MicroloanSystem.sol:103"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "minCreditScore",
+            "src": "contracts/MicroloanSystem.sol:104"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "installmentPeriod",
+            "src": "contracts/MicroloanSystem.sol:105"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "_status",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint256",
+              "contract": "ReentrancyGuard",
+              "src": "@openzeppelin/contracts/security/ReentrancyGuard.sol:37"
+            },
+            {
+              "label": "_paused",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_bool",
+              "contract": "Pausable",
+              "src": "@openzeppelin/contracts/security/Pausable.sol:28"
+            },
+            {
+              "label": "_owner",
+              "offset": 1,
+              "slot": "1",
+              "type": "t_address",
+              "contract": "Ownable",
+              "src": "@openzeppelin/contracts/access/Ownable.sol:21"
+            },
+            {
+              "label": "loans",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_mapping(t_uint256,t_struct(Loan)4617_storage)",
+              "contract": "MicroloanSystem",
+              "src": "contracts/MicroloanSystem.sol:92"
+            },
+            {
+              "label": "borrowers",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_mapping(t_address,t_struct(Borrower)4634_storage)",
+              "contract": "MicroloanSystem",
+              "src": "contracts/MicroloanSystem.sol:93"
+            },
+            {
+              "label": "lenders",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_address,t_struct(Lender)4656_storage)",
+              "contract": "MicroloanSystem",
+              "src": "contracts/MicroloanSystem.sol:94"
+            },
+            {
+              "label": "loanOffers",
+              "offset": 0,
+              "slot": "5",
+              "type": "t_mapping(t_uint256,t_struct(LoanOffer)4673_storage)",
+              "contract": "MicroloanSystem",
+              "src": "contracts/MicroloanSystem.sol:95"
+            },
+            {
+              "label": "borrowerLoans",
+              "offset": 0,
+              "slot": "6",
+              "type": "t_mapping(t_address,t_array(t_uint256)dyn_storage)",
+              "contract": "MicroloanSystem",
+              "src": "contracts/MicroloanSystem.sol:96"
+            },
+            {
+              "label": "lenderLoans",
+              "offset": 0,
+              "slot": "7",
+              "type": "t_mapping(t_address,t_array(t_uint256)dyn_storage)",
+              "contract": "MicroloanSystem",
+              "src": "contracts/MicroloanSystem.sol:97"
+            },
+            {
+              "label": "nextLoanId",
+              "offset": 0,
+              "slot": "8",
+              "type": "t_uint256",
+              "contract": "MicroloanSystem",
+              "src": "contracts/MicroloanSystem.sol:99"
+            },
+            {
+              "label": "nextOfferId",
+              "offset": 0,
+              "slot": "9",
+              "type": "t_uint256",
+              "contract": "MicroloanSystem",
+              "src": "contracts/MicroloanSystem.sol:100"
+            },
+            {
+              "label": "platformFee",
+              "offset": 0,
+              "slot": "10",
+              "type": "t_uint256",
+              "contract": "MicroloanSystem",
+              "src": "contracts/MicroloanSystem.sol:101"
+            },
+            {
+              "label": "latePenaltyRate",
+              "offset": 0,
+              "slot": "11",
+              "type": "t_uint256",
+              "contract": "MicroloanSystem",
+              "src": "contracts/MicroloanSystem.sol:102"
+            },
+            {
+              "label": "maxLoanAmount",
+              "offset": 0,
+              "slot": "12",
+              "type": "t_uint256",
+              "contract": "MicroloanSystem",
+              "src": "contracts/MicroloanSystem.sol:103"
+            },
+            {
+              "label": "minCreditScore",
+              "offset": 0,
+              "slot": "13",
+              "type": "t_uint256",
+              "contract": "MicroloanSystem",
+              "src": "contracts/MicroloanSystem.sol:104"
+            },
+            {
+              "label": "installmentPeriod",
+              "offset": 0,
+              "slot": "14",
+              "type": "t_uint256",
+              "contract": "MicroloanSystem",
+              "src": "contracts/MicroloanSystem.sol:105"
+            },
+            {
+              "label": "feeReceiver",
+              "offset": 0,
+              "slot": "15",
+              "type": "t_address",
+              "contract": "MicroloanSystem",
+              "src": "contracts/MicroloanSystem.sol:107"
+            },
+            {
+              "label": "creditScoringOracle",
+              "offset": 0,
+              "slot": "16",
+              "type": "t_address",
+              "contract": "MicroloanSystem",
+              "src": "contracts/MicroloanSystem.sol:108"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_address)dyn_storage": {
+              "label": "address[]",
+              "numberOfBytes": "32"
+            },
+            "t_array(t_enum(LoanType)4574)dyn_storage": {
+              "label": "enum MicroloanSystem.LoanType[]",
+              "numberOfBytes": "32"
+            },
+            "t_array(t_uint256)dyn_storage": {
+              "label": "uint256[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_enum(LoanStatus)4569": {
+              "label": "enum MicroloanSystem.LoanStatus",
+              "members": [
+                "Requested",
+                "Approved",
+                "Funded",
+                "Active",
+                "Completed",
+                "Defaulted"
+              ],
+              "numberOfBytes": "1"
+            },
+            "t_enum(LoanType)4574": {
+              "label": "enum MicroloanSystem.LoanType",
+              "members": [
+                "Personal",
+                "Business",
+                "Agricultural",
+                "Educational"
+              ],
+              "numberOfBytes": "1"
+            },
+            "t_mapping(t_address,t_array(t_uint256)dyn_storage)": {
+              "label": "mapping(address => uint256[])",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_struct(Borrower)4634_storage)": {
+              "label": "mapping(address => struct MicroloanSystem.Borrower)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_struct(Lender)4656_storage)": {
+              "label": "mapping(address => struct MicroloanSystem.Lender)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_struct(Loan)4617_storage)": {
+              "label": "mapping(uint256 => struct MicroloanSystem.Loan)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_struct(LoanOffer)4673_storage)": {
+              "label": "mapping(uint256 => struct MicroloanSystem.LoanOffer)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(Borrower)4634_storage": {
+              "label": "struct MicroloanSystem.Borrower",
+              "members": [
+                {
+                  "label": "creditScore",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "totalBorrowed",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "totalRepaid",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "activeLoans",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "completedLoans",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "defaultedLoans",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "lastLoanTime",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "6"
+                },
+                {
+                  "label": "isBlacklisted",
+                  "type": "t_bool",
+                  "offset": 0,
+                  "slot": "7"
+                }
+              ],
+              "numberOfBytes": "256"
+            },
+            "t_struct(Lender)4656_storage": {
+              "label": "struct MicroloanSystem.Lender",
+              "members": [
+                {
+                  "label": "isRegistered",
+                  "type": "t_bool",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "fundingCapacity",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "totalLent",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "activeLoans",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "completedLoans",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "defaultRate",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "averageReturn",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "6"
+                },
+                {
+                  "label": "supportedTokens",
+                  "type": "t_array(t_address)dyn_storage",
+                  "offset": 0,
+                  "slot": "7"
+                },
+                {
+                  "label": "availableFunds",
+                  "type": "t_mapping(t_address,t_uint256)",
+                  "offset": 0,
+                  "slot": "8"
+                }
+              ],
+              "numberOfBytes": "288"
+            },
+            "t_struct(Loan)4617_storage": {
+              "label": "struct MicroloanSystem.Loan",
+              "members": [
+                {
+                  "label": "loanId",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "borrower",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "lender",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "token",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "principalAmount",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "interestRate",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "duration",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "6"
+                },
+                {
+                  "label": "installmentAmount",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "7"
+                },
+                {
+                  "label": "installmentsPaid",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "8"
+                },
+                {
+                  "label": "totalInstallments",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "9"
+                },
+                {
+                  "label": "startTime",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "10"
+                },
+                {
+                  "label": "nextPaymentDue",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "11"
+                },
+                {
+                  "label": "status",
+                  "type": "t_enum(LoanStatus)4569",
+                  "offset": 0,
+                  "slot": "12"
+                },
+                {
+                  "label": "loanType",
+                  "type": "t_enum(LoanType)4574",
+                  "offset": 1,
+                  "slot": "12"
+                },
+                {
+                  "label": "purpose",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "13"
+                },
+                {
+                  "label": "collateralAmount",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "14"
+                },
+                {
+                  "label": "requiresCollateral",
+                  "type": "t_bool",
+                  "offset": 0,
+                  "slot": "15"
+                },
+                {
+                  "label": "creditScoreRequired",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "16"
+                },
+                {
+                  "label": "totalRepaid",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "17"
+                },
+                {
+                  "label": "penaltyAmount",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "18"
+                }
+              ],
+              "numberOfBytes": "608"
+            },
+            "t_struct(LoanOffer)4673_storage": {
+              "label": "struct MicroloanSystem.LoanOffer",
+              "members": [
+                {
+                  "label": "lender",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "maxAmount",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "interestRate",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "maxDuration",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "minCreditScore",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "supportedTypes",
+                  "type": "t_array(t_enum(LoanType)4574)dyn_storage",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "isActive",
+                  "type": "t_bool",
+                  "offset": 0,
+                  "slot": "6"
+                }
+              ],
+              "numberOfBytes": "224"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "contracts/SavingsGroups.sol:SavingsGroups": {
+        "src": "contracts/SavingsGroups.sol:16",
+        "version": {
+          "withMetadata": "f2d3620af48cf987550f51199f89751a81cd254980ff405f7595524e3a40583b",
+          "withoutMetadata": "70b6849b77812b77e383846f721c7349a447c0d0484b8c4fbfe8dbf644918b65",
+          "linkedWithoutMetadata": "70b6849b77812b77e383846f721c7349a447c0d0484b8c4fbfe8dbf644918b65"
+        },
+        "inherit": [
+          "@openzeppelin/contracts/access/Ownable.sol:Ownable",
+          "@openzeppelin/contracts/security/Pausable.sol:Pausable",
+          "@openzeppelin/contracts/utils/Context.sol:Context",
+          "@openzeppelin/contracts/security/ReentrancyGuard.sol:ReentrancyGuard"
+        ],
+        "libraries": [
+          "@openzeppelin/contracts/utils/math/SafeMath.sol:SafeMath",
+          "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol:SafeERC20"
+        ],
+        "methods": [
+          "(address)",
+          "createGroup(string,string,address,uint256,uint256,uint8,bool)",
+          "joinGroup(uint256)",
+          "contribute(uint256)",
+          "requestEmergencyLoan(uint256,uint256,string)",
+          "approveEmergencyLoan(uint256)",
+          "repayEmergencyLoan(uint256)",
+          "getGroupInfo(uint256)",
+          "getMemberInfo(uint256,address)",
+          "getUserGroups(address)",
+          "updatePlatformFee(uint256)",
+          "updateEmergencyFundPercentage(uint256)",
+          "pause()",
+          "unpause()"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "SavingsGroups",
+            "src": "contracts/SavingsGroups.sol:95"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "nextGroupId",
+            "src": "contracts/SavingsGroups.sol:85"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "nextLoanId",
+            "src": "contracts/SavingsGroups.sol:86"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "platformFee",
+            "src": "contracts/SavingsGroups.sol:87"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "minimumContribution",
+            "src": "contracts/SavingsGroups.sol:91"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "maximumMembers",
+            "src": "contracts/SavingsGroups.sol:92"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "emergencyFundPercentage",
+            "src": "contracts/SavingsGroups.sol:93"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "_status",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint256",
+              "contract": "ReentrancyGuard",
+              "src": "@openzeppelin/contracts/security/ReentrancyGuard.sol:37"
+            },
+            {
+              "label": "_paused",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_bool",
+              "contract": "Pausable",
+              "src": "@openzeppelin/contracts/security/Pausable.sol:28"
+            },
+            {
+              "label": "_owner",
+              "offset": 1,
+              "slot": "1",
+              "type": "t_address",
+              "contract": "Ownable",
+              "src": "@openzeppelin/contracts/access/Ownable.sol:21"
+            },
+            {
+              "label": "savingsGroups",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_mapping(t_uint256,t_struct(SavingsGroup)6606_storage)",
+              "contract": "SavingsGroups",
+              "src": "contracts/SavingsGroups.sol:81"
+            },
+            {
+              "label": "emergencyLoans",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_mapping(t_uint256,t_struct(EmergencyLoan)6646_storage)",
+              "contract": "SavingsGroups",
+              "src": "contracts/SavingsGroups.sol:82"
+            },
+            {
+              "label": "userGroups",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_address,t_array(t_uint256)dyn_storage)",
+              "contract": "SavingsGroups",
+              "src": "contracts/SavingsGroups.sol:83"
+            },
+            {
+              "label": "nextGroupId",
+              "offset": 0,
+              "slot": "5",
+              "type": "t_uint256",
+              "contract": "SavingsGroups",
+              "src": "contracts/SavingsGroups.sol:85"
+            },
+            {
+              "label": "nextLoanId",
+              "offset": 0,
+              "slot": "6",
+              "type": "t_uint256",
+              "contract": "SavingsGroups",
+              "src": "contracts/SavingsGroups.sol:86"
+            },
+            {
+              "label": "platformFee",
+              "offset": 0,
+              "slot": "7",
+              "type": "t_uint256",
+              "contract": "SavingsGroups",
+              "src": "contracts/SavingsGroups.sol:87"
+            },
+            {
+              "label": "feeReceiver",
+              "offset": 0,
+              "slot": "8",
+              "type": "t_address",
+              "contract": "SavingsGroups",
+              "src": "contracts/SavingsGroups.sol:88"
+            },
+            {
+              "label": "minimumContribution",
+              "offset": 0,
+              "slot": "9",
+              "type": "t_uint256",
+              "contract": "SavingsGroups",
+              "src": "contracts/SavingsGroups.sol:91"
+            },
+            {
+              "label": "maximumMembers",
+              "offset": 0,
+              "slot": "10",
+              "type": "t_uint256",
+              "contract": "SavingsGroups",
+              "src": "contracts/SavingsGroups.sol:92"
+            },
+            {
+              "label": "emergencyFundPercentage",
+              "offset": 0,
+              "slot": "11",
+              "type": "t_uint256",
+              "contract": "SavingsGroups",
+              "src": "contracts/SavingsGroups.sol:93"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_address)dyn_storage": {
+              "label": "address[]",
+              "numberOfBytes": "32"
+            },
+            "t_array(t_uint256)dyn_storage": {
+              "label": "uint256[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_enum(ContributionFrequency)6559": {
+              "label": "enum SavingsGroups.ContributionFrequency",
+              "members": [
+                "Daily",
+                "Weekly",
+                "Monthly"
+              ],
+              "numberOfBytes": "1"
+            },
+            "t_enum(GroupStatus)6555": {
+              "label": "enum SavingsGroups.GroupStatus",
+              "members": [
+                "Active",
+                "Completed",
+                "Cancelled"
+              ],
+              "numberOfBytes": "1"
+            },
+            "t_mapping(t_address,t_array(t_uint256)dyn_storage)": {
+              "label": "mapping(address => uint256[])",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_bool)": {
+              "label": "mapping(address => bool)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_struct(Member)6627_storage)": {
+              "label": "mapping(address => struct SavingsGroups.Member)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_address)": {
+              "label": "mapping(uint256 => address)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_struct(EmergencyLoan)6646_storage)": {
+              "label": "mapping(uint256 => struct SavingsGroups.EmergencyLoan)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_struct(SavingsGroup)6606_storage)": {
+              "label": "mapping(uint256 => struct SavingsGroups.SavingsGroup)",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(EmergencyLoan)6646_storage": {
+              "label": "struct SavingsGroups.EmergencyLoan",
+              "members": [
+                {
+                  "label": "groupId",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "borrower",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "amount",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "requestTime",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "approvalCount",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "isApproved",
+                  "type": "t_bool",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "isRepaid",
+                  "type": "t_bool",
+                  "offset": 1,
+                  "slot": "5"
+                },
+                {
+                  "label": "approvals",
+                  "type": "t_mapping(t_address,t_bool)",
+                  "offset": 0,
+                  "slot": "6"
+                }
+              ],
+              "numberOfBytes": "224"
+            },
+            "t_struct(Member)6627_storage": {
+              "label": "struct SavingsGroups.Member",
+              "members": [
+                {
+                  "label": "isActive",
+                  "type": "t_bool",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "joinTime",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "position",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "totalContributions",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "missedContributions",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "lastContributionTime",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "hasReceivedPayout",
+                  "type": "t_bool",
+                  "offset": 0,
+                  "slot": "6"
+                },
+                {
+                  "label": "payoutRound",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "7"
+                },
+                {
+                  "label": "emergencyLoanAmount",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "8"
+                },
+                {
+                  "label": "hasEmergencyLoan",
+                  "type": "t_bool",
+                  "offset": 0,
+                  "slot": "9"
+                }
+              ],
+              "numberOfBytes": "320"
+            },
+            "t_struct(SavingsGroup)6606_storage": {
+              "label": "struct SavingsGroups.SavingsGroup",
+              "members": [
+                {
+                  "label": "groupId",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "name",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "description",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "creator",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "token",
+                  "type": "t_address",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "contributionAmount",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "maxMembers",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "6"
+                },
+                {
+                  "label": "currentMembers",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "7"
+                },
+                {
+                  "label": "frequency",
+                  "type": "t_enum(ContributionFrequency)6559",
+                  "offset": 0,
+                  "slot": "8"
+                },
+                {
+                  "label": "startTime",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "9"
+                },
+                {
+                  "label": "lastPayoutTime",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "10"
+                },
+                {
+                  "label": "currentRound",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "11"
+                },
+                {
+                  "label": "status",
+                  "type": "t_enum(GroupStatus)6555",
+                  "offset": 0,
+                  "slot": "12"
+                },
+                {
+                  "label": "emergencyFundEnabled",
+                  "type": "t_bool",
+                  "offset": 1,
+                  "slot": "12"
+                },
+                {
+                  "label": "emergencyFundBalance",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "13"
+                },
+                {
+                  "label": "totalContributions",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "14"
+                },
+                {
+                  "label": "members",
+                  "type": "t_mapping(t_address,t_struct(Member)6627_storage)",
+                  "offset": 0,
+                  "slot": "15"
+                },
+                {
+                  "label": "payoutOrder",
+                  "type": "t_mapping(t_uint256,t_address)",
+                  "offset": 0,
+                  "slot": "16"
+                },
+                {
+                  "label": "memberList",
+                  "type": "t_array(t_address)dyn_storage",
+                  "offset": 0,
+                  "slot": "17"
+                }
+              ],
+              "numberOfBytes": "576"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "contracts/VillageToken.sol:VillageToken": {
+        "src": "contracts/VillageToken.sol:14",
+        "version": {
+          "withMetadata": "8df785aada91bc5b67fc948f486b6bee7fbbc67a0f9b7c1e0dc4e558bf2b4ad1",
+          "withoutMetadata": "e61936840bdb2043bc6d675656dd37d9e9a767a8ba75ace93e548073ba8dc7fe",
+          "linkedWithoutMetadata": "e61936840bdb2043bc6d675656dd37d9e9a767a8ba75ace93e548073ba8dc7fe"
+        },
+        "inherit": [
+          "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol:ERC20Permit",
+          "@openzeppelin/contracts/utils/cryptography/EIP712.sol:EIP712",
+          "@openzeppelin/contracts/interfaces/IERC5267.sol:IERC5267",
+          "@openzeppelin/contracts/token/ERC20/extensions/IERC20Permit.sol:IERC20Permit",
+          "@openzeppelin/contracts/access/Ownable.sol:Ownable",
+          "@openzeppelin/contracts/security/Pausable.sol:Pausable",
+          "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol:ERC20Burnable",
+          "@openzeppelin/contracts/token/ERC20/ERC20.sol:ERC20",
+          "@openzeppelin/contracts/token/ERC20/extensions/IERC20Metadata.sol:IERC20Metadata",
+          "@openzeppelin/contracts/token/ERC20/IERC20.sol:IERC20",
+          "@openzeppelin/contracts/utils/Context.sol:Context"
+        ],
+        "libraries": [],
+        "methods": [
+          "()",
+          "addRewardDistributor(address)",
+          "removeRewardDistributor(address)",
+          "distributeSavingsReward(address)",
+          "distributeLoanReward(address)",
+          "distributeReferralReward(address)",
+          "distributeAgentReward(address)",
+          "stakeTokens(uint256)",
+          "unstakeTokens(uint256)",
+          "claimStakingReward()",
+          "getPendingStakingReward(address)",
+          "getVotingPower(address)",
+          "updateRewardRates(uint256,uint256,uint256,uint256)",
+          "updateStakingRewardRate(uint256)",
+          "addToRewardPool(string,uint256)",
+          "mintForEcosystem(address,uint256)",
+          "pause()",
+          "unpause()"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "VillageToken",
+            "src": "contracts/VillageToken.sol:41"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "savingsReward",
+            "src": "contracts/VillageToken.sol:20"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "loanRepaymentReward",
+            "src": "contracts/VillageToken.sol:21"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "referralReward",
+            "src": "contracts/VillageToken.sol:22"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "agentCommissionReward",
+            "src": "contracts/VillageToken.sol:23"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "stakingRewardRate",
+            "src": "contracts/VillageToken.sol:33"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "_balances",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_mapping(t_address,t_uint256)",
+              "contract": "ERC20",
+              "src": "@openzeppelin/contracts/token/ERC20/ERC20.sol:39"
+            },
+            {
+              "label": "_allowances",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_mapping(t_address,t_mapping(t_address,t_uint256))",
+              "contract": "ERC20",
+              "src": "@openzeppelin/contracts/token/ERC20/ERC20.sol:41"
+            },
+            {
+              "label": "_totalSupply",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_uint256",
+              "contract": "ERC20",
+              "src": "@openzeppelin/contracts/token/ERC20/ERC20.sol:43"
+            },
+            {
+              "label": "_name",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_string_storage",
+              "contract": "ERC20",
+              "src": "@openzeppelin/contracts/token/ERC20/ERC20.sol:45"
+            },
+            {
+              "label": "_symbol",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_string_storage",
+              "contract": "ERC20",
+              "src": "@openzeppelin/contracts/token/ERC20/ERC20.sol:46"
+            },
+            {
+              "label": "_paused",
+              "offset": 0,
+              "slot": "5",
+              "type": "t_bool",
+              "contract": "Pausable",
+              "src": "@openzeppelin/contracts/security/Pausable.sol:28"
+            },
+            {
+              "label": "_owner",
+              "offset": 1,
+              "slot": "5",
+              "type": "t_address",
+              "contract": "Ownable",
+              "src": "@openzeppelin/contracts/access/Ownable.sol:21"
+            },
+            {
+              "label": "_nameFallback",
+              "offset": 0,
+              "slot": "6",
+              "type": "t_string_storage",
+              "contract": "EIP712",
+              "src": "@openzeppelin/contracts/utils/cryptography/EIP712.sol:52"
+            },
+            {
+              "label": "_versionFallback",
+              "offset": 0,
+              "slot": "7",
+              "type": "t_string_storage",
+              "contract": "EIP712",
+              "src": "@openzeppelin/contracts/utils/cryptography/EIP712.sol:53"
+            },
+            {
+              "label": "_nonces",
+              "offset": 0,
+              "slot": "8",
+              "type": "t_mapping(t_address,t_struct(Counter)1994_storage)",
+              "contract": "ERC20Permit",
+              "src": "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol:25"
+            },
+            {
+              "label": "_PERMIT_TYPEHASH_DEPRECATED_SLOT",
+              "offset": 0,
+              "slot": "9",
+              "type": "t_bytes32",
+              "contract": "ERC20Permit",
+              "src": "@openzeppelin/contracts/token/ERC20/extensions/ERC20Permit.sol:37",
+              "renamedFrom": "_PERMIT_TYPEHASH"
+            },
+            {
+              "label": "savingsReward",
+              "offset": 0,
+              "slot": "10",
+              "type": "t_uint256",
+              "contract": "VillageToken",
+              "src": "contracts/VillageToken.sol:20"
+            },
+            {
+              "label": "loanRepaymentReward",
+              "offset": 0,
+              "slot": "11",
+              "type": "t_uint256",
+              "contract": "VillageToken",
+              "src": "contracts/VillageToken.sol:21"
+            },
+            {
+              "label": "referralReward",
+              "offset": 0,
+              "slot": "12",
+              "type": "t_uint256",
+              "contract": "VillageToken",
+              "src": "contracts/VillageToken.sol:22"
+            },
+            {
+              "label": "agentCommissionReward",
+              "offset": 0,
+              "slot": "13",
+              "type": "t_uint256",
+              "contract": "VillageToken",
+              "src": "contracts/VillageToken.sol:23"
+            },
+            {
+              "label": "rewardPools",
+              "offset": 0,
+              "slot": "14",
+              "type": "t_mapping(t_string_memory_ptr,t_uint256)",
+              "contract": "VillageToken",
+              "src": "contracts/VillageToken.sol:26"
+            },
+            {
+              "label": "rewardDistributors",
+              "offset": 0,
+              "slot": "15",
+              "type": "t_mapping(t_address,t_bool)",
+              "contract": "VillageToken",
+              "src": "contracts/VillageToken.sol:27"
+            },
+            {
+              "label": "stakedBalance",
+              "offset": 0,
+              "slot": "16",
+              "type": "t_mapping(t_address,t_uint256)",
+              "contract": "VillageToken",
+              "src": "contracts/VillageToken.sol:30"
+            },
+            {
+              "label": "stakingTimestamp",
+              "offset": 0,
+              "slot": "17",
+              "type": "t_mapping(t_address,t_uint256)",
+              "contract": "VillageToken",
+              "src": "contracts/VillageToken.sol:31"
+            },
+            {
+              "label": "totalStaked",
+              "offset": 0,
+              "slot": "18",
+              "type": "t_uint256",
+              "contract": "VillageToken",
+              "src": "contracts/VillageToken.sol:32"
+            },
+            {
+              "label": "stakingRewardRate",
+              "offset": 0,
+              "slot": "19",
+              "type": "t_uint256",
+              "contract": "VillageToken",
+              "src": "contracts/VillageToken.sol:33"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_bytes32": {
+              "label": "bytes32",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_bool)": {
+              "label": "mapping(address => bool)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_mapping(t_address,t_uint256))": {
+              "label": "mapping(address => mapping(address => uint256))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_struct(Counter)1994_storage)": {
+              "label": "mapping(address => struct Counters.Counter)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_uint256)": {
+              "label": "mapping(address => uint256)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_string_memory_ptr,t_uint256)": {
+              "label": "mapping(string => uint256)",
+              "numberOfBytes": "32"
+            },
+            "t_string_memory_ptr": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(Counter)1994_storage": {
+              "label": "struct Counters.Counter",
+              "members": [
+                {
+                  "label": "_value",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                }
+              ],
+              "numberOfBytes": "32"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      },
+      "contracts/VillageWallet.sol:VillageWallet": {
+        "src": "contracts/VillageWallet.sol:16",
+        "version": {
+          "withMetadata": "4c281209815e3fa6c06dccc4dafb87f4c23a368866e5fab5fd9ea666bac16952",
+          "withoutMetadata": "b9eff110e860a9b98ed0032afdbfb31545c05c880552e1d091988015799013a3",
+          "linkedWithoutMetadata": "b9eff110e860a9b98ed0032afdbfb31545c05c880552e1d091988015799013a3"
+        },
+        "inherit": [
+          "@openzeppelin/contracts/access/Ownable.sol:Ownable",
+          "@openzeppelin/contracts/security/Pausable.sol:Pausable",
+          "@openzeppelin/contracts/utils/Context.sol:Context",
+          "@openzeppelin/contracts/security/ReentrancyGuard.sol:ReentrancyGuard"
+        ],
+        "libraries": [
+          "@openzeppelin/contracts/utils/math/SafeMath.sol:SafeMath",
+          "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol:SafeERC20"
+        ],
+        "methods": [
+          "(address)",
+          "registerUser(string,string)",
+          "verifyUser(address)",
+          "registerAgent(string,string,uint256)",
+          "addSupportedToken(address)",
+          "removeSupportedToken(address)",
+          "deposit(address,uint256)",
+          "withdraw(address,uint256)",
+          "transfer(address,address,uint256)",
+          "cashIn(address,address,uint256)",
+          "cashOut(address,address,uint256)",
+          "getBalance(address,address)",
+          "getUserByPhone(string)",
+          "getSupportedTokens()",
+          "updateLimits(uint256,uint256)",
+          "updatePlatformFee(uint256)",
+          "updateFeeReceiver(address)",
+          "pause()",
+          "unpause()",
+          "emergencyWithdraw(address,uint256)"
+        ],
+        "linkReferences": [],
+        "errors": [
+          {
+            "kind": "constructor",
+            "contract": "VillageWallet",
+            "src": "contracts/VillageWallet.sol:75"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "platformFee",
+            "src": "contracts/VillageWallet.sol:65"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "agentCommission",
+            "src": "contracts/VillageWallet.sol:66"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "dailyLimit",
+            "src": "contracts/VillageWallet.sol:70"
+          },
+          {
+            "kind": "state-variable-assignment",
+            "name": "monthlyLimit",
+            "src": "contracts/VillageWallet.sol:71"
+          }
+        ],
+        "layout": {
+          "storage": [
+            {
+              "label": "_status",
+              "offset": 0,
+              "slot": "0",
+              "type": "t_uint256",
+              "contract": "ReentrancyGuard",
+              "src": "@openzeppelin/contracts/security/ReentrancyGuard.sol:37"
+            },
+            {
+              "label": "_paused",
+              "offset": 0,
+              "slot": "1",
+              "type": "t_bool",
+              "contract": "Pausable",
+              "src": "@openzeppelin/contracts/security/Pausable.sol:28"
+            },
+            {
+              "label": "_owner",
+              "offset": 1,
+              "slot": "1",
+              "type": "t_address",
+              "contract": "Ownable",
+              "src": "@openzeppelin/contracts/access/Ownable.sol:21"
+            },
+            {
+              "label": "users",
+              "offset": 0,
+              "slot": "2",
+              "type": "t_mapping(t_address,t_struct(User)8969_storage)",
+              "contract": "VillageWallet",
+              "src": "contracts/VillageWallet.sol:55"
+            },
+            {
+              "label": "agents",
+              "offset": 0,
+              "slot": "3",
+              "type": "t_mapping(t_address,t_struct(Agent)8984_storage)",
+              "contract": "VillageWallet",
+              "src": "contracts/VillageWallet.sol:56"
+            },
+            {
+              "label": "balances",
+              "offset": 0,
+              "slot": "4",
+              "type": "t_mapping(t_address,t_mapping(t_address,t_struct(Balance)8989_storage))",
+              "contract": "VillageWallet",
+              "src": "contracts/VillageWallet.sol:57"
+            },
+            {
+              "label": "phoneToAddress",
+              "offset": 0,
+              "slot": "5",
+              "type": "t_mapping(t_string_memory_ptr,t_address)",
+              "contract": "VillageWallet",
+              "src": "contracts/VillageWallet.sol:58"
+            },
+            {
+              "label": "supportedTokens",
+              "offset": 0,
+              "slot": "6",
+              "type": "t_mapping(t_address,t_bool)",
+              "contract": "VillageWallet",
+              "src": "contracts/VillageWallet.sol:61"
+            },
+            {
+              "label": "tokenList",
+              "offset": 0,
+              "slot": "7",
+              "type": "t_array(t_address)dyn_storage",
+              "contract": "VillageWallet",
+              "src": "contracts/VillageWallet.sol:62"
+            },
+            {
+              "label": "platformFee",
+              "offset": 0,
+              "slot": "8",
+              "type": "t_uint256",
+              "contract": "VillageWallet",
+              "src": "contracts/VillageWallet.sol:65"
+            },
+            {
+              "label": "agentCommission",
+              "offset": 0,
+              "slot": "9",
+              "type": "t_uint256",
+              "contract": "VillageWallet",
+              "src": "contracts/VillageWallet.sol:66"
+            },
+            {
+              "label": "feeReceiver",
+              "offset": 0,
+              "slot": "10",
+              "type": "t_address",
+              "contract": "VillageWallet",
+              "src": "contracts/VillageWallet.sol:67"
+            },
+            {
+              "label": "dailyLimit",
+              "offset": 0,
+              "slot": "11",
+              "type": "t_uint256",
+              "contract": "VillageWallet",
+              "src": "contracts/VillageWallet.sol:70"
+            },
+            {
+              "label": "monthlyLimit",
+              "offset": 0,
+              "slot": "12",
+              "type": "t_uint256",
+              "contract": "VillageWallet",
+              "src": "contracts/VillageWallet.sol:71"
+            },
+            {
+              "label": "dailySpent",
+              "offset": 0,
+              "slot": "13",
+              "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+              "contract": "VillageWallet",
+              "src": "contracts/VillageWallet.sol:72"
+            },
+            {
+              "label": "monthlySpent",
+              "offset": 0,
+              "slot": "14",
+              "type": "t_mapping(t_address,t_mapping(t_uint256,t_uint256))",
+              "contract": "VillageWallet",
+              "src": "contracts/VillageWallet.sol:73"
+            }
+          ],
+          "types": {
+            "t_address": {
+              "label": "address",
+              "numberOfBytes": "20"
+            },
+            "t_array(t_address)dyn_storage": {
+              "label": "address[]",
+              "numberOfBytes": "32"
+            },
+            "t_bool": {
+              "label": "bool",
+              "numberOfBytes": "1"
+            },
+            "t_mapping(t_address,t_bool)": {
+              "label": "mapping(address => bool)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_mapping(t_address,t_struct(Balance)8989_storage))": {
+              "label": "mapping(address => mapping(address => struct VillageWallet.Balance))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_mapping(t_uint256,t_uint256))": {
+              "label": "mapping(address => mapping(uint256 => uint256))",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_struct(Agent)8984_storage)": {
+              "label": "mapping(address => struct VillageWallet.Agent)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_struct(Balance)8989_storage)": {
+              "label": "mapping(address => struct VillageWallet.Balance)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_address,t_struct(User)8969_storage)": {
+              "label": "mapping(address => struct VillageWallet.User)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_string_memory_ptr,t_address)": {
+              "label": "mapping(string => address)",
+              "numberOfBytes": "32"
+            },
+            "t_mapping(t_uint256,t_uint256)": {
+              "label": "mapping(uint256 => uint256)",
+              "numberOfBytes": "32"
+            },
+            "t_string_memory_ptr": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_string_storage": {
+              "label": "string",
+              "numberOfBytes": "32"
+            },
+            "t_struct(Agent)8984_storage": {
+              "label": "struct VillageWallet.Agent",
+              "members": [
+                {
+                  "label": "location",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "businessName",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "commissionRate",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "isActive",
+                  "type": "t_bool",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "totalVolume",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "successfulTransactions",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "5"
+                },
+                {
+                  "label": "registrationTime",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "6"
+                }
+              ],
+              "numberOfBytes": "224"
+            },
+            "t_struct(Balance)8989_storage": {
+              "label": "struct VillageWallet.Balance",
+              "members": [
+                {
+                  "label": "available",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "locked",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "1"
+                }
+              ],
+              "numberOfBytes": "64"
+            },
+            "t_struct(User)8969_storage": {
+              "label": "struct VillageWallet.User",
+              "members": [
+                {
+                  "label": "phoneNumber",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "0"
+                },
+                {
+                  "label": "country",
+                  "type": "t_string_storage",
+                  "offset": 0,
+                  "slot": "1"
+                },
+                {
+                  "label": "isRegistered",
+                  "type": "t_bool",
+                  "offset": 0,
+                  "slot": "2"
+                },
+                {
+                  "label": "isVerified",
+                  "type": "t_bool",
+                  "offset": 1,
+                  "slot": "2"
+                },
+                {
+                  "label": "registrationTime",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "3"
+                },
+                {
+                  "label": "totalTransactions",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "4"
+                },
+                {
+                  "label": "creditScore",
+                  "type": "t_uint256",
+                  "offset": 0,
+                  "slot": "5"
+                }
+              ],
+              "numberOfBytes": "192"
+            },
+            "t_uint256": {
+              "label": "uint256",
+              "numberOfBytes": "32"
+            }
+          },
+          "layoutVersion": "1.2",
+          "flat": true,
+          "namespaces": {}
+        },
+        "solcVersion": "0.8.19"
+      }
+    }
+  ]
+}

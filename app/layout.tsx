@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { ThirdwebProvider } from './providers/ThirdwebProvider'
 import { LanguageProvider } from './providers/LanguageProvider'
+import { WagmiAppProvider } from './providers/WagmiProvider'
 
 export const metadata: Metadata = {
   title: 'Village Digital Wallet',
@@ -19,13 +20,15 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className="font-sans">
-        <ThirdwebProvider>
-          <LanguageProvider>
-            {children}
-          </LanguageProvider>
-        </ThirdwebProvider>
+        <WagmiAppProvider>
+          <ThirdwebProvider>
+            <LanguageProvider>
+              {children}
+            </LanguageProvider>
+          </ThirdwebProvider>
+        </WagmiAppProvider>
       </body>
     </html>
   )

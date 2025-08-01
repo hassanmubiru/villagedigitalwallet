@@ -16,9 +16,12 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<SupportedLanguages>('en')
+  const [isClient, setIsClient] = useState(false)
 
-  // Load saved language from localStorage on mount
+  // Check if component has mounted on client
   useEffect(() => {
+    setIsClient(true)
+    // Load saved language from localStorage on mount
     const savedLanguage = localStorage.getItem('village-wallet-language') as SupportedLanguages
     if (savedLanguage && translations[savedLanguage]) {
       setLanguageState(savedLanguage)
@@ -28,11 +31,12 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   // Save language to localStorage when it changes
   const setLanguage = (lang: SupportedLanguages) => {
     setLanguageState(lang)
-    localStorage.setItem('village-wallet-language', lang)
-    
-    // Update document direction for RTL languages
-    document.documentElement.dir = languageMetadata[lang]?.rtl ? 'rtl' : 'ltr'
-    document.documentElement.lang = lang
+    if (isClient) {
+      localStorage.setItem('village-wallet-language', lang)
+      // Update document direction for RTL languages
+      document.documentElement.dir = languageMetadata[lang]?.rtl ? 'rtl' : 'ltr'
+      document.documentElement.lang = lang
+    }
   }
 
   const t = (key: string): string => {
@@ -60,9 +64,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   // Set initial document direction
   useEffect(() => {
-    document.documentElement.dir = isRTL ? 'rtl' : 'ltr'
-    document.documentElement.lang = language
-  }, [language, isRTL])
+    if (isClient) {
+      document.documentElement.dir = isRTL ? 'rtl' : 'ltr'
+      document.documentElement.lang = language
+    }
+  }, [language, isRTL, isClient])
 
   return (
     <LanguageContext.Provider value={{ 

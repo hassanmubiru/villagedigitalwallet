@@ -37,12 +37,19 @@ export default function WalletConnect() {
   const { disconnect } = useDisconnect()
   const [isCeloNetwork, setIsCeloNetwork] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [isMetaMaskAvailable, setIsMetaMaskAvailable] = useState(false)
+  const [isClient, setIsClient] = useState(false)
 
-  // Check if MetaMask is available
-  const isMetaMaskAvailable = typeof window !== 'undefined' && !!window.ethereum?.isMetaMask
+  // Check if component has mounted on client
+  useEffect(() => {
+    setIsClient(true)
+    setIsMetaMaskAvailable(!!window.ethereum?.isMetaMask)
+  }, [])
   
   // Connect to Celo network when wallet is connected
   useEffect(() => {
+    if (!isClient) return // Don't run on server
+    
     async function connectToCelo() {
       if (account && wallet && window.ethereum) {
         try {
@@ -67,7 +74,7 @@ export default function WalletConnect() {
     connectToCelo()
     
     // Listen for chain changes
-    if (window.ethereum && window.ethereum.on && window.ethereum.removeListener) {
+    if (isClient && window.ethereum && window.ethereum.on && window.ethereum.removeListener) {
       const handleChainChanged = (chainId: string) => {
         const chainIdNum = parseInt(chainId, 16)
         setIsCeloNetwork(chainIdNum === 44787 || chainIdNum === 42220)
@@ -79,10 +86,12 @@ export default function WalletConnect() {
         window.ethereum?.removeListener?.('chainChanged', handleChainChanged)
       }
     }
-  }, [account, wallet])
+  }, [account, wallet, isClient])
   
   // Function to switch to Celo Alfajores testnet
   const handleSwitchNetwork = async () => {
+    if (!isClient) return // Don't run on server
+    
     setIsLoading(true)
     try {
       await switchToCeloNetwork(true) // true for testnet
@@ -92,6 +101,17 @@ export default function WalletConnect() {
     } finally {
       setIsLoading(false)
     }
+  }
+
+  // Don't render until client-side hydration is complete
+  if (!isClient) {
+    return (
+      <div className="space-y-4">
+        <p className="text-gray-600 text-sm mb-4">
+          Loading wallet connection...
+        </p>
+      </div>
+    )
   }
 
   if (account) {

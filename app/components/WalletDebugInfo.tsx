@@ -18,22 +18,27 @@ declare global {
 
 export default function WalletDebugInfo() {
   const [debugInfo, setDebugInfo] = useState<any>({})
+  const [isClient, setIsClient] = useState(false)
 
   useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  useEffect(() => {
+    if (!isClient) return // Don't run on server
+    
     const checkWalletStatus = async () => {
       const info: any = {
-        hasMetaMask: typeof window !== 'undefined' && !!window.ethereum?.isMetaMask,
-        hasWindow: typeof window !== 'undefined',
-        userAgent: typeof navigator !== 'undefined' ? navigator.userAgent : 'N/A',
+        hasMetaMask: !!window.ethereum?.isMetaMask,
+        hasWindow: true,
+        userAgent: navigator.userAgent,
         clientId: process.env.NEXT_PUBLIC_THIRDWEB_CLIENT_ID,
         timestamp: new Date().toISOString(),
-        mobileDevice: typeof navigator !== 'undefined' ? 
-          /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) : 
-          false,
-        browser: typeof navigator !== 'undefined' ? detectBrowser(navigator.userAgent) : 'Unknown'
+        mobileDevice: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
+        browser: detectBrowser(navigator.userAgent)
       }
 
-      if (typeof window !== 'undefined' && window.ethereum) {
+      if (window.ethereum) {
         // Get chain ID in decimal if available
         const chainIdHex = window.ethereum.chainId;
         const chainIdDecimal = chainIdHex ? parseInt(chainIdHex, 16) : null;
@@ -105,7 +110,50 @@ export default function WalletDebugInfo() {
     }
 
     checkWalletStatus()
-  }, [])
+  }, [isClient])
+  
+  // Helper function to detect browser
+  const detectBrowser = (userAgent: string): string => {
+    if (userAgent.indexOf('Chrome') > -1) return 'Chrome';
+    if (userAgent.indexOf('Safari') > -1) return 'Safari';
+    if (userAgent.indexOf('Firefox') > -1) return 'Firefox';
+    if (userAgent.indexOf('MSIE') > -1 || userAgent.indexOf('Trident/') > -1) return 'IE';
+    if (userAgent.indexOf('Edge') > -1) return 'Edge';
+    if (userAgent.indexOf('Opera') > -1) return 'Opera';
+    return 'Unknown';
+  }
+  
+  // Helper function to get network name
+  const getNetworkName = (chainId: number | null): string => {
+    if (!chainId) return 'Unknown';
+    
+    const networks: Record<number, string> = {
+      1: 'Ethereum Mainnet',
+      42220: 'Celo Mainnet',
+      44787: 'Celo Alfajores Testnet',
+      3: 'Ropsten',
+      4: 'Rinkeby',
+      5: 'Goerli',
+      42: 'Kovan',
+      56: 'BSC Mainnet',
+      97: 'BSC Testnet',
+      137: 'Polygon Mainnet',
+      80001: 'Polygon Mumbai'
+    };
+    
+    return networks[chainId] || `Unknown (${chainId})`;
+  }
+  
+  // Don't render until client-side hydration is complete
+  if (!isClient) {
+    return (
+      <div className="bg-gray-100 p-4 rounded-lg text-xs">
+        <h4 className="font-bold mb-2">
+          Loading debug info...
+        </h4>
+      </div>
+    )
+  }
 
   return (
     <div className="bg-gray-100 p-4 rounded-lg text-xs">

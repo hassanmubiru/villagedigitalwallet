@@ -1,0 +1,27 @@
+{
+  "network": "alfajores",
+  "createdAt": "2025-08-01T13:45:12.724Z",
+  "agents": [
+    {
+      "address": "0x94975C47a93064bB8E1A4eA325361C59CDF8571B",
+      "privateKey": "0x061c7b0900c38ccf9a568b3beff9de888143cffd00ca70dcdfeb36f38880312c",
+      "location": "Kampala Central, Uganda",
+      "businessName": "Kampala Mobile Money Hub",
+      "commissionRate": 200
+    },
+    {
+      "address": "0x18F333EF44aC1c7e5a0858437DEd34ac548dE53a",
+      "privateKey": "0xe3620016320bcf4efa23a7b150b97784e70e9111f988ce7d4de8329282e4d1ee",
+      "location": "Nairobi CBD, Kenya",
+      "businessName": "Nairobi Digital Services",
+      "commissionRate": 250
+    },
+    {
+      "address": "0xeDF0f04479Dd60e9d0C0FbeF2dF08875334a13b5",
+      "privateKey": "0xbdade86f3fefda945e7cb6da219130ff8940abca0293871bb42ca87756e8e921",
+      "location": "Lagos Island, Nigeria",
+      "businessName": "Lagos Fintech Center",
+      "commissionRate": 300
+    }
+  ]
+}
